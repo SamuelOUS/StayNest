@@ -1,5 +1,6 @@
 <div style="text-align: center; background-color: blue; padding: 20px;">
-  <img src="https://github.com/user-attachments/assets/2b8b23fa-c772-4878-a0c8-bde1bfbf561e" alt="StayNest Logo" style="width: 200px; height: auto;">
+  ![image](https://github.com/user-attachments/assets/438cadec-bc50-4666-82a0-dfe47097557f)
+
 </div>
 <h1>StayNest</h1>
 <p>
