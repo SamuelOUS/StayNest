@@ -43,18 +43,17 @@ body {
     font-size: 14px;
     outline: none;
     width: 150px; 
-    margin:  10px; 
+    margin: 10px; 
     height: 20px;
 }
 
 .search-bar input:not(:last-child) {
     border-right: 1px solid #a7a7a7; 
 }
+
 .search-bar input:nth-last-child(2) {
-    
     border-right: 1px solid #ffffff; 
 }
-
 
 .search-button {
     background-image: url("../Images/search.png");
@@ -68,7 +67,6 @@ body {
     height: 30px;
     margin-right: 10px;
     background-color: #ffffff;
-
 }
 
 .menu {
@@ -79,6 +77,7 @@ body {
 
 .menu-btn {
     background-color: #007BFF;
+    background-image: url("../");
     color: #fff;
     border: none;
     padding: 10px;
@@ -129,11 +128,61 @@ body {
     cursor: pointer;
 }
 
-.separator{
+.separator {
     display: flex;
     align-items: center;
     width: 100%;
     height: 1px;
     margin-top: 20px;
     background-color: #c0bfbf;
+}
+
+
+.house-gallery {
+    padding: 20px;
+    display: flex;
+    justify-content: center; /* Centra el contenedor de la lista */
+}
+
+.house-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Espacio entre los elementos */
+    list-style: none; /* Elimina los puntos de lista predeterminados */
+    padding: 0;
+    margin: 0;
+    max-width: 1200px; /* Limita el ancho máximo del contenedor para mantener un buen diseño */
+    width: 100%;
+    justify-content: center; /* Centra los elementos en el contenedor */
+}
+
+.house-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.house-item:hover {
+    transform: scale(1.05);
+}
+
+.house-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.house-item h3 {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #2140AE !important; /* Azul para el título con !important */
+}
+
+.house-item p {
+    padding: 0 10px;
+    color: #666;
 }
