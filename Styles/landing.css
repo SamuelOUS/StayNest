@@ -26,6 +26,8 @@ body {
     width: 150px;
     height: 50px;
     margin-top: 10px;
+    
+   
 }
 
 .search-bar {
@@ -45,6 +47,13 @@ body {
     width: 150px; 
     margin: 10px; 
     height: 20px;
+}
+
+.search-bar input[type="date"] {
+    font-size: 10px;
+    margin-left: 10px;
+    
+
 }
 
 .search-bar input:not(:last-child) {
@@ -83,15 +92,17 @@ body {
 }
 
 .menu-btn {
-    
+    background-image: url("../Images/menu-de-hamburguesas.png");
+    background-repeat: no-repeat;
+    background-size: contain;
     background-color: white;
-    color: #4b68c5;
     border: none;
     padding: 10px;
-    
-    margin-right: 20px;
+    margin-right: 10px;
+    margin-left: 20px;
     cursor: pointer;
-    padding-left: 20px;
+
+
     
 }
 
@@ -103,7 +114,7 @@ body {
     background-color: #fff;
     color: #333;
     border: 1px solid #999999;
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 10px;
     z-index: 1000;
     width: 150px;
@@ -127,7 +138,7 @@ body {
 }
 
 .menu-btn:hover + .context-menu {
-    display: block;
+    display:block;
 }
 
 .user-icon img {
@@ -140,7 +151,7 @@ body {
 .separator {
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 110%;
     height: 1px;
     margin-top: 20px;
     background-color: #c0bfbf;
@@ -159,23 +170,20 @@ body {
 .house-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px; /* Espacio entre los elementos */
+    gap: 30px;
     list-style: none; /* Elimina los puntos de lista predeterminados */
-    padding: 0;
-    margin: 0;
     max-width: 1200px; /* Limita el ancho máximo del contenedor para mantener un buen diseño */
     width: 100%;
     justify-content: center; /* Centra los elementos en el contenedor */
 }
 
 .house-item {
-    border: 1px solid #ddd;
+    border: 1px solid #dfdfdf;
     border-radius: 8px;
-    overflow: hidden;
     width: 300px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
+    transition: transform 0.2s;
 }
 
 .house-item:hover {
@@ -197,12 +205,14 @@ body {
 .house-item p {
     padding: 0 10px;
     color: #666;
+    font-size: 15px;
+    margin-bottom: 10px;
 }
 
 .decoration_1{
     width: 100px;
     height: 300px;
-    background-color: #0326a5;
+    background-color: #11215B;
     position: absolute;
     left: 1900px;
     transform: rotate(-45deg);
@@ -211,8 +221,8 @@ body {
 }
 .decoration_2{
     width: 100px;
-    height: 300px;
-    background-color: #002ac4;
+    height: 500px;
+    background-color: #182D77;
     position: absolute;
     left: 1800px;
     transform: rotate(-45deg);
@@ -222,7 +232,7 @@ body {
 .decoration_3{
     width: 100px;
     height: 1200px;
-    background-color: #0031e0;
+    background-color: #1D3795;
     position: absolute;
     left: 1700px;
     transform: rotate(-45deg);
@@ -232,7 +242,7 @@ body {
 .decoration_4{
     width: 90px;
     height: 1000px;
-    background-color: #0616aa;
+    background-color: #2140AE;
     position: absolute;
     left: 1600px;
     transform: rotate(-45deg);
