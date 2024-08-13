@@ -1,5 +1,5 @@
 /* Reseteo básico */
-* {
+html, * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -26,8 +26,6 @@ body {
     width: 150px;
     height: 50px;
     margin-top: 10px;
-    
-   
 }
 
 .search-bar {
@@ -45,15 +43,13 @@ body {
     font-size: 14px;
     outline: none;
     width: 150px; 
-    margin: 10px; 
+    margin: 10px;
     height: 20px;
 }
 
 .search-bar input[type="date"] {
     font-size: 10px;
     margin-left: 10px;
-    
-
 }
 
 .search-bar input:not(:last-child) {
@@ -84,15 +80,13 @@ body {
     position: relative;
     width: 100px;
     height: 50px;
-    border: 10px solid #ffffff;
-    
+    border: 1px solid #ffffff;
     border-radius: 30px;
-    border-width: 1px;
     background-color: white;
 }
 
 .menu-btn {
-    background-image: url("../Images/menu-de-hamburguesas.png");
+    background-image: url("../Images/menu.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-color: white;
@@ -101,22 +95,19 @@ body {
     margin-right: 10px;
     margin-left: 20px;
     cursor: pointer;
-
-
-    
 }
 
 .context-menu {
     display: none;
     position: absolute;
-    top: 40px;
-    right: 20px;
+    top: 50px;
+    right: 0;
     background-color: #fff;
     color: #333;
     border: 1px solid #999999;
     border-radius: 10px;
     padding: 10px;
-    z-index: 1000;
+    z-index: 10;
     width: 150px;
 }
 
@@ -137,8 +128,15 @@ body {
     margin: 10px 0;
 }
 
-.menu-btn:hover + .context-menu {
-    display:block;
+
+/* Asegúrate de que el menú esté oculto por defecto */
+.context-menu {
+    display: none;
+}
+
+/* Mostrar el menú cuando tenga la clase 'active' */
+.context-menu.active {
+    display: block;
 }
 
 .user-icon img {
@@ -159,7 +157,6 @@ body {
     position: absolute;
     top: 70px;
 }
-
 
 .house-gallery {
     padding: 20px;
@@ -248,4 +245,74 @@ body {
     transform: rotate(-45deg);
     z-index: 0;
     
+}
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; 
+    z-index: 20; /* Aparece por encima de otros elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Habilita el scroll si es necesario */
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4); /* Fondo oscuro */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto; /* Centra el contenido */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px; /* Tamaño máximo */
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.modal-content input {
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.modal-content button {
+    padding: 10px;
+    border: none;
+    background-color: #2140AE;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.modal-content button:hover {
+    background-color: #182D77;
 }
