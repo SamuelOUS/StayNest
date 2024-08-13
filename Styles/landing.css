@@ -3,6 +3,7 @@ html, * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow-x: hidden; /* Oculta el scroll horizontal */
 }
 
 body {
@@ -98,17 +99,18 @@ body {
 }
 
 .context-menu {
-    display: none;
+    display: none; /* Inicialmente oculto */
     position: absolute;
-    top: 50px;
-    right: 0;
+    top: 70px; /* Ajusta según sea necesario */
+    left: 1670px; /* Alineado a la derecha del contenedor de menú */
     background-color: #fff;
     color: #333;
     border: 1px solid #999999;
     border-radius: 10px;
     padding: 10px;
-    z-index: 10;
+    z-index: 11; /* Asegura que esté sobre otros elementos */
     width: 150px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Agrega sombra para más visibilidad */
 }
 
 .context-menu a {

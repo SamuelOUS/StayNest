@@ -1,0 +1,244 @@
+/* Reseteo básico */
+html, * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden; /* Oculta el scroll horizontal */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.container {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between;
+    padding: 15px 20px;
+    background-color: #ffffff;
+    color: #fff;
+}
+
+h3 {
+    margin: 50px;
+    text-align: center;
+    font-size: 50px;
+}
+
+h2 {
+    margin: 50px;
+    text-align: center;
+}
+
+.logo {
+    background-image: url("../Images/logo.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 150px;
+    height: 50px;
+    margin-top: 10px;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100px;
+    height: 50px;
+    border-radius: 30px;
+    background-color: white;
+}
+
+.menu-btn {
+    background-image: url("../Images/menu.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: white;
+    border: none;
+    padding: 10px;
+    margin-right: 10px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.context-menu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #999999;
+    border-radius: 10px;
+    padding: 10px;
+    z-index: 10;
+    width: 150px;
+}
+
+.context-menu a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.context-menu a:hover {
+    background-color: #f4f4f4;
+}
+
+.context-menu hr {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 10px 0;
+}
+
+.context-menu.active {
+    display: block;
+}
+
+.user-icon img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    width: 110%;
+    height: 1px;
+    margin-top: 20px;
+    background-color: #c0bfbf;
+    z-index: 2;
+    position: absolute;
+    top: 70px;
+}
+
+.decoration_1 {
+    width: 100px;
+    height: 300px;
+    background-color: #11215B;
+    position: absolute;
+    left: 1900px;
+    transform: rotate(-45deg);
+    z-index: 0;
+}
+
+.decoration_2 {
+    width: 100px;
+    height: 500px;
+    background-color: #182D77;
+    position: absolute;
+    left: 1800px;
+    transform: rotate(-45deg);
+    z-index: 0;
+}
+
+.decoration_3 {
+    width: 100px;
+    height: 1200px;
+    background-color: #1D3795;
+    position: absolute;
+    left: 1700px;
+    transform: rotate(-45deg);
+    z-index: 0;
+}
+
+.decoration_4 {
+    width: 90px;
+    height: 1000px;
+    background-color: #2140AE;
+    position: absolute;
+    left: 1600px;
+    transform: rotate(-45deg);
+    z-index: 0;
+}
+
+.contact_block {
+    background-color: #1c348d;
+    height: 200px;
+    color: #ffffff;
+
+    padding: 20px; /* Añadido padding para asegurar que el contenido no toque los bordes */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+.contact_block h3{
+    background-color: #d1d1d1;
+}
+
+.contact {
+    position: absolute;
+    width: 300px;
+    height: 100px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 40px;
+    left: 1500px;
+    box-shadow: 0px 14px 8px rgba(0, 0, 0, 0.2);
+    border: 0px;
+}
+
+.squares-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espacio entre los cuadrados */
+    margin-top: 20px;
+}
+
+.square-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.square {
+    width: 300px;
+    height: 300px;
+    border-radius: 20px;
+    margin: 50px;
+    background-size: contain;
+    background-color: #92AAFF; /* Color de fondo predeterminado */
+}
+
+.square_1 {
+    background-image: url("../Images/nest.png");
+    box-shadow: 0px 14px 8px rgba(0, 0, 0, 0.2);
+}
+
+.square_2 {
+    background-image: url("../Images/gente.png");
+    background-color: #3C66FF;
+    box-shadow: 0px 14px 8px rgba(0, 0, 0, 0.2);
+}
+
+.square_3 {
+    background-image: url("../Images/len.png");
+    background-color: #002FD8;
+    background-size: 250px;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 0px 10px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hello-text {
+    text-align: center;
+    margin-top: 10px;
+}
+
+p{
+    margin-top: 10;
+    font-weight: 700;
+}
+
+.hola{
+    background-color: #222222;
+    width: 100%;
+    height: 600px;
+    margin-top: 200px;
+}
