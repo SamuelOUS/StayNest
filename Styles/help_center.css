@@ -51,7 +51,7 @@ h2 {
     height: 50px;
     border-radius: 30px;
     background-color: white;
-    border: 2px solid rgb(122, 120, 150);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .menu-btn {
@@ -129,7 +129,7 @@ h2 {
     color: #ffffff;
     width: 100%;
      
-    padding: 20px; /* Añadido padding para asegurar que el contenido no toque los bordes */
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -150,6 +150,12 @@ h2 {
     left: 1500px;
     box-shadow: 0px 14px 8px rgba(0, 0, 0, 0.2);
     border: 0px;
+    transition: transform 0.2s;
+}
+
+
+.contact:hover {
+    transform: scale(1.05);
 }
 
 .squares-container {
@@ -177,12 +183,18 @@ h2 {
 .square_1 {
     background-image: url("../Images/nest.png");
     box-shadow: 0px 14px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
 }
 
 .square_2 {
     background-image: url("../Images/gente.png");
     background-color: #3C66FF;
     box-shadow: 0px 14px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+}
+
+.square_1:hover, .square_2:hover, .square_3:hover{
+    transform: scale(1.05);
 }
 
 .square_3 {
@@ -192,6 +204,7 @@ h2 {
     background-repeat: no-repeat;
     background-position: center;
     box-shadow: 0px 10px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s;
 }
 
 .hello-text {
