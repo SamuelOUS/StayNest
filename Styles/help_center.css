@@ -3,12 +3,15 @@ html, * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow-x: hidden; /* Oculta el scroll horizontal */
+   
+    
 }
 
 body {
     font-family: Arial, sans-serif;
-    color: #333;
+    color: #333;       
+    margin: 0;
+    padding: 0;
 }
 
 .container {
@@ -48,6 +51,7 @@ h2 {
     height: 50px;
     border-radius: 30px;
     background-color: white;
+    border: 2px solid rgb(122, 120, 150);
 }
 
 .menu-btn {
@@ -65,15 +69,16 @@ h2 {
 .context-menu {
     display: none;
     position: absolute;
+    right: 70px;
     top: 50px;
-    right: 0;
     background-color: #fff;
     color: #333;
     border: 1px solid #999999;
     border-radius: 10px;
     padding: 10px;
-    z-index: 10;
+    z-index: 100000000000;
     width: 150px;
+    height: 180px;
 }
 
 .context-menu a {
@@ -107,7 +112,7 @@ h2 {
 .separator {
     display: flex;
     align-items: center;
-    width: 110%;
+    width: 100%;
     height: 1px;
     margin-top: 20px;
     background-color: #c0bfbf;
@@ -116,51 +121,14 @@ h2 {
     top: 70px;
 }
 
-.decoration_1 {
-    width: 100px;
-    height: 300px;
-    background-color: #11215B;
-    position: absolute;
-    left: 1900px;
-    transform: rotate(-45deg);
-    z-index: 0;
-}
 
-.decoration_2 {
-    width: 100px;
-    height: 500px;
-    background-color: #182D77;
-    position: absolute;
-    left: 1800px;
-    transform: rotate(-45deg);
-    z-index: 0;
-}
-
-.decoration_3 {
-    width: 100px;
-    height: 1200px;
-    background-color: #1D3795;
-    position: absolute;
-    left: 1700px;
-    transform: rotate(-45deg);
-    z-index: 0;
-}
-
-.decoration_4 {
-    width: 90px;
-    height: 1000px;
-    background-color: #2140AE;
-    position: absolute;
-    left: 1600px;
-    transform: rotate(-45deg);
-    z-index: 0;
-}
 
 .contact_block {
     background-color: #1c348d;
     height: 200px;
     color: #ffffff;
-
+    width: 100%;
+     
     padding: 20px; /* Añadido padding para asegurar que el contenido no toque los bordes */
     display: flex;
     flex-direction: column;
@@ -236,9 +204,131 @@ p{
     font-weight: 700;
 }
 
-.hola{
+.find_more{
     background-color: #222222;
     width: 100%;
-    height: 600px;
+    height: 790px;
     margin-top: 200px;
+    display: flex;
+    
+    align-items: center;
+    
+}
+
+
+
+.find_more h2{
+    color: rgb(255, 255, 255);
+    margin: 50px;
+    text-align:left;
+    position: absolute;
+    top: 1200px;
+    left: 50px;
+    
+
+}
+
+.square_politics{
+    background-image: url("../Images/pareja.png");
+    background-repeat: no-repeat;
+    background-size: 600px;
+    width: 500px;
+    height: 450px;
+    margin: 100px;
+    align-content: end;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    
+}
+
+.politics_text{
+    
+    color: white;
+    background-color: #171717;
+    height: 100px;
+    text-align: center;
+    align-content: center;
+    border: 1px #182D77;
+    border-bottom: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    
+}
+
+.politics_text h1{
+    font-size: medium;
+    margin-bottom: 10px;
+}
+
+.square_suggestions{
+    background-image: url("../Images/maleta.png");
+    background-repeat: no-repeat;
+    background-size: 600px;
+    width: 500px;
+    height: 450px;
+    margin: 100px;
+    align-content: end;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    
+}
+
+.suggestion_text{
+    
+    color: white;
+    background-color: #171717;
+    height: 100px;
+    text-align: center;
+    align-content: center;
+    border: 1px #182D77;
+    border-bottom: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    
+}
+
+.suggestion_text h1{
+    font-size: medium;
+    margin-bottom: 10px;
+}
+
+
+
+.contact_text{
+    color: white;
+    margin-bottom: 200px;
+}
+
+.contact_text h1{
+    position: absolute;
+    top: 1400px;
+    left: 1440px;
+}
+
+.contact_text h5{
+    position: absolute;
+    top: 1700px;
+    left: 1485px;
+}
+
+.footer {
+    width: 100%;
+    height: 200px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-content {
+    text-align: center;
+}
+
+.footer-text {
+    color: #333333; /* Texto gris oscuro */
+    font-size: 16px;
 }

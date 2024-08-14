@@ -7,8 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalLogin = document.getElementById("modalLogin");
     const spanCloseRegister = document.querySelector('#modalRegister .close'); 
     const spanCloseLogin = document.querySelector('#modalLogin .close'); 
+    const logo = document.getElementById('logo');
 
-   
+ 
+
     menuBtn.addEventListener('click', () => {
         contextMenu.classList.toggle('active');
     });
