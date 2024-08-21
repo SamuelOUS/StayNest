@@ -1,9 +1,11 @@
 /* Reseteo básico */
-html, * {
+html,
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow-x: hidden; /* Oculta el scroll horizontal */
+    overflow-x: hidden;
+    /* Oculta el scroll horizontal */
 }
 
 body {
@@ -13,11 +15,13 @@ body {
 
 .container {
     display: flex;
-    align-items: center; 
+    align-items: center;
     justify-content: space-between;
     padding: 15px 20px;
     background-color: #ffffff;
     color: #fff;
+    flex-wrap: wrap;
+    /* Permite que los elementos se ajusten en dispositivos pequeños */
 }
 
 .logo {
@@ -35,7 +39,13 @@ body {
     background-color: #fff;
     border-radius: 30px;
     overflow: hidden;
-    box-shadow: 0px 5px 2px rgba(0, 0, 0, 0.3); 
+    box-shadow: 0px 5px 2px rgba(0, 0, 0, 0.3);
+    flex: 1;
+    /* Ocupa el espacio disponible */
+    max-width: 600px;
+    /* Limita el ancho máximo */
+    margin: 10px;
+    /* Agrega margen en dispositivos pequeños */
 }
 
 .search-bar input {
@@ -43,7 +53,8 @@ body {
     padding: 10px;
     font-size: 14px;
     outline: none;
-    width: 150px; 
+    width: 100%;
+    /* Hace que el input ocupe todo el ancho disponible */
     margin: 10px;
     height: 20px;
 }
@@ -54,11 +65,11 @@ body {
 }
 
 .search-bar input:not(:last-child) {
-    border-right: 1px solid #a7a7a7; 
+    border-right: 1px solid #a7a7a7;
 }
 
 .search-bar input:nth-last-child(2) {
-    border-right: 1px solid #ffffff; 
+    border-right: 1px solid #ffffff;
 }
 
 .search-button {
@@ -66,12 +77,11 @@ body {
     background-repeat: no-repeat;
     background-size: contain;
     color: white;
-    border: none; 
+    border: none;
     padding: 10px;
     cursor: pointer;
     width: 30px;
     height: 30px;
-    margin-right: 10px;
     background-color: #ffffff;
 }
 
@@ -84,6 +94,8 @@ body {
     border: 1px solid #ffffff;
     border-radius: 30px;
     background-color: white;
+    flex-shrink: 0;
+    /* No permite que se reduzca el tamaño del menú */
 }
 
 .menu-btn {
@@ -99,18 +111,23 @@ body {
 }
 
 .context-menu {
-    display: none; /* Inicialmente oculto */
+    display: none;
+    /* Inicialmente oculto */
     position: absolute;
-    top: 70px; /* Ajusta según sea necesario */
-    left: 1670px; /* Alineado a la derecha del contenedor de menú */
+    top: 70px;
+    /* Ajusta según sea necesario */
+    right: 0;
+    /* Alineado a la derecha del contenedor de menú */
     background-color: #fff;
     color: #333;
     border: 1px solid #999999;
     border-radius: 10px;
     padding: 10px;
-    z-index: 11; /* Asegura que esté sobre otros elementos */
+    z-index: 11;
+    /* Asegura que esté sobre otros elementos */
     width: 150px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Agrega sombra para más visibilidad */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    /* Agrega sombra para más visibilidad */
 }
 
 .context-menu a {
@@ -130,11 +147,6 @@ body {
     margin: 10px 0;
 }
 
-
-/* Asegúrate de que el menú esté oculto por defecto */
-.context-menu {
-    display: none;
-}
 
 /* Mostrar el menú cuando tenga la clase 'active' */
 .context-menu.active {
@@ -160,20 +172,25 @@ body {
     top: 70px;
 }
 
+/* Estilos de la galería */
 .house-gallery {
     padding: 20px;
     display: flex;
-    justify-content: center; /* Centra el contenedor de la lista */
+    justify-content: center;
+    /* Centra el contenedor de la lista */
 }
 
 .house-list {
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
-    list-style: none; /* Elimina los puntos de lista predeterminados */
-    max-width: 1200px; /* Limita el ancho máximo del contenedor para mantener un buen diseño */
+    list-style: none;
+    /* Elimina los puntos de lista predeterminados */
+    max-width: 1200px;
+    /* Limita el ancho máximo del contenedor para mantener un buen diseño */
     width: 100%;
-    justify-content: center; /* Centra los elementos en el contenedor */
+    justify-content: center;
+    /* Centra los elementos en el contenedor */
 }
 
 .house-item {
@@ -181,7 +198,7 @@ body {
     border-radius: 8px;
     width: 300px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
 }
 
@@ -198,7 +215,8 @@ body {
 .house-item h3 {
     margin: 10px 0;
     font-size: 18px;
-    color: #2140AE !important; /* Azul para el título con !important */
+    color: #2140AE !important;
+    /* Azul para el título con !important */
 }
 
 .house-item p {
@@ -208,7 +226,8 @@ body {
     margin-bottom: 10px;
 }
 
-.decoration_1{
+/* Decoraciones */
+.decoration_1 {
     width: 100px;
     height: 300px;
     background-color: #11215B;
@@ -216,9 +235,9 @@ body {
     left: 1900px;
     transform: rotate(-45deg);
     z-index: 0;
-    
 }
-.decoration_2{
+
+.decoration_2 {
     width: 100px;
     height: 500px;
     background-color: #182D77;
@@ -226,9 +245,9 @@ body {
     left: 1800px;
     transform: rotate(-45deg);
     z-index: 0;
-    
 }
-.decoration_3{
+
+.decoration_3 {
     width: 100px;
     height: 1200px;
     background-color: #1D3795;
@@ -236,9 +255,9 @@ body {
     left: 1700px;
     transform: rotate(-45deg);
     z-index: 0;
-    
 }
-.decoration_4{
+
+.decoration_4 {
     width: 90px;
     height: 1000px;
     background-color: #2140AE;
@@ -246,28 +265,35 @@ body {
     left: 1600px;
     transform: rotate(-45deg);
     z-index: 0;
-    
 }
+
+/* Modal */
 .modal {
-    display: none; /* Oculto por defecto */
-    position: fixed; 
-    z-index: 20; /* Aparece por encima de otros elementos */
+    display: none;
+    /* Oculto por defecto */
+    position: fixed;
+    z-index: 20;
+    /* Aparece por encima de otros elementos */
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto; /* Habilita el scroll si es necesario */
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4); /* Fondo oscuro */
+    overflow: auto;
+    /* Habilita el scroll si es necesario */
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Fondo oscuro */
 }
 
 .modal-content {
     background-color: #fff;
-    margin: 15% auto; /* Centra el contenido */
+    margin: 15% auto;
+    /* Centra el contenido */
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-    max-width: 400px; /* Tamaño máximo */
+    max-width: 400px;
+    /* Tamaño máximo */
     border-radius: 10px;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
 }
