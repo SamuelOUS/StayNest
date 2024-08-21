@@ -5,53 +5,64 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnLogin = document.getElementById('btnLogin');
     const modalRegister = document.getElementById("modalRegister");
     const modalLogin = document.getElementById("modalLogin");
-    const spanCloseRegister = document.querySelector('#modalRegister .close'); 
-    const spanCloseLogin = document.querySelector('#modalLogin .close'); 
+    const spanCloseRegister = document.querySelector('#modalRegister .close');
+    const spanCloseLogin = document.querySelector('#modalLogin .close');
     const logo = document.getElementById('logo');
+    const LogInBtn = document.querySelector('.LogInBtn');
 
- 
+    LogInBtn.addEventListener('click', () => {
+        var username = document.getElementById('UserNameLogIn')
+        localStorage.setItem('user', username.value)
+        alert(localStorage.getItem('user'))
+    })
+
+
+
+
+
 
     menuBtn.addEventListener('click', () => {
+
         contextMenu.classList.toggle('active');
     });
 
-   
+
     document.addEventListener('click', (event) => {
         if (!menuBtn.contains(event.target) && !contextMenu.contains(event.target)) {
             contextMenu.classList.remove('active');
         }
     });
 
-    
+
     btnRegister.addEventListener('click', (event) => {
-        event.preventDefault(); 
+        event.preventDefault();
         modalRegister.style.display = "block";
     });
 
-    
+
     spanCloseRegister.addEventListener('click', () => {
         modalRegister.style.display = "none";
     });
 
-   
+
     window.addEventListener('click', (event) => {
         if (event.target == modalRegister) {
             modalRegister.style.display = "none";
         }
     });
 
-   
+
     btnLogin.addEventListener('click', (event) => {
-        event.preventDefault(); 
+        event.preventDefault();
         modalLogin.style.display = "block";
     });
 
-    
+
     spanCloseLogin.addEventListener('click', () => {
         modalLogin.style.display = "none";
     });
 
-    
+
     window.addEventListener('click', (event) => {
         if (event.target == modalLogin) {
             modalLogin.style.display = "none";
