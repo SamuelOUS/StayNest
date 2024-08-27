@@ -25,15 +25,37 @@ document.addEventListener('DOMContentLoaded', () => {
         togglePassword.querySelector('i').classList.toggle('fa-eye-slash');
     });
 
+    // Función Validaciones username Registro
+    function validarUserName(username) {
+        const regex = /^[a-zA-Z][a-zA-Z0-9]{7,14}$/;
+    
+        if (regex.test(username)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    
+    
     // Almacenar usuario registrado en el localStorage del navegador
     registerForm.addEventListener('submit', (event) => {
         event.preventDefault();
-
+        
         const username = document.getElementById('registerUsername').value.trim();
         const email = document.getElementById('registerEmail').value.trim();
         const password = document.getElementById('registerPassword').value.trim();
         const rePassword = document.getElementById('re-register-password').value.trim();
-
+        
+        // Validar username  
+        if (!validarUserName(username)) 
+        {
+            alert("El nombre de usuario no es válido.");
+            return
+        }
+        
+        // Validar email
+        
         // Validar que las dos contraseñas ingresadas concuerden
         if (password===rePassword) {
             // Guardar usuario y contraseña en el localStorage
@@ -48,6 +70,11 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Las contraseñas ingresadas no coinciden')
         }
     });
+
+
+
+
+
 
     // Validar usuario al iniciar sesión
     loginForm.addEventListener('submit', (event) => {
