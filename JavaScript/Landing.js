@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.style.display = show ? "block" : "none";
     };
 
-    // Función para alternar la visibilidad de la contraseña
+    // Función para alternar la visibilidad de la contraseña en LogIn
     togglePassword.addEventListener('click', () => {
         const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
         passwordField.setAttribute('type', type);
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         togglePassword.querySelector('i').classList.toggle('fa-eye-slash');
     });
 
-    // Almacenar usuario registrado en el localStorage
+    // Almacenar usuario registrado en el localStorage del navegador
     registerForm.addEventListener('submit', (event) => {
         event.preventDefault();
 

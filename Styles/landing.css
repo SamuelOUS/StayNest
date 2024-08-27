@@ -21,7 +21,6 @@ body {
     background-color: #ffffff;
     color: #fff;
     flex-wrap: wrap;
-    /* Permite que los elementos se ajusten en dispositivos pequeños */
 }
 
 .logo {
@@ -41,11 +40,8 @@ body {
     overflow: hidden;
     box-shadow: 0px 5px 2px rgba(0, 0, 0, 0.3);
     flex: 1;
-    /* Ocupa el espacio disponible */
     max-width: 600px;
-    /* Limita el ancho máximo */
     margin: 10px;
-    /* Agrega margen en dispositivos pequeños */
 }
 
 .search-bar input {
@@ -54,7 +50,6 @@ body {
     font-size: 14px;
     outline: none;
     width: 100%;
-    /* Hace que el input ocupe todo el ancho disponible */
     margin: 10px;
     height: 20px;
 }
@@ -94,8 +89,7 @@ body {
     border: 1px solid #ffffff;
     border-radius: 30px;
     background-color: white;
-    flex-shrink: 0;
-    /* No permite que se reduzca el tamaño del menú */
+    flex-shrink: 0; /* No permite que se reduzca el tamaño del menú */
 }
 
 .menu-btn {
@@ -112,22 +106,17 @@ body {
 
 .context-menu {
     display: none;
-    /* Inicialmente oculto */
     position: absolute;
     top: 70px;
-    /* Ajusta según sea necesario */
     right: 0;
-    /* Alineado a la derecha del contenedor de menú */
     background-color: #fff;
     color: #333;
     border: 1px solid #999999;
     border-radius: 10px;
     padding: 10px;
-    z-index: 11;
-    /* Asegura que esté sobre otros elementos */
+    z-index: 11; /* Asegura que esté sobre otros elementos */
     width: 150px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    /* Agrega sombra para más visibilidad */
 }
 
 .context-menu a {
@@ -172,12 +161,10 @@ body {
     top: 70px;
 }
 
-/* Estilos de la galería */
 .house-gallery {
     padding: 20px;
     display: flex;
     justify-content: center;
-    /* Centra el contenedor de la lista */
 }
 
 .house-list {
@@ -185,12 +172,9 @@ body {
     flex-wrap: wrap;
     gap: 30px;
     list-style: none;
-    /* Elimina los puntos de lista predeterminados */
     max-width: 1200px;
-    /* Limita el ancho máximo del contenedor para mantener un buen diseño */
     width: 100%;
     justify-content: center;
-    /* Centra los elementos en el contenedor */
 }
 
 .house-item {
@@ -216,7 +200,6 @@ body {
     margin: 10px 0;
     font-size: 18px;
     color: #2140AE !important;
-    /* Azul para el título con !important */
 }
 
 .house-item p {
@@ -269,31 +252,25 @@ body {
 
 /* Modal */
 .modal {
-    display: none;
-    /* Oculto por defecto */
+    display: none;  /* Oculto por defecto */
     position: fixed;
-    z-index: 20;
-    /* Aparece por encima de otros elementos */
+    z-index: 20; /* Aparece por encima de otros elementos */
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     overflow: auto;
-    /* Habilita el scroll si es necesario */
     background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.4);
-    /* Fondo oscuro */
 }
 
 .modal-content {
     background-color: #fff;
     margin: 10% auto;
-    /* Centra el contenido */
     padding: 15px;
     border: 1px solid #888;
     width: 80%;
     max-width: 400px;
-    /* Tamaño máximo */
     border-radius: 10px;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
 }
@@ -355,6 +332,7 @@ form input {
     width: 90%;
 }
 
+/* Desaparece el ícono del ojo por defecto en el input type=password */
 form input::-ms-clear, form input::-ms-reveal {
     display: none;
 }
@@ -367,13 +345,9 @@ form input::-ms-clear, form input::-ms-reveal {
     width: 100%;
 }
 
-/* .password-container input {
-    text-decoration: none;
-} */
-
 #togglePassword {
     cursor: pointer;
-    font-size: 20px; /* Ajusta el tamaño del ícono según tus necesidades */
-    color: rgb(51, 51, 51); /* Ajusta el color según el diseño de tu aplicación */
-    pointer-events: auto; /* Asegura que el ícono sea clickeable */
+    font-size: 20px; 
+    color: rgb(51, 51, 51); 
+    pointer-events: auto;
 }
