@@ -32,16 +32,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const username = document.getElementById('registerUsername').value.trim();
         const email = document.getElementById('registerEmail').value.trim();
         const password = document.getElementById('registerPassword').value.trim();
+        const rePassword = document.getElementById('re-register-password').value.trim();
 
-        // Guardar usuario y contraseña en el localStorage
-        localStorage.setItem('registeredUser', JSON.stringify({
-            username,
-            email,
-            password
-        }));
-
-        alert('Usuario registrado con éxito');
-        toggleModalVisibility(modalRegister, false);
+        // Validar que las dos contraseñas ingresadas concuerden
+        if (password===rePassword) {
+            // Guardar usuario y contraseña en el localStorage
+            localStorage.setItem('registeredUser', JSON.stringify({
+                username,
+                email,
+                password
+            }));
+            alert('Usuario registrado con éxito');
+            toggleModalVisibility(modalRegister, false);     
+        } else {
+            alert('Las contraseñas ingresadas no coinciden')
+        }
     });
 
     // Validar usuario al iniciar sesión

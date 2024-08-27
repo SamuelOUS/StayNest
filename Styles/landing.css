@@ -287,9 +287,9 @@ body {
 
 .modal-content {
     background-color: #fff;
-    margin: 15% auto;
+    margin: 10% auto;
     /* Centra el contenido */
-    padding: 20px;
+    padding: 15px;
     border: 1px solid #888;
     width: 80%;
     max-width: 400px;
@@ -332,6 +332,7 @@ body {
 }
 
 .modal-content button {
+    width: 90%;
     padding: 10px;
     border: none;
     background-color: #2140AE;
@@ -345,27 +346,34 @@ body {
     background-color: #182D77;
 }
 
+form {
+    margin: 0;
+    padding: 0;
+}
+
+form input {
+    width: 90%;
+}
+
+form input::-ms-clear, form input::-ms-reveal {
+    display: none;
+}
 
 .password-container {
-    position: relative;
     display: flex;
+    flex-direction: row;
     align-items: center;
-    width: 100%; /* Asegura que el contenedor ocupa el espacio completo disponible */
+    justify-content: space-between;
+    width: 100%;
 }
 
-.password-container input[type="password"] {
-    width: 100%; /* Ocupa el 100% del ancho del contenedor */
-    padding-right: 30px; /* Ajusta el espacio para el ícono */
-    box-sizing: border-box; /* Incluye padding y border en el ancho total */
-}
+/* .password-container input {
+    text-decoration: none;
+} */
 
-.toggle-password {
-    position: absolute;
-    right: 10px; /* Ajusta el espacio desde el borde derecho del contenedor */
-    top: 50%; /* Centra verticalmente */
-    transform: translateY(-50%); /* Ajusta el centramiento vertical */
+#togglePassword {
     cursor: pointer;
-    font-size: 18px; /* Ajusta el tamaño del ícono según tus necesidades */
-    color: #666; /* Ajusta el color según el diseño de tu aplicación */
+    font-size: 20px; /* Ajusta el tamaño del ícono según tus necesidades */
+    color: rgb(51, 51, 51); /* Ajusta el color según el diseño de tu aplicación */
     pointer-events: auto; /* Asegura que el ícono sea clickeable */
 }
