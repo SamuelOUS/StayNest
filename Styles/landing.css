@@ -344,3 +344,28 @@ body {
 .modal-content button:hover {
     background-color: #182D77;
 }
+
+
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%; /* Asegura que el contenedor ocupa el espacio completo disponible */
+}
+
+.password-container input[type="password"] {
+    width: 100%; /* Ocupa el 100% del ancho del contenedor */
+    padding-right: 30px; /* Ajusta el espacio para el ícono */
+    box-sizing: border-box; /* Incluye padding y border en el ancho total */
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px; /* Ajusta el espacio desde el borde derecho del contenedor */
+    top: 50%; /* Centra verticalmente */
+    transform: translateY(-50%); /* Ajusta el centramiento vertical */
+    cursor: pointer;
+    font-size: 18px; /* Ajusta el tamaño del ícono según tus necesidades */
+    color: #666; /* Ajusta el color según el diseño de tu aplicación */
+    pointer-events: auto; /* Asegura que el ícono sea clickeable */
+}

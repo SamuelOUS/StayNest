@@ -5,56 +5,100 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnLogin = document.getElementById('btnLogin');
     const modalRegister = document.getElementById("modalRegister");
     const modalLogin = document.getElementById("modalLogin");
-    const spanCloseRegister = document.querySelector('#modalRegister .close'); 
-    const spanCloseLogin = document.querySelector('#modalLogin .close'); 
-    const logo = document.getElementById('logo');
+    const spanCloseRegister = modalRegister.querySelector('.close');
+    const spanCloseLogin = modalLogin.querySelector('.close');
+    const registerForm = modalRegister.querySelector('form');
+    const loginForm = modalLogin.querySelector('form');
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordField = document.getElementById('loginPassword');
 
- 
+    // Función para manejar la visibilidad de los modales
+    const toggleModalVisibility = (modal, show) => {
+        modal.style.display = show ? "block" : "none";
+    };
 
+    // Función para alternar la visibilidad de la contraseña
+    togglePassword.addEventListener('click', () => {
+        const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordField.setAttribute('type', type);
+        togglePassword.querySelector('i').classList.toggle('fa-eye');
+        togglePassword.querySelector('i').classList.toggle('fa-eye-slash');
+    });
+
+    // Almacenar usuario registrado en el localStorage
+    registerForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const username = document.getElementById('registerUsername').value.trim();
+        const email = document.getElementById('registerEmail').value.trim();
+        const password = document.getElementById('registerPassword').value.trim();
+
+        // Guardar usuario y contraseña en el localStorage
+        localStorage.setItem('registeredUser', JSON.stringify({
+            username,
+            email,
+            password
+        }));
+
+        alert('Usuario registrado con éxito');
+        toggleModalVisibility(modalRegister, false);
+    });
+
+    // Validar usuario al iniciar sesión
+    loginForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const enteredEmail = document.getElementById('loginEmail').value.trim();
+        const enteredPassword = document.getElementById('loginPassword').value.trim();
+
+        // Obtener los datos del usuario registrado desde el localStorage
+        const storedUser = JSON.parse(localStorage.getItem('registeredUser'));
+
+        // Validar credenciales
+        if (storedUser) {
+            const { email, password } = storedUser;
+            if (enteredEmail === email && enteredPassword === password) {
+                alert('Inicio de sesión exitoso');
+                toggleModalVisibility(modalLogin, false);
+            } else {
+                alert('Correo electrónico o contraseña incorrectos');
+            }
+        } else {
+            alert('No hay usuarios registrados');
+        }
+    });
+
+    // Manejar la apertura y cierre de menús y modales
     menuBtn.addEventListener('click', () => {
         contextMenu.classList.toggle('active');
     });
 
-   
     document.addEventListener('click', (event) => {
         if (!menuBtn.contains(event.target) && !contextMenu.contains(event.target)) {
             contextMenu.classList.remove('active');
         }
     });
 
-    
     btnRegister.addEventListener('click', (event) => {
-        event.preventDefault(); 
-        modalRegister.style.display = "block";
+        event.preventDefault();
+        toggleModalVisibility(modalRegister, true);
     });
 
-    
     spanCloseRegister.addEventListener('click', () => {
-        modalRegister.style.display = "none";
+        toggleModalVisibility(modalRegister, false);
     });
 
-   
-    window.addEventListener('click', (event) => {
-        if (event.target == modalRegister) {
-            modalRegister.style.display = "none";
-        }
-    });
-
-   
     btnLogin.addEventListener('click', (event) => {
-        event.preventDefault(); 
-        modalLogin.style.display = "block";
+        event.preventDefault();
+        toggleModalVisibility(modalLogin, true);
     });
 
-    
     spanCloseLogin.addEventListener('click', () => {
-        modalLogin.style.display = "none";
+        toggleModalVisibility(modalLogin, false);
     });
 
-    
-    window.addEventListener('click', (event) => {
-        if (event.target == modalLogin) {
-            modalLogin.style.display = "none";
-        }
+    // Prevenir que el modal de inicio de sesión se cierre al hacer clic fuera de él
+    modalLogin.querySelector('.modal-content').addEventListener('click', (event) => {
+        event.stopPropagation();
     });
 });
