@@ -26,7 +26,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function validarUserName(username) {
         const regex = /^[a-zA-Z][a-zA-Z0-9]{7,14}$/;
-        return regex.test(username);
+        const usernameElement = document.getElementById('usernameError');
+
+        if (!regex.test(username)){
+            usernameElement.textContent = "Nombre de usuario inválido"
+            return false
+        }
+        return true;
     }
 
     function validarPassword(password) {
@@ -66,7 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Validar nombre de usuario
         if (!validarUserName(username)) {
-            alert("El nombre de usuario no es válido.");
             return;
         }
 
