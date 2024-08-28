@@ -351,3 +351,8 @@ form input::-ms-clear, form input::-ms-reveal {
     color: rgb(51, 51, 51); 
     pointer-events: auto;
 }
+
+.error-message {
+    color: red;
+    font-size: 12px;
+}

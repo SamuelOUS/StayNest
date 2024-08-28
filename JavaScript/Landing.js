@@ -11,13 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginForm = modalLogin.querySelector('form');
     const togglePassword = document.getElementById('togglePassword');
     const passwordField = document.getElementById('loginPassword');
+    const loginError = document.getElementById('loginError'); // Elemento para mostrar errores en el login
 
-    // Función para manejar la visibilidad de los modales
     const toggleModalVisibility = (modal, show) => {
         modal.style.display = show ? "block" : "none";
     };
 
-    // Función para alternar la visibilidad de la contraseña en LogIn
     togglePassword.addEventListener('click', () => {
         const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
         passwordField.setAttribute('type', type);
@@ -25,78 +24,87 @@ document.addEventListener('DOMContentLoaded', () => {
         togglePassword.querySelector('i').classList.toggle('fa-eye-slash');
     });
 
-    // Función Validaciones username Registro
     function validarUserName(username) {
         const regex = /^[a-zA-Z][a-zA-Z0-9]{7,14}$/;
-    
-        if (regex.test(username)) {
-            return true;
-        } else {
-            return false;
-        }
+        return regex.test(username);
     }
+
+    function validarPassword(password) {
+        const errorElement = document.getElementById('passwordError');
+        const rePassword = document.getElementById('re-register-password').value.trim();
+        const regexMayuscula = /[A-Z]/;
+        const regexNumero = /[0-9]/;
+        const regexEspecial = /[!@#$%^&*]/;
+        const mensajes = [];
+
+        if (password.length < 8 || password.length > 15) {
+            mensajes.push("La contraseña debe tener entre 8 y 15 caracteres.");
+        }
+        if (!regexMayuscula.test(password)) {
+            mensajes.push("La contraseña debe contener al menos una letra mayúscula.");
+        }
+        if (!regexNumero.test(password)) {
+            mensajes.push("La contraseña debe contener al menos un número.");
+        }
+        if (!regexEspecial.test(password)) {
+            mensajes.push("La contraseña debe contener al menos un carácter especial.");
+        }
+        if (password !== rePassword){
+            mensajes.push("Las contraseñas no coinciden.");
+        }
     
-    
-    
-    // Almacenar usuario registrado en el localStorage del navegador
+        errorElement.textContent = mensajes.join(' ');
+        return mensajes.length === 0;
+    }
+
     registerForm.addEventListener('submit', (event) => {
         event.preventDefault();
         
         const username = document.getElementById('registerUsername').value.trim();
         const email = document.getElementById('registerEmail').value.trim();
         const password = document.getElementById('registerPassword').value.trim();
-        const rePassword = document.getElementById('re-register-password').value.trim();
-        
-        // Validar username  
-        if (!validarUserName(username)) 
-        {
+
+        // Validar nombre de usuario
+        if (!validarUserName(username)) {
             alert("El nombre de usuario no es válido.");
-            return
+            return;
         }
-        
-        // Validar email
-        
-        // Validar que las dos contraseñas ingresadas concuerden
-        if (password===rePassword) {
-            // Guardar usuario y contraseña en el localStorage
-            localStorage.setItem('registeredUser', JSON.stringify({
-                username,
-                email,
-                password
-            }));
-            alert('Usuario registrado con éxito');
-            toggleModalVisibility(modalRegister, false);     
-        } else {
-            alert('Las contraseñas ingresadas no coinciden')
+
+        // Validar la contraseña
+        if (!validarPassword(password)) {
+            return;
         }
+
+        // Guardar usuario si todo es válido
+        localStorage.setItem('registeredUser', JSON.stringify({ username, email, password }));
+        alert('Usuario registrado con éxito');
+        toggleModalVisibility(modalRegister, false);
     });
 
-
-
-
-
-
-    // Validar usuario al iniciar sesión
     loginForm.addEventListener('submit', (event) => {
         event.preventDefault();
 
-        const enteredEmail = document.getElementById('loginEmail').value.trim();
+        const enteredUser = document.getElementById('loginUser').value.trim();
         const enteredPassword = document.getElementById('loginPassword').value.trim();
 
         // Obtener los datos del usuario registrado desde el localStorage
         const storedUser = JSON.parse(localStorage.getItem('registeredUser'));
 
+        // Limpiar mensajes de error
+        loginError.textContent = '';
+
         // Validar credenciales
         if (storedUser) {
-            const { email, password } = storedUser;
-            if (enteredEmail === email && enteredPassword === password) {
+            const { username, password } = storedUser;
+            if (enteredUser === username && enteredPassword === password) {
+                console.log(username, enteredUser, password);
                 alert('Inicio de sesión exitoso');
                 toggleModalVisibility(modalLogin, false);
             } else {
-                alert('Correo electrónico o contraseña incorrectos');
+                loginError.textContent = 'Nombre de usuario o contraseña incorrectos';
             }
         } else {
-            alert('No hay usuarios registrados');
+            loginError.textContent = 'No hay usuarios registrados';
         }
     });
 
