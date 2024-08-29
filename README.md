@@ -18,3 +18,11 @@ Bienvenido a StayNest, la aplicación que redefine la forma en que encuentras y 
 <p>
   Con StayNest, cada viaje se convierte en una oportunidad para descubrir lugares increíbles y sentirte como en casa, estés donde estés. Usa StayNest hoy y empieza a planificar tu próxima aventura.
 </p>
+
+<h2>Desarrollado por:</h2>
+<ul>
+  <li>Mariana Pineda Isaza</li>
+  <li>Daniel Lasso</li>
+  <li>Juan Felipe Palacio Agudelo</li>
+  <li>Samuel Osorio Uribe</li>
+</ul>
