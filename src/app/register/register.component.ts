@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { MatFormField, MatLabel} from '@angular/material/form-field'
 import { MatInput } from '@angular/material/input';
-import { MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import { MatDialogModule} from '@angular/material/dialog';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LogInComponent } from '../log-in/log-in.component';
 import { ModalService } from '../modal.service';
@@ -48,6 +48,7 @@ export class RegisterComponent implements OnInit {
 
   registerForm!: FormGroup
   private readonly _fb = inject(FormBuilder)
+
   // Servicio para acceder a los modales
   private readonly _modalSvc = inject(ModalService);
 
@@ -73,12 +74,6 @@ export class RegisterComponent implements OnInit {
     })
 
     //Verificar que password y rePassword son iguales
-    this.registerForm.get('password')?.valueChanges.subscribe((password) => {
-      if(this.registerForm.get('rePassword')?.value === password){
-        this.registerForm.get('rePassword')?.setErrors(null)
-      }else{
-        this.registerForm.get('rePassword')?.setErrors({notMatch: true})
-      }
-    })
+    
   }
 }

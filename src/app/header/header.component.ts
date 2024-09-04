@@ -3,7 +3,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { ModalService } from '../modal.service';
 import { RegisterComponent } from '../register/register.component';
-import { MatDialog } from '@angular/material/dialog';
 import { LogInComponent } from '../log-in/log-in.component';
 
 @Component({
@@ -48,9 +47,11 @@ import { LogInComponent } from '../log-in/log-in.component';
 export class HeaderComponent {
   isLoggedIn = false; 
 
+  // Servicio para acceder a cada modal con un buen patron
   private readonly _modalSvc = inject(ModalService);
 
-  openRegister = ():void => {
+  //Funciones para abrir los modales
+  openRegister = (): void => {
     this._modalSvc.openModal<RegisterComponent, null>(RegisterComponent);
   }
 
