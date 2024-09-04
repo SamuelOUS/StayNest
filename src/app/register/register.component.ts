@@ -3,13 +3,14 @@ import { MatFormField, MatLabel} from '@angular/material/form-field'
 import { MatInput } from '@angular/material/input';
 import { MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { LogInComponent } from '../log-in/log-in.component';
+import { ModalService } from '../modal.service';
 
 @Component({
   selector: 'app-register',
   standalone: true,
   imports: [ReactiveFormsModule, MatDialogModule, MatFormField, MatLabel, MatInput],
   template: `
-  <div class="modal">
     <section class="top">
       <h2 mat-dialog-title>Registrarse</h2>
       <span class="close" [mat-dialog-close]="false" type="button">&times;</span>
@@ -37,9 +38,9 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
         <section mat-dialog-actions class="bottom">
           <button mat-raised-button type="button" >Registrarse</button>
         </section>
+        <a mat-menu-item type="button" (click)="openLogIn()">¿Ya tienes una cuenta?</a>
       </form>
     </section>
-  </div>
   `,
   styleUrl: `./register.component.css`
 })
@@ -47,6 +48,8 @@ export class RegisterComponent implements OnInit {
 
   registerForm!: FormGroup
   private readonly _fb = inject(FormBuilder)
+  // Servicio para acceder a los modales
+  private readonly _modalSvc = inject(ModalService);
 
   ngOnInit(): void {
       this._buildForm()
@@ -54,6 +57,10 @@ export class RegisterComponent implements OnInit {
 
   closeModal(): void {
     this.closeModal()
+  }
+
+  openLogIn(): void {
+    this._modalSvc.openModal<LogInComponent, null>(LogInComponent);
   }
 
   private _buildForm():void{

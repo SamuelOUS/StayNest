@@ -54,7 +54,7 @@ export class HeaderComponent {
     this._modalSvc.openModal<RegisterComponent, null>(RegisterComponent);
   }
 
-  openLogIn = ():void => {
+  public openLogIn = ():void => {
     this._modalSvc.openModal<LogInComponent, null>(LogInComponent);
   }
 

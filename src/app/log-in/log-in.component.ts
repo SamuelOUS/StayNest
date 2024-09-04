@@ -3,13 +3,13 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
+import { ModalService } from '../modal.service';
 
 @Component({
   selector: 'app-log-in',
   standalone: true,
   imports: [ReactiveFormsModule, MatDialogModule, MatFormField, MatLabel, MatInput],
   template: `
-    <div class="modal">
     <section class="top">
       <h2 mat-dialog-title>Iniciar sesión</h2>
       <span class="close" [mat-dialog-close]="false" type="button">&times;</span>
@@ -31,7 +31,6 @@ import { MatInput } from '@angular/material/input';
         </section>
       </form>
     </section>
-  </div>
   `,
   styleUrl: `../register/register.component.css`
 })
