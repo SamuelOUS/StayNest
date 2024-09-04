@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   template: `
-    <section>
+    <section class="house-gallery">
       <ul class="house-list">
       @for (house of houses; track house.id){
         <li class="house-item">

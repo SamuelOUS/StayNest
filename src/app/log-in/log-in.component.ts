@@ -11,7 +11,7 @@ import { ModalService } from '../modal.service';
   imports: [ReactiveFormsModule, MatDialogModule, MatFormField, MatLabel, MatInput],
   template: `
     <section class="top">
-      <h2 mat-dialog-title>Iniciar sesión</h2>
+      <h2 mat-dialog-title>Iniciar Sesión</h2>
       <span class="close" [mat-dialog-close]="false" type="button">&times;</span>
     </section>
     <section class="modal-content">
@@ -27,7 +27,7 @@ import { ModalService } from '../modal.service';
         </mat-form-field>
 
         <section mat-dialog-actions class="bottom">
-          <button mat-raised-button type="button" >Registrarse</button>
+          <button mat-raised-button type="button" >Iniciar sesión</button>
         </section>
       </form>
     </section>
