@@ -1,17 +1,28 @@
-# StayNest
+<div style="text-align: center; background-color: blue; padding: 20px;">
+  
+![image](https://github.com/user-attachments/assets/438cadec-bc50-4666-82a0-dfe47097557f)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.2.
+</div>
+<h1>StayNest</h1>
+<p>
+Bienvenido a StayNest, la aplicación que redefine la forma en que encuentras y reservas alojamientos únicos y acogedores alrededor del mundo. Ya sea que estés planeando una escapada de fin de semana, unas vacaciones prolongadas o un viaje de negocios, StayNest tiene el lugar perfecto para ti.
+</p>
 
-Run `npm i` to install all the dependencies.
+<h2>Características Principales:</h2>
+<ul>
+  <li><strong>Alojamientos Únicos y Acogedores:</strong> Descubre una variedad de opciones de hospedaje que van desde elegantes apartamentos en el corazón de la ciudad hasta encantadoras casas de campo. Cada propiedad en StayNest ha sido seleccionada cuidadosamente para garantizar comodidad, estilo y una experiencia inolvidable.</li>
+  <li><strong>Fácil de Usar:</strong> Nuestra interfaz intuitiva te permite buscar, comparar y reservar alojamientos de manera rápida y sencilla. Filtra por ubicación, precio, tipo de propiedad y comodidades para encontrar exactamente lo que necesitas.</li>
+  <li><strong>Soporte 24/7:</strong> Nuestro equipo de atención al cliente está disponible las 24 horas del día, los 7 días de la semana, para asistirte en cualquier momento antes, durante y después de tu estancia.</li>
+</ul>
 
-## Development server
+<p>
+  Con StayNest, cada viaje se convierte en una oportunidad para descubrir lugares increíbles y sentirte como en casa, estés donde estés. Usa StayNest hoy y empieza a planificar tu próxima aventura.
+</p>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+<h2>Desarrollado por:</h2>
+<ul>
+  <li>Mariana Pineda Isaza</li>
+  <li>Daniel Lasso</li>
+  <li>Juan Felipe Palacio Agudelo</li>
+  <li>Samuel Osorio Uribe</li>
+</ul>
