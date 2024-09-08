@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
-import { ModalService } from '../modal.service';
-import { RegisterComponent } from '../register/register.component';
-import { LogInComponent } from '../log-in/log-in.component';
+import { ModalService } from '../../../services/modal.service';
+import { RegisterComponent } from '../../../auth/components/register/register.component';
+import { LogInComponent } from '../../../auth/components/log-in/log-in.component';
 
 @Component({
   selector: 'app-header',
@@ -50,6 +50,7 @@ export class HeaderComponent {
   // Servicio para acceder a cada modal con un buen patron
   private readonly _modalSvc = inject(ModalService);
 
+  
   //Funciones para abrir los modales
   openRegister = (): void => {
     this._modalSvc.openModal<RegisterComponent, null>(RegisterComponent);

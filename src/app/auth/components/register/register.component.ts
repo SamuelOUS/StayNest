@@ -4,18 +4,18 @@ import { MatInput } from '@angular/material/input';
 import { MatDialogModule} from '@angular/material/dialog';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LogInComponent } from '../log-in/log-in.component';
-import { ModalService } from '../modal.service';
+import { ModalService } from '../../../services/modal.service';
 
 @Component({
   selector: 'app-register',
   standalone: true,
   imports: [ReactiveFormsModule, MatDialogModule, MatFormField, MatLabel, MatInput],
   template: `
-    <section class="top">
+    <div class="top">
       <h2 mat-dialog-title>Registrarse</h2>
       <span class="close" [mat-dialog-close]="false" type="button">&times;</span>
-    </section>
-    <section class="modal-content">
+    </div>
+    <div class="modal-content">
       <form [formGroup]="registerForm">
         <mat-form-field>
           <mat-label for="username">Nombre de Usuario:</mat-label>
@@ -35,14 +35,14 @@ import { ModalService } from '../modal.service';
           <mat-label for="rePassword">Confirmar Contraseña:</mat-label>
           <input type="password" matInput formControlName="rePassword">    
         </mat-form-field>
-        <section mat-dialog-actions class="bottom">
+        <div mat-dialog-actions class="bottom">
           <button mat-raised-button type="button" >Registrarse</button>
-        </section>
-        <a mat-menu-item type="button" (click)="openLogIn()">¿Ya tienes una cuenta?</a>
+        </div>
+        <a mat-menu-item [mat-dialog-close]="false" type="button" (click)="openLogIn()">¿Ya tienes una cuenta?</a>
       </form>
-    </section>
+    </div>
   `,
-  styleUrl: `./register.component.css`
+  styles: ``
 })
 export class RegisterComponent implements OnInit {
 
@@ -54,10 +54,6 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
       this._buildForm()
-  }
-
-  closeModal(): void {
-    this.closeModal()
   }
 
   openLogIn(): void {

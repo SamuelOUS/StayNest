@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
-import { ModalService } from '../modal.service';
+import { ModalService } from '../../../services/modal.service';
+import { RegisterComponent } from '../register/register.component';
 
 @Component({
   selector: 'app-log-in',
@@ -29,6 +30,7 @@ import { ModalService } from '../modal.service';
         <section mat-dialog-actions class="bottom">
           <button mat-raised-button type="button" >Iniciar sesión</button>
         </section>
+        <a mat-menu-item type="button" [mat-dialog-close]="false" (click)="openRegister()">¿Aún no tienes una cuenta?</a>
       </form>
     </section>
   `,
@@ -38,13 +40,10 @@ export class LogInComponent implements OnInit{
 
   logInForm!: FormGroup
   private readonly _fb = inject(FormBuilder)
+  private readonly _modalSvc = inject(ModalService);
 
   ngOnInit(): void {
       this._buildForm()
-  }
-
-  closeModal(): void {
-    this.closeModal()
   }
 
   private _buildForm():void{
@@ -52,6 +51,10 @@ export class LogInComponent implements OnInit{
       username: ['', [Validators.required, ]],
       password: ['', [Validators.required, ]],
     })
-
   }
+
+  openRegister(): void {
+    this._modalSvc.openModal<RegisterComponent, null>(RegisterComponent);
+  }
+
 }

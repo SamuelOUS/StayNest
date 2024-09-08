@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { HouseComponent } from './house/house.component';
+import { HeaderComponent } from './layout/components/header/header.component';
+import { FooterComponent } from './layout/components/footer/footer.component';
+import { HouseComponent } from './features/components/house/house.component';
 
 @Component({
   selector: 'app-root',
@@ -11,11 +11,9 @@ import { HouseComponent } from './house/house.component';
   template: `
     <app-header />
     <main>
-      <app-house/>
+      <router-outlet />
     </main>
     <app-footer />
-
-    <router-outlet />
   `,
   styles: ``,
 })

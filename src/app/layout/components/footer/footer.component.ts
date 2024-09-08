@@ -5,7 +5,9 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   template: `
-    <footer>Footer</footer>
+    <footer>
+        F
+    </footer>
   `,
   styles: ``
 })
