@@ -11,11 +11,11 @@ import { RegisterComponent } from '../register/register.component';
   standalone: true,
   imports: [ReactiveFormsModule, MatDialogModule, MatFormField, MatLabel, MatInput],
   template: `
-    <section class="top">
+    <div class="top">
       <h2 mat-dialog-title>Iniciar Sesión</h2>
       <span class="close" [mat-dialog-close]="false" type="button">&times;</span>
-    </section>
-    <section class="modal-content">
+    </div>
+    <div class="modal-content">
       <form [formGroup]="logInForm">
         <mat-form-field>
           <mat-label for="username">Nombre de Usuario:</mat-label>
@@ -27,14 +27,13 @@ import { RegisterComponent } from '../register/register.component';
           <input type="password" matInput formControlName="password">
         </mat-form-field>
 
-        <section mat-dialog-actions class="bottom">
-          <button mat-raised-button type="button" >Iniciar sesión</button>
-        </section>
+        <div mat-dialog-actions class="bottom">
+          <button mat-raised-button (click)="onLogin()" type="button" >Iniciar sesión</button>
+        </div>
         <a mat-menu-item type="button" [mat-dialog-close]="false" (click)="openRegister()">¿Aún no tienes una cuenta?</a>
       </form>
-    </section>
+    </div>
   `,
-  styleUrl: `../register/register.component.css`
 })
 export class LogInComponent implements OnInit{
 
@@ -53,6 +52,10 @@ export class LogInComponent implements OnInit{
     })
   }
 
+
+  onLogin(){
+    console.log('onLogin')
+  }
   openRegister(): void {
     this._modalSvc.openModal<RegisterComponent, null>(RegisterComponent);
   }
