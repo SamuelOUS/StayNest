@@ -31,7 +31,7 @@ import Swal from 'sweetalert2'
         </mat-form-field>
 
         <div mat-dialog-actions class="bottom">
-          <button mat-raised-button (click)="onLogin()" type="button" >Iniciar sesión</button>
+          <button mat-raised-button [mat-dialog-close]="false" (click)="onLogin()" type="button" >Iniciar sesión</button>
         </div>
         <a mat-menu-item type="button" [mat-dialog-close]="false" (click)="openRegister()">¿Aún no tienes una cuenta?</a>
       </form>
@@ -42,9 +42,9 @@ export class LogInComponent implements OnInit{
 
   logInForm!: FormGroup
   // Inyección de servicios
-  private readonly _fb = inject(FormBuilder)
-  private readonly _modalSvc = inject(ModalService);
-  private userService = inject(UserService);
+  private readonly formBuilder = inject(FormBuilder)
+  private readonly modalService = inject(ModalService);
+  private readonly userService = inject(UserService);
 
   user: User = {
     username: '',
@@ -56,7 +56,7 @@ export class LogInComponent implements OnInit{
   }
 
   private _buildForm():void{
-    this.logInForm = this._fb.nonNullable.group({
+    this.logInForm = this.formBuilder.nonNullable.group({
       username: ['', [Validators.required, ]],
       password: ['', [Validators.required, ]],
     })
@@ -92,7 +92,7 @@ export class LogInComponent implements OnInit{
   }
   
   openRegister(): void {
-    this._modalSvc.openModal<RegisterComponent, null>(RegisterComponent);
+    this.modalService.openModal<RegisterComponent, null>(RegisterComponent);
   }
 
 }

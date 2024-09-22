@@ -1,12 +1,13 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit, WritableSignal } from '@angular/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { ModalService } from '../../../services/modal.service';
 import { RegisterComponent } from '../../../auth/components/register/register.component';
 import { LogInComponent } from '../../../auth/components/log-in/log-in.component';
 import { UserService } from '../../../auth/services/user.service';
-import { Router } from 'express';
+import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-header',
@@ -38,7 +39,7 @@ import { RouterLink } from '@angular/router';
                     <a mat-menu-item (click)="openLogIn()">Iniciar Sesión</a>
                   }
                   <hr>
-                  <a mat-menu-item [routerLink]="['/help_center']">Centro de Ayuda</a>
+                  <!-- <a mat-menu-item [routerLink]="['/help_center']">Centro de Ayuda</a> -->
                 </mat-menu>
                 <img class="user-icon" src="user.png" alt="User">
             </div>
@@ -50,30 +51,32 @@ import { RouterLink } from '@angular/router';
 export class HeaderComponent {
   //Inyección de servicios
   private readonly userService = inject(UserService);
-  // Servicio para acceder a cada modal
-  private readonly modalSvc = inject(ModalService);
+  private readonly modalService = inject(ModalService);
   private readonly router = inject(Router);
 
   user;
-
   constructor(){
-    this.user = this.userService.getUser();
+    this.user = this.userService.getUser()
   }
 
   logout(){
     this.userService.logout();
     this.user = this.userService.getUser();
     this.router.navigateByUrl('');
+    Swal.fire({
+      text: 'Sesión cerrada',
+      icon: 'success',
+    })
   }
 
   
   //Funciones para abrir los modales
   openRegister = (): void => {
-    this.modalSvc.openModal<RegisterComponent, null>(RegisterComponent);
+    this.modalService.openModal<RegisterComponent, null>(RegisterComponent);
   }
 
   public openLogIn = ():void => {
-    this.modalSvc.openModal<LogInComponent, null>(LogInComponent);
+    this.modalService.openModal<LogInComponent, null>(LogInComponent);
   }
 
 }

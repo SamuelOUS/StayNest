@@ -2,10 +2,11 @@ import { ComponentType } from '@angular/cdk/portal';
 import { inject, Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
-
 // Todos los modal de la pagina deben utilizar este servicio
 // hecho para configurar cada modal de la página
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
 export class ModalService {
   private readonly _dialog = inject(MatDialog)
   constructor() { }

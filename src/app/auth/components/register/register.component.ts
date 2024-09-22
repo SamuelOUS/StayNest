@@ -52,9 +52,8 @@ export class RegisterComponent implements OnInit {
 
   registerForm!: FormGroup
   // Inyección de servicios
-  private readonly _fb = inject(FormBuilder)
-  // Servicio para acceder a los modales
-  private readonly _modalSvc = inject(ModalService);
+  private readonly formBuilder = inject(FormBuilder)
+  private readonly modalService = inject(ModalService);
   private userService = inject(UserService);
   private router = inject(Router);
 
@@ -69,7 +68,7 @@ export class RegisterComponent implements OnInit {
   }
 
   private _buildForm():void{
-    this.registerForm = this._fb.nonNullable.group({
+    this.registerForm = this.formBuilder.nonNullable.group({
       username: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(17)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(17)]],
@@ -107,7 +106,6 @@ export class RegisterComponent implements OnInit {
         title: `Registro exitoso ;)`,
         icon: 'success',
       })
-      this.router.navigateByUrl('/home');
     }
     else{
       Swal.fire({
@@ -118,6 +116,6 @@ export class RegisterComponent implements OnInit {
   }
 
   openLogIn(): void {
-    this._modalSvc.openModal<LogInComponent, null>(LogInComponent);
+    this.modalService.openModal<LogInComponent, null>(LogInComponent);
   }
 }
