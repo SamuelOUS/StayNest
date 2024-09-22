@@ -4,11 +4,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { ModalService } from '../../../services/modal.service';
 import { RegisterComponent } from '../../../auth/components/register/register.component';
 import { LogInComponent } from '../../../auth/components/log-in/log-in.component';
+import { UserService } from '../../../auth/services/user.service';
+import { Router } from 'express';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RegisterComponent, MatMenuModule, MatButtonModule],
+  imports: [RegisterComponent, MatMenuModule, MatButtonModule, RouterLink],
   template: `
     <header>
         <div class="container">
@@ -25,17 +28,17 @@ import { LogInComponent } from '../../../auth/components/log-in/log-in.component
                   <img src="/menu.png" alt="">
                 </button>
                 <mat-menu #menu="matMenu">
-                  @if (isLoggedIn) {
-                    <a mat-menu-item>Mi Perfil</a>
-                    <a mat-menu-item href="#" id="btnBookings">Mis Reservas</a>
-                    <a mat-menu-item href="#" id="btnMessages">Mensajes</a>
-                    <a mat-menu-item href="#" id="btnLogout">Cerrar Sesión</a>
+                  @if (user().username) {
+                    <a mat-menu-item [routerLink]="['/profile']">Mi Perfil</a>
+                    <a mat-menu-item >Mis Reservas</a>
+                    <a mat-menu-item >Mensajes</a>
+                    <a mat-menu-item (click)="logout()">Cerrar Sesión</a>
                   }@else {
                     <a mat-menu-item (click)="openRegister()">Registrarse</a>
                     <a mat-menu-item (click)="openLogIn()">Iniciar Sesión</a>
                   }
                   <hr>
-                  <a mat-menu-item href="help_center.html">Centro de Ayuda</a>
+                  <a mat-menu-item [routerLink]="['/help_center']">Centro de Ayuda</a>
                 </mat-menu>
                 <img class="user-icon" src="user.png" alt="User">
             </div>
@@ -45,19 +48,32 @@ import { LogInComponent } from '../../../auth/components/log-in/log-in.component
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  isLoggedIn = false; 
+  //Inyección de servicios
+  private readonly userService = inject(UserService);
+  // Servicio para acceder a cada modal
+  private readonly modalSvc = inject(ModalService);
+  private readonly router = inject(Router);
 
-  // Servicio para acceder a cada modal con un buen patron
-  private readonly _modalSvc = inject(ModalService);
+  user;
+
+  constructor(){
+    this.user = this.userService.getUser();
+  }
+
+  logout(){
+    this.userService.logout();
+    this.user = this.userService.getUser();
+    this.router.navigateByUrl('');
+  }
 
   
   //Funciones para abrir los modales
   openRegister = (): void => {
-    this._modalSvc.openModal<RegisterComponent, null>(RegisterComponent);
+    this.modalSvc.openModal<RegisterComponent, null>(RegisterComponent);
   }
 
   public openLogIn = ():void => {
-    this._modalSvc.openModal<LogInComponent, null>(LogInComponent);
+    this.modalSvc.openModal<LogInComponent, null>(LogInComponent);
   }
 
 }

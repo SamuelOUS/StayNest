@@ -21,6 +21,7 @@ yarn-error.log
 *.sublime-workspace
 
 # Visual Studio Code
+/.vscode
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
@@ -41,3 +42,6 @@ testem.log
 .DS_Store
 Thumbs.db
 envinroment.ts
+envinroment
+.envinroment
+.envinroment.ts

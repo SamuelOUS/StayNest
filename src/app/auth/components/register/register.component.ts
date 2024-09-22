@@ -5,6 +5,10 @@ import { MatDialogModule} from '@angular/material/dialog';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LogInComponent } from '../log-in/log-in.component';
 import { ModalService } from '../../../services/modal.service';
+import { User } from '../../interfaces/user.interface';
+import { UserService } from '../../services/user.service';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -36,7 +40,7 @@ import { ModalService } from '../../../services/modal.service';
           <input type="password" matInput formControlName="rePassword">    
         </mat-form-field>
         <div mat-dialog-actions class="bottom">
-          <button mat-raised-button type="button" >Registrarse</button>
+          <button mat-raised-button type="button" [mat-dialog-close]="false" (click)="onRegister()">Registrarse</button>
         </div>
         <a mat-menu-item [mat-dialog-close]="false" type="button" (click)="openLogIn()">¿Ya tienes una cuenta?</a>
       </form>
@@ -47,29 +51,73 @@ import { ModalService } from '../../../services/modal.service';
 export class RegisterComponent implements OnInit {
 
   registerForm!: FormGroup
+  // Inyección de servicios
   private readonly _fb = inject(FormBuilder)
-
   // Servicio para acceder a los modales
   private readonly _modalSvc = inject(ModalService);
+  private userService = inject(UserService);
+  private router = inject(Router);
+
+  user: User = {
+    username: '',
+    password: '',
+    email: '',
+  }
 
   ngOnInit(): void {
       this._buildForm()
   }
 
-  openLogIn(): void {
-    this._modalSvc.openModal<LogInComponent, null>(LogInComponent);
-  }
-
   private _buildForm():void{
     this.registerForm = this._fb.nonNullable.group({
-      // Añadir más validaciones...
-      username: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
+      username: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(17)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(12), Validators.maxLength(20)]],
+      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(17)]],
       rePassword: ['', [Validators.required]]
     })
+  }
 
-    //Verificar que password y rePassword son iguales
-    
+  onRegister(){
+    if(!this.registerForm.valid){
+      Swal.fire({
+        title: 'Mal registro :(',
+        text: 'Digilencia los campos correctamente',
+        icon: 'error',
+      })
+      return;
+    }
+
+    const username = this.registerForm.value.username;
+    const email = this.registerForm.value.email;
+    const password = this.registerForm.value.password;
+    const rePassword = this.registerForm.value.rePassword;
+
+    if (password !== rePassword){
+      Swal.fire({
+        title: 'Las contraseñas :(',
+        text: 'No coinciden',
+        icon: 'error',
+      })
+      return
+    }
+
+    const response = this.userService.register({username, password, email});
+    if (response.success){
+      Swal.fire({
+        title: `Registro exitoso ;)`,
+        icon: 'success',
+      })
+      this.router.navigateByUrl('/home');
+    }
+    else{
+      Swal.fire({
+        title: `${response.message} :(`,
+        icon: 'error',
+      })
+    }
+  }
+
+  openLogIn(): void {
+    this._modalSvc.openModal<LogInComponent, null>(LogInComponent);
   }
 }

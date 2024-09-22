@@ -30,7 +30,14 @@ export class UserService {
     }
   }
 
+  logout(){
+    localStorage.removeItem('loggedUser');
+    this.currentUser.set({username:'', password:'', email:''});
+  }
+
   register(user: User): SignUpResponse{
+    //Añadir validaciones extras.
+    
     if (localStorage.getItem(user.username.trim().toLowerCase())){
       return {
         success: false,
@@ -58,6 +65,6 @@ export class UserService {
         this.currentUser.set(userLogged)
       }
     } 
-    return this.currentUser() 
+    return this.currentUser
   }
 }

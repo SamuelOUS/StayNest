@@ -1,10 +1,13 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { ModalService } from '../../../services/modal.service';
 import { RegisterComponent } from '../register/register.component';
+import { User } from '../../interfaces/user.interface';
+import { UserService } from '../../services/user.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-log-in',
@@ -38,8 +41,15 @@ import { RegisterComponent } from '../register/register.component';
 export class LogInComponent implements OnInit{
 
   logInForm!: FormGroup
+  // Inyección de servicios
   private readonly _fb = inject(FormBuilder)
   private readonly _modalSvc = inject(ModalService);
+  private userService = inject(UserService);
+
+  user: User = {
+    username: '',
+    password: ''  
+  }
 
   ngOnInit(): void {
       this._buildForm()
@@ -54,8 +64,33 @@ export class LogInComponent implements OnInit{
 
 
   onLogin(){
-    console.log('onLogin')
+    if(!this.logInForm.valid){
+      Swal.fire({
+        text: 'Digilencia los campos correctamente',
+        icon: 'error',
+      })
+      return;
+    }
+
+    let username = this.logInForm.value.username;
+    let password = this.logInForm.value.password;
+
+    const response = this.userService.logIn(username, password)
+
+    if (response.success){
+      Swal.fire({
+        text: 'Inicio exitoso',
+        icon: 'success',
+      })
+    }
+    else {
+      Swal.fire({
+        text: response.message,
+        icon: 'error',
+      })
+    }
   }
+  
   openRegister(): void {
     this._modalSvc.openModal<RegisterComponent, null>(RegisterComponent);
   }
