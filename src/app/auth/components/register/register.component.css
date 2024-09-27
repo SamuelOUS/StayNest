@@ -1,0 +1,25 @@
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .modal-content {
+    padding: 20px;
+  }
+  
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  mat-progress-bar {
+    margin: 10px 0;
+  }
+  
+  .close {
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
