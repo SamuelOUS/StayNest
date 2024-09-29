@@ -1,13 +1,13 @@
 import { Component, inject, OnInit, WritableSignal } from '@angular/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
-import { ModalService } from '../../../services/modal.service';
 import { RegisterComponent } from '../../../auth/components/register/register.component';
 import { LogInComponent } from '../../../auth/components/log-in/log-in.component';
 import { UserService } from '../../../auth/services/user.service';
 import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
+import { ModalService } from '../../../services/modal.service';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +16,7 @@ import Swal from 'sweetalert2';
   template: `
     <header>
         <div class="container">
-            <img class="logo" src="logo.png">
+            <img [routerLink]="['/home']" class="logo" src="logo.png">
             <div class="search-bar">
                 <input type="text" placeholder="Dónde" class="input-where">
                 <input type="date" placeholder="Llegada" class="input-date">
@@ -31,6 +31,9 @@ import Swal from 'sweetalert2';
                 <mat-menu #menu="matMenu">
                   @if (user().username) {
                     <a mat-menu-item [routerLink]="['/profile']">Mi Perfil</a>
+                    @if(user().owner){
+                      <a mat-menu-item [routerLink]="['/my_properties']">Mis propiedades</a>
+                    }
                     <a mat-menu-item >Mis Reservas</a>
                     <a mat-menu-item >Mensajes</a>
                     <a mat-menu-item (click)="logout()">Cerrar Sesión</a>
@@ -39,9 +42,11 @@ import Swal from 'sweetalert2';
                     <a mat-menu-item (click)="openLogIn()">Iniciar Sesión</a>
                   }
                   <hr>
-                  <!-- <a mat-menu-item [routerLink]="['/help_center']">Centro de Ayuda</a> -->
+                  <a mat-menu-item [routerLink]="['/help_center']">Centro de Ayuda</a>
                 </mat-menu>
-                <img class="user-icon" src="user.png" alt="User">
+                @if(user().username){
+                  <img class="user-icon" [src]="user().photo || 'user.png'" alt="User">
+                }
             </div>
         </div>
     </header>

@@ -32,13 +32,12 @@ export class UserService {
   }
 
   logout(){
-    localStorage.removeItem('loggedUser');
+    localStorage.removeItem('userLogged');
     this.currentUser.set({username:'', password:'', email:''});
   }
 
   register(user: User): SignUpResponse{
     //Añadir validaciones extras.
-    
     if (localStorage.getItem(user.username.trim().toLowerCase())){
       return {
         success: false,
@@ -57,13 +56,30 @@ export class UserService {
     localStorage.setItem('userLogged', JSON.stringify(user))
     this.currentUser.set(user)
   }
-
-  getUser(): WritableSignal<User>{
-    const userSrt = localStorage.getItem('loggedUser');
-    if(userSrt){
-      const user = JSON.parse(userSrt);
-      this.currentUser.set(user);
+  getUser(): WritableSignal<User> {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const userSrt = localStorage.getItem('userLogged');
+      if (userSrt) {
+        const user = JSON.parse(userSrt);
+        this.currentUser.set(user);
+      }
     }
     return this.currentUser;
+  }
+
+
+  editUser(updatedUser: User){
+    //Update current user with just the new user information
+    const userSrt = localStorage.getItem(this.currentUser().username);
+    if (userSrt) {
+      const user = JSON.parse(userSrt);
+      localStorage.removeItem(user.username)
+      const newUser = {...user, ...updatedUser}
+      localStorage.setItem(newUser.username, JSON.stringify(newUser))
+      this.currentUser.set(newUser);
+      this.setUser(newUser)
+      return
+    }
+    throw new Error()
   }
 }
