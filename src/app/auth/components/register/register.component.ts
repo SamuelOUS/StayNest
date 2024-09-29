@@ -21,8 +21,8 @@ import { Router } from '@angular/router';
     MatFormField,
     MatLabel,
     MatInput,
-    MatProgressBarModule, 
-    CommonModule 
+    MatProgressBarModule,
+    CommonModule
   ],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
@@ -42,6 +42,22 @@ export class RegisterComponent implements OnInit {
     username: '',
     password: '',
     email: '',
+  }
+  get usernameErrors(): string {
+    const usernameControl = this.registerForm.get('username');
+    if (usernameControl?.hasError('required')) {
+      return 'El nombre de usuario es obligatorio';
+    }
+    if (usernameControl?.hasError('minlength')) {
+      return 'El nombre de usuario debe tener al menos 8 caracteres';
+    }
+    if (usernameControl?.hasError('maxlength')) {
+      return 'El nombre de usuario no puede tener más de 17 caracteres';
+    }
+    if (usernameControl?.hasError('pattern')) {
+      return 'El nombre de usuario debe comenzar con una letra y solo puede contener letras y números';
+    }
+    return '';
   };
 
   ngOnInit(): void {
@@ -50,7 +66,15 @@ export class RegisterComponent implements OnInit {
 
   private _buildForm(): void {
     this.registerForm = this.formBuilder.nonNullable.group({
-      username: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(17)]],
+      username: [
+        '', 
+        [
+          Validators.required, 
+          Validators.minLength(8), 
+          Validators.maxLength(17),
+          Validators.pattern(/^[a-zA-Z][a-zA-Z0-9]{7,14}$/) 
+        ]
+      ],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(17)]],
       rePassword: ['', [Validators.required]]
@@ -76,7 +100,7 @@ export class RegisterComponent implements OnInit {
   checkPasswordStrength(): void {
     const password = this.registerForm.get('password')?.value || '';
     this.passwordStrength = this.getPasswordStrength(password);
-    
+
     switch (this.passwordStrength) {
       case 'Baja':
         this.passwordStrengthValue = 33;
