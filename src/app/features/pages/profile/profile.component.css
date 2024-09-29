@@ -1,15 +1,33 @@
-.profile-form {
-    max-width: 600px;
+  section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .profile-form {
+    background-color:#2140AE;
+    width: 50%;
     margin: 0 auto;
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0px;
+    border-radius: 10px;
   }
   
   .form-group {
+    color: white;
+    width:80%;
     margin-bottom: 15px;
+    text-align: center;
   }
 
   .form-group img{
-    display: inline-block;
+    background-color: white;
+    padding: 10px;
+    border-radius: 40px;
     width: 100px;
     object-fit: cover;
   }
@@ -20,18 +38,25 @@
     cursor: pointer;
   }
 
+  .form-group input {
+    width: 100%;
+  }
+
   .photo{
     text-align: center;
   }
   
   label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    text-align: left;
+    font-weight: 500;
   }
   
   input[type="text"],
   input[type="password"],
   textarea {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
     max-width: 600px;
     max-height: 200px;
     width: 100%;
@@ -45,11 +70,14 @@
   }
 
   .final-btns{
+    margin-top: 8px;
+    padding: 8px 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 10px;
     font-size: 13px;
+    font-weight: 200;
   }
 
   button {
@@ -61,15 +89,32 @@
     cursor: pointer;
   }
   button:hover{
-    background-color: #00186d;
+    background-color: #071752;
   }
-  
-  button:disabled {
-    background-color: #cccccc;
+
+  a {
+    background-color: white;
+    text-decoration: none;
+    color: black;
+    padding: 5.5px 25px;
+    border-radius: 4px;
+    cursor: pointer;
   }
+  a:hover{
+    color: white;
+    background-color: #2140AE;
+  }
+
   
   .error {
     color: red;
     font-size: 0.8em;
     margin-top: 5px;
   }
+
+
+  @media screen and (max-width: 800px) {
+    .profile-form {
+      width: 80%;
+    }
+}
