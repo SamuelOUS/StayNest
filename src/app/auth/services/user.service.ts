@@ -59,10 +59,12 @@ export class UserService {
   }
 
   getUser(): WritableSignal<User>{
-    const userSrt = localStorage.getItem('loggedUser');
-    if(userSrt){
-      const user = JSON.parse(userSrt);
-      this.currentUser.set(user);
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const userSrt = localStorage.getItem('loggedUser');
+      if(userSrt){
+        const user = JSON.parse(userSrt);
+        this.currentUser.set(user);
+      }
     }
     return this.currentUser;
   }
