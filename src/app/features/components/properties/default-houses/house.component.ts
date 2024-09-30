@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CreatePropertiesService } from '../create-properties/services/create-properties.service';
 
+
 interface Property {
   id: number;
   tittle: string;
@@ -17,11 +18,11 @@ interface Property {
   standalone: true,
   imports: [CommonModule],
   templateUrl: './house.component.html',
-  styleUrls: ['./house.component.css'] // Corrige a styleUrls
+  styleUrls: ['./house.component.css'] 
 })
 export class HouseComponent {
    
-  savedHouses: Property[] = []; // Especifica el tipo aquí
+  savedHouses: Property[] = []; 
 
   constructor(private router: Router) {}
 
@@ -33,7 +34,7 @@ export class HouseComponent {
   }
 
   goToHouseDetail(houseId: number) {
-    this.router.navigate(['/show-property', houseId]); // Redirige a la ruta con el ID de la propiedad
+    this.router.navigate(['/show-property', houseId]); 
   }
   
 }

@@ -22,14 +22,13 @@ export class ShowPropertyComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    // Obtener el ID de la URL
+    
     const propertyId = this.route.snapshot.paramMap.get('id');
     
     if (propertyId) {
-      // Obtener todas las propiedades desde el localStorage
+     
       const properties: Property[] = JSON.parse(localStorage.getItem('properties') || '[]');
       
-      // Buscar la propiedad específica por su ID
       this.property = properties.find(prop => prop.id === +propertyId);
     }
   }

@@ -89,7 +89,7 @@ p {
     width: 50vh;
 }
 
-/* Address section */
+
 .address {
     font-size: 16px;
     color: #333;
@@ -97,7 +97,7 @@ p {
     padding: 0 20px;
 }
 
-/* Property image grid */
+
 .property-images {
     display: flex;
     flex-wrap: wrap;
@@ -109,7 +109,7 @@ p {
     flex: 1 1 200px;
     border-radius: 10px;
     overflow: hidden;
-    background-color: #ddd; /* Placeholder for images */
+    background-color: #ddd; 
 }
 
 .property-images img {
@@ -118,7 +118,6 @@ p {
     object-fit: cover;
 }
 
-/* Host section */
 .host-info {
     background-color: #fff;
     border-radius: 10px;
@@ -139,7 +138,7 @@ p {
     color: #777;
 }
 
-/* Button styling */
+
 button {
     background-color: #2140AE;
     font-weight: 700;
@@ -157,7 +156,7 @@ button:hover {
     background-color: #d1d1d1;
 }
 
-/* Responsive styling */
+
 @media (max-width: 768px) {
     .house-content {
         flex-direction: column;
@@ -191,7 +190,7 @@ button:hover {
     }
 }
 
-/* Extra small devices */
+
 @media (max-width: 576px) {
     .house-images div {
         height: 200px;

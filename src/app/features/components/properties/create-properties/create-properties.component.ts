@@ -89,7 +89,7 @@ export class CreatePropertiesComponent {
     }
 
     const propertyData = {
-      id: this.getNextPropertyId(), // Asigna el ID autoincremental
+      id: this.getNextPropertyId(), 
       tittle: this.createPropertiesForm.value.tittle,
       description: this.createPropertiesForm.value.description,
       address: this.createPropertiesForm.value.address,
@@ -97,7 +97,7 @@ export class CreatePropertiesComponent {
       images: this.uploadedUrl
     };
 
-    // Guarda la propiedad con el ID
+    
     const properties = JSON.parse(localStorage.getItem('properties') || '[]');
     properties.push(propertyData);
     localStorage.setItem('properties', JSON.stringify(properties));
@@ -108,8 +108,8 @@ export class CreatePropertiesComponent {
     this.imageUrls = Array(1).fill('');
   }
   onCancel() {
-    // Redirige a la página de inicio
-    this.router.navigate(['/home']); // Asegúrate de que la ruta '/home' sea correcta
+    
+    this.router.navigate(['/home']); 
   }
 }
 

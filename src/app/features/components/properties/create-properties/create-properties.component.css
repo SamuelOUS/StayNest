@@ -1,7 +1,7 @@
 .main {
   padding: 20px;
   margin: 0 auto;
-  max-width: 1200px; /* Limitar el ancho máximo para pantallas grandes */
+  max-width: 1200px; 
 }
 
 
@@ -37,15 +37,15 @@ h5 {
   color: #000000;
   flex-wrap: wrap;
   height: 70vh;
-  align-items: center;
+  
   
 }
 
-/* Para pantallas grandes */
+
 .images-box {
   display: grid;
-  grid-template-columns: repeat(1, 1fr); /* 3 columnas */
-  grid-template-rows: repeat(2, auto); /* 2 filas */
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(2, auto); 
   
 
   
@@ -63,7 +63,7 @@ h5 {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; /* Ocultar cualquier contenido que sobresalga */
+  overflow: hidden; 
 }
 .input-item:hover{
   size: 1.01;
@@ -72,7 +72,7 @@ h5 {
 .input-item img {
   width: 50vh;
   height: 100%;
-  object-fit: cover; /* Asegura que la imagen ocupe todo el label sin deformarse */
+  object-fit: cover; 
   object-position: center;
   border-radius: 8px;
 }
@@ -86,15 +86,15 @@ h5 {
 }
 
 .images-box input {
-  display: none; /* Oculta el input de archivo */
+  display: none;
 }
 
 .imagePreview {
-  max-width: 100%; /* Asegura que la imagen no sea más ancha que el contenedor */
-  max-height: 100%; /* Asegura que la imagen no sea más alta que el contenedor */
+  max-width: 100%; 
+  max-height: 100%; 
   display: block;
   margin: 0 auto;
-  object-fit: cover; /* Para que la imagen mantenga su proporción sin salirse */
+  object-fit: cover; 
 }
 
 .form-box {
@@ -155,30 +155,28 @@ textarea {
   font-weight: 600;
 }
 
-/* --- Media Queries para pantallas medianas y pequeñas --- */
 
-/* Para pantallas de hasta 1024px (tablets) */
 @media (max-width: 1024px) {
   .form {
     margin: 50px;
-    height: auto; /* Ajustar altura a automática */
+    height: auto; 
   }
 
   .images-box {
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+    grid-template-columns: repeat(2, 1fr); 
   }
 
   .form-box {
-    width: 40%; /* Aumentar el ancho para pantallas medianas */
+    width: 40%; 
     height: auto;
   }
 
   .input-item {
-    height: 20vh; /* Reducir la altura de los inputs */
+    height: 20vh; 
   }
 }
 
-/* Para pantallas de hasta 768px (dispositivos móviles) */
+
 @media (max-width: 768px) {
   .form {
     margin: 20px;
@@ -186,24 +184,24 @@ textarea {
   }
 
   .images-box {
-    grid-template-columns: repeat(1, 1fr); /* 1 columna para pantallas pequeñas */
+    grid-template-columns: repeat(1, 1fr); 
   }
 
   .form-box {
-    width: 80%; /* Ajustar ancho para móviles */
+    width: 80%; 
   }
 
   .input-item {
-    width: 100%; /* Ocupa todo el ancho disponible */
-    height: 15vh; /* Reducir aún más la altura */
+    width: 100%; 
+    height: 15vh; 
   }
 
   h2, h5 {
-    font-size: 24px; /* Reducir el tamaño de las fuentes en pantallas pequeñas */
+    font-size: 24px;
   }
 }
 
-/* Para pantallas muy pequeñas (menos de 480px) */
+
 @media (max-width: 480px) {
   .form {
     margin: 10px;
@@ -211,14 +209,14 @@ textarea {
   }
 
   .form-box {
-    width: 90%; /* Usar casi todo el ancho de la pantalla */
+    width: 90%; 
   }
 
   .input-item {
-    height: 12vh; /* Ajuste adicional para pantallas pequeñas */
+    height: 12vh; 
   }
 
   h2, h5 {
-    font-size: 18px; /* Más pequeño en pantallas muy pequeñas */
+    font-size: 18px; 
   }
 }
