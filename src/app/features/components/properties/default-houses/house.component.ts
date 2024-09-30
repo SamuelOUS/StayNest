@@ -27,9 +27,11 @@ export class HouseComponent {
   constructor(private router: Router) {}
 
   ngOnInit() {
-    const savedHouseData = localStorage.getItem('properties');
-    if (savedHouseData) {
-      this.savedHouses = JSON.parse(savedHouseData);
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const savedHouseData = localStorage.getItem('properties');
+      if (savedHouseData) {
+        this.savedHouses = JSON.parse(savedHouseData);
+      }
     }
   }
 
