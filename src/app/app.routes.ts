@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { HouseComponent } from './features/components/properties/default-houses/house.component';
+import { HouseComponent } from './features/components/properties/house/house.component';
 import { CreatePropertiesComponent } from './features/components/properties/create-properties/create-properties.component';
 import { ShowPropertyComponent } from './features/components/properties/show-property/show-property.component';
 

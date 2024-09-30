@@ -3,7 +3,7 @@
     <div *ngFor="let house of savedHouses" class="house-item" (click)="goToHouseDetail(house.id)">
       <img [src]="house.images" alt="Imagen de la propiedad" width="100">
       <div *ngIf="savedHouses.length > 0; else noHouses">
-        <h5>{{ house.tittle }}</h5>
+        <h5>{{ house.title }}</h5>
       </div>
     </div>
   </ul>
