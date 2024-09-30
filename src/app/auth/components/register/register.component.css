@@ -25,5 +25,5 @@ mat-progress-bar {
 .error-message {
   color: red;
   font-size: 12px;
-  margin-top: 5px;
+  margin: -15px 0 3px 0;
 }
