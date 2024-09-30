@@ -1,0 +1,32 @@
+<header>
+    <div class="container">
+        <a href="/home"><img class="logo" src="logo.png"> </a>
+        <div class="search-bar">
+            <input type="text" placeholder="Dónde" class="input-where">
+            <input type="date" placeholder="Llegada" class="input-date">
+            <input type="date" placeholder="Salida" class="input-date">
+            <input type="number" placeholder="¿Cuántas personas?" class="input-people">
+            <button class="search-button"></button>
+        </div>
+        <div class="right-menu">
+            <button mat-button [matMenuTriggerFor]="menu" class="menu-btn">
+              <img src="/menu.png" alt="">
+            </button>
+            <mat-menu #menu="matMenu">
+              @if (user().username) {
+                <a mat-menu-item [routerLink]="['/profile']">Mi Perfil</a>
+                <a mat-menu-item>Mis Reservas</a>
+                <a mat-menu-item [routerLink]="['/create-properties']">Crear reserva</a>
+                <a mat-menu-item >Mensajes</a>
+                <a mat-menu-item (click)="logout()">Cerrar Sesión</a>
+              }@else {
+                <a mat-menu-item (click)="openRegister()">Registrarse</a>
+                <a mat-menu-item (click)="openLogIn()">Iniciar Sesión</a>
+              }
+              <hr>
+              <!-- <a mat-menu-item [routerLink]="['/help_center']">Centro de Ayuda</a> -->
+            </mat-menu>
+            <img class="user-icon" src="user.png" alt="User">
+        </div>
+    </div>
+</header>

@@ -1,11 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
 
     html {
+        
         margin: 0;
         padding: 0;
         box-sizing: border-box;
         overflow-x: hidden;
+        min-height: 100%;
+        position: relative;
+        flex-direction: column;
     }
+
+    main{
+        min-height: 100vh;
+    }
+
+    
 
     body {
         color: #333;
