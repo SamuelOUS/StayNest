@@ -5,10 +5,9 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { CreatePropertiesService } from './services/create-properties.service';
-import uuid4 from "uuid4";
+import { v4 as uuid4 } from "uuid";
 import Swal from 'sweetalert2';
 import { UserService } from '../../../../auth/services/user.service';
-import { time } from 'console';
 
 @Component({
   selector: 'app-create-properties',
@@ -20,23 +19,17 @@ import { time } from 'console';
 export class CreatePropertiesComponent {
 
   user;
-  uploadedUrl ='';
+  uploadedUrl = '';
   createPropertiesForm: FormGroup;
   imageUrls: string[] = Array(1).fill('');
 
   constructor(private fb: FormBuilder, private router: Router, private CreatePropertiesService: CreatePropertiesService, private userService: UserService) {
-
-
-
     this.user = userService.getUser();
-
     this.createPropertiesForm = this.fb.group({
-
-      tittle: ['', [Validators.required]],
+      title: ['', [Validators.required]],
       description: ['', [Validators.required]],
       address: ['', [Validators.required]],
       price: ['', [Validators.required]],
-
     });
   }
 
@@ -48,7 +41,6 @@ export class CreatePropertiesComponent {
   }
 
   uploadImage(event : Event){
-
     Swal.fire({
       title: 'Cargando...',
       text: 'Por favor espera',
@@ -57,40 +49,36 @@ export class CreatePropertiesComponent {
         Swal.showLoading(null);
       }
     });
-
-    let inputFile
-
     let input = event.target as HTMLInputElement;
-
     if (input.files!.length <= 0) {
       return;
     }
-
     const fileName = uuid4();
-
     let file: File = input.files![0];
-
-    this.CreatePropertiesService.uploadImage(file, fileName, this.user().username).then
-    (data=>{this.uploadedUrl = data!;})
-    Swal.close();
-    input
-
     this.CreatePropertiesService.uploadImage(file, fileName, this.user().username)
-    
-    
+      .then(data => { 
+        this.uploadedUrl = data!; 
+        Swal.close();
+      }).catch(error => {
+        Swal.fire({
+          icon: "error",
+          title: 'Error',
+          text: 'An error occurred',
+        })
+        console.error(error);
+      });
   }
 
 
   onSubmit() {
-
     if (!this.createPropertiesForm.valid) {
-      Swal.fire('Error', 'Por favor, completa todos los campos requeridos.', 'error');
+      Swal.fire('Error', 'Por favor, completa todos los campos', 'error');
       return;
     }
 
     const propertyData = {
       id: this.getNextPropertyId(), 
-      tittle: this.createPropertiesForm.value.tittle,
+      title: this.createPropertiesForm.value.title,
       description: this.createPropertiesForm.value.description,
       address: this.createPropertiesForm.value.address,
       price: this.createPropertiesForm.value.price,
@@ -102,7 +90,10 @@ export class CreatePropertiesComponent {
     properties.push(propertyData);
     localStorage.setItem('properties', JSON.stringify(properties));
 
-    Swal.fire('¡Éxito!', 'La propiedad ha sido creada.', 'success');
+    Swal.fire({
+      icon: "success",
+      text: 'La propiedad ha sido creada con éxito',
+    });
 
     this.createPropertiesForm.reset();
     this.imageUrls = Array(1).fill('');
