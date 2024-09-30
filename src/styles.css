@@ -109,8 +109,6 @@
 /*----------- \ Modals style \--------------- */
 
 
-
-
     footer {
         background-color: black;
         color: white;
@@ -124,9 +122,4 @@
     .content {
       width: max-content;
     }
-
-
-
-
-    
 }

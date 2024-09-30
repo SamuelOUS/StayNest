@@ -10,6 +10,7 @@
 }
 
 .logo {
+    cursor: pointer;
     background-repeat: no-repeat;
     background-size: contain;
     width: 160px;
@@ -98,5 +99,5 @@
 .user-icon{
     width:50px;
     border-radius: 50%;
-    cursor: pointer;
+    cursor: default;
 }
