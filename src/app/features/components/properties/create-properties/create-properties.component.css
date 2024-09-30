@@ -1,0 +1,224 @@
+.main {
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 1200px; /* Limitar el ancho máximo para pantallas grandes */
+}
+
+
+h2 {
+  color: #272727;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+h5 {
+  color: #ffffff;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+  margin: 100px;
+  background-color: #ffffff;
+  border: 1px solid rgb(228, 228, 228);
+  border-radius: 20px;
+  color: #000000;
+  flex-wrap: wrap;
+  height: 70vh;
+  align-items: center;
+  
+}
+
+/* Para pantallas grandes */
+.images-box {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* 3 columnas */
+  grid-template-rows: repeat(2, auto); /* 2 filas */
+  
+
+  
+}
+
+.input-item {
+  width: 50vh;
+  height: 50vh;
+  border-radius: 8px;
+  background-color: #f3f3f3;
+  cursor: pointer;
+  filter: drop-shadow(2px 2px rgb(214, 214, 214));
+  color: #272727;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Ocultar cualquier contenido que sobresalga */
+}
+.input-item:hover{
+  size: 1.01;
+}
+
+.input-item img {
+  width: 50vh;
+  height: 100%;
+  object-fit: cover; /* Asegura que la imagen ocupe todo el label sin deformarse */
+  object-position: center;
+  border-radius: 8px;
+}
+
+.input-item span {
+  position: absolute;
+  bottom: 10px;
+  color: #272727;
+  font-weight: 700;
+  text-align: center;
+}
+
+.images-box input {
+  display: none; /* Oculta el input de archivo */
+}
+
+.imagePreview {
+  max-width: 100%; /* Asegura que la imagen no sea más ancha que el contenedor */
+  max-height: 100%; /* Asegura que la imagen no sea más alta que el contenedor */
+  display: block;
+  margin: 0 auto;
+  object-fit: cover; /* Para que la imagen mantenga su proporción sin salirse */
+}
+
+.form-box {
+  background-color: #2140ae;
+  width: 25%;
+  height: 65vh;
+  margin: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 2px solid #414141;
+  border-radius: 10px;
+  
+  font-weight: 700;
+}
+
+textarea {
+  resize: none;
+}
+
+.input-text {
+  width: 60%;
+  height: 50px;
+  border: 2px solid #f3f3f3;
+  border-radius: 10px;
+  text-align: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.btn-cancelar {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  background-color: #ff3d3d;
+  border-radius: 20px;
+  border: none;
+  border-bottom: 2px solid #272727;
+  color: #ffffff;
+  width: 60%;
+  height: 40px;
+  cursor: pointer;
+  font-size: large;
+  font-weight: 600;
+}
+
+.btn-aceptar {
+  margin-bottom: 20px;
+  background-color: #3a95ff;
+  border: none;
+  border-bottom: 2px solid #272727;
+  border-radius: 20px;
+  color: #ffffff;
+  width: 60%;
+  height: 40px;
+  cursor: pointer;
+  font-size: large;
+  font-weight: 600;
+}
+
+/* --- Media Queries para pantallas medianas y pequeñas --- */
+
+/* Para pantallas de hasta 1024px (tablets) */
+@media (max-width: 1024px) {
+  .form {
+    margin: 50px;
+    height: auto; /* Ajustar altura a automática */
+  }
+
+  .images-box {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+  }
+
+  .form-box {
+    width: 40%; /* Aumentar el ancho para pantallas medianas */
+    height: auto;
+  }
+
+  .input-item {
+    height: 20vh; /* Reducir la altura de los inputs */
+  }
+}
+
+/* Para pantallas de hasta 768px (dispositivos móviles) */
+@media (max-width: 768px) {
+  .form {
+    margin: 20px;
+    padding: 15px;
+  }
+
+  .images-box {
+    grid-template-columns: repeat(1, 1fr); /* 1 columna para pantallas pequeñas */
+  }
+
+  .form-box {
+    width: 80%; /* Ajustar ancho para móviles */
+  }
+
+  .input-item {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    height: 15vh; /* Reducir aún más la altura */
+  }
+
+  h2, h5 {
+    font-size: 24px; /* Reducir el tamaño de las fuentes en pantallas pequeñas */
+  }
+}
+
+/* Para pantallas muy pequeñas (menos de 480px) */
+@media (max-width: 480px) {
+  .form {
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .form-box {
+    width: 90%; /* Usar casi todo el ancho de la pantalla */
+  }
+
+  .input-item {
+    height: 12vh; /* Ajuste adicional para pantallas pequeñas */
+  }
+
+  h2, h5 {
+    font-size: 18px; /* Más pequeño en pantallas muy pequeñas */
+  }
+}

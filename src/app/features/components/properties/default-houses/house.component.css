@@ -32,10 +32,11 @@
         object-fit: cover;
     }
 
-    .house-item h3 {
+    .house-item h5 {
         margin: 10px 0;
-        font-size: 18px;
-        color: #2140AE !important;
+        font-size: 20px;
+        color: #000000 !important;
+        font-weight:500;
     }
 
     .house-item p {
