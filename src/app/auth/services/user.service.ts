@@ -2,7 +2,6 @@ import { Injectable, signal, PLATFORM_ID, WritableSignal } from '@angular/core';
 import { User } from '../interfaces/user.interface';
 import { LogInResponse, SignUpResponse } from '../interfaces/login-response.interface';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -56,17 +55,15 @@ export class UserService {
     localStorage.setItem('userLogged', JSON.stringify(user))
     this.currentUser.set(user)
   }
-  getUser(): WritableSignal<User> {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      const userSrt = localStorage.getItem('userLogged');
-      if (userSrt) {
-        const user = JSON.parse(userSrt);
-        this.currentUser.set(user);
-      }
+
+  getUser(): WritableSignal<User>{
+    const userSrt = localStorage.getItem('userLogged');
+    if(userSrt){
+      const user = JSON.parse(userSrt);
+      this.currentUser.set(user);
     }
     return this.currentUser;
   }
-
 
   editUser(updatedUser: User){
     //Update current user with just the new user information

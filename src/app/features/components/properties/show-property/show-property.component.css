@@ -1,0 +1,216 @@
+/* General page styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+.house-content {
+    display: flex;
+    flex-direction: row;
+    margin-top: 100px;
+    margin-left: 200px;
+}
+
+/* Container for property images */
+.house-images {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    padding: 20px;
+    gap: 10px;
+    max-width: 100%;
+}
+
+.house-images div {
+    flex: 1 1 30%;
+    max-width: 500px;
+    min-width: 100px;
+    height: 300px;
+    background-color: #ccc; /* Placeholder for images */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 100px;
+}
+.house-images div:hover {
+    transform: scale(1.01);
+}
+.house-images img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Header section with property title */
+.header-house h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin: 20px;
+    padding: 0;
+    width: 500px;
+    border-bottom: 1px solid #a3a3a3;
+}
+
+/* Price section */
+.price {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #2140AE;
+    color: white;
+    max-width: 80vh;
+    min-width: 50vh;
+    border-radius: 20px;
+    text-align: center;
+    padding: 10px; /* Reduce padding */
+    height: 200px;
+    margin-left: 400px;
+}
+.price h3 {
+    color: white;
+}
+
+.price h3 .bold {
+    font-weight: bold;
+    color: white;
+}
+
+/* Property description */
+p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    padding: 0 20px;
+    width: 50vh;
+}
+
+
+.address {
+    font-size: 16px;
+    color: #333;
+    margin-top: 10px;
+    padding: 0 20px;
+}
+
+
+.property-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px;
+}
+
+.property-images div {
+    flex: 1 1 200px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #ddd; 
+}
+
+.property-images img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.host-info {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-left: 100px;
+}
+
+.host-info h3 {
+    font-size: 20px;
+    color: #333;
+}
+
+.host-info p {
+    font-size: 16px;
+    color: #777;
+}
+
+
+button {
+    background-color: #2140AE;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 5px 150px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 50px;
+    background-color: white;
+}
+
+button:hover {
+    background-color: #d1d1d1;
+}
+
+
+@media (max-width: 768px) {
+    .house-content {
+        flex-direction: column;
+        margin-left: 0;
+        gap: 0;
+    }
+
+    .house-images {
+        flex-direction: column;
+        margin: 0 auto;
+    }
+
+    .price {
+        max-width: 100%;
+        padding: 20px;
+        margin: 10px auto;
+    }
+
+    .header-house h2 {
+        width: 100%;
+        text-align: center;
+    }
+
+    button {
+        padding: 10px 50px;
+        margin: 10px auto;
+    }
+
+    .host-info {
+        margin-left: 0;
+    }
+}
+
+
+@media (max-width: 576px) {
+    .house-images div {
+        height: 200px;
+    }
+
+    .price {
+        padding: 15px;
+    }
+
+    .header-house h2 {
+        font-size: 20px;
+    }
+
+    p {
+        padding: 0 10px;
+        font-size: 14px;
+    }
+
+    button {
+        padding: 5px 30px;
+        font-size: 14px;
+    }
+}

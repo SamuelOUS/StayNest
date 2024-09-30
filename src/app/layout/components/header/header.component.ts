@@ -13,44 +13,7 @@ import { ModalService } from '../../../services/modal.service';
   selector: 'app-header',
   standalone: true,
   imports: [RegisterComponent, MatMenuModule, MatButtonModule, RouterLink],
-  template: `
-    <header>
-        <div class="container">
-            <img [routerLink]="['/home']" class="logo" src="logo.png">
-            <div class="search-bar">
-                <input type="text" placeholder="Dónde" class="input-where">
-                <input type="date" placeholder="Llegada" class="input-date">
-                <input type="date" placeholder="Salida" class="input-date">
-                <input type="number" placeholder="¿Cuántas personas?" class="input-people">
-                <button class="search-button"></button>
-            </div>
-            <div class="right-menu">
-                <button mat-button [matMenuTriggerFor]="menu" class="menu-btn">
-                  <img src="/menu.png" alt="">
-                </button>
-                <mat-menu #menu="matMenu">
-                  @if (user().username) {
-                    <a mat-menu-item [routerLink]="['/profile']">Mi Perfil</a>
-                    @if(user().owner){
-                      <a mat-menu-item [routerLink]="['/my_properties']">Mis propiedades</a>
-                    }
-                    <a mat-menu-item >Mis Reservas</a>
-                    <a mat-menu-item >Mensajes</a>
-                    <a mat-menu-item (click)="logout()">Cerrar Sesión</a>
-                  }@else {
-                    <a mat-menu-item (click)="openRegister()">Registrarse</a>
-                    <a mat-menu-item (click)="openLogIn()">Iniciar Sesión</a>
-                  }
-                  <hr>
-                  <a mat-menu-item [routerLink]="['/help_center']">Centro de Ayuda</a>
-                </mat-menu>
-                @if(user().username){
-                  <img class="user-icon" [src]="user().photo || 'user.png'" alt="User">
-                }
-            </div>
-        </div>
-    </header>
-  `,
+  templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {

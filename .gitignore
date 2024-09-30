@@ -41,7 +41,7 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
-envinroment.ts
-envinroment
-.envinroment
-.envinroment.ts
+environment.development
+environment.development.ts
+.environment.development
+.environment.development.ts
