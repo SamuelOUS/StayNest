@@ -1,17 +1,17 @@
 <section class="house-detailing">
     <div class="house-images">
     <!-- <div class="image-container" *ngFor="let url of property!.images"> -->
-        <img [src]="property!.images" />
+        <img [src]="property!.images" alt="Imagen de la propiedad"  />
     </div>
     <div class="house-content">
         <div class="header-house">
             <h2>{{ property?.title }}</h2>
             <p>Dirección: {{ property?.address }}</p>
-            <p class="description">{{ property?.description }}</p>
+            <p class="description"> Descripción: {{ property?.description }}</p>
         </div>
         <div class="price">
             <h3><span class="bold">${{ property?.price }} COP</span> por huésped</h3>
-            Solicitala con el arrendador
+            <p>Solicítala con el arrendador</p>
             <button>Solicitar</button>
         </div>
     </div>
