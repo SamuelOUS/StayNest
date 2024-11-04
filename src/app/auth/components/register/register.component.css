@@ -5,13 +5,21 @@
 }
 
 .modal-content {
-  padding: 20px;
+  padding: 10px 0;
+  margin: 0;
+  margin-bottom: 15px;
 }
 
 .bottom {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+mat-form-field{
+  margin-bottom: -10px !important;
+  height: min-content !important;
 }
 
 mat-progress-bar {

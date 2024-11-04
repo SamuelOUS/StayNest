@@ -33,7 +33,7 @@ export class ProfileComponent implements OnInit{
   ngOnInit(): void {
     this.profileForm = this.formBuilder.nonNullable.group({
       username: [this.user().username, [Validators.required, Validators.minLength(3)]],
-      biography: [this.user().biography, [Validators.maxLength(500)]],
+      biography: [this.user().bio, [Validators.maxLength(500)]],
       password: ['', [Validators.minLength(8)]],
       confirmPassword: ['']
     }, { validators: this.checkPasswords });
@@ -84,7 +84,7 @@ export class ProfileComponent implements OnInit{
     }
     const editedUser: User = {
       username: this.profileForm.value.username || this.user().username,
-      biography: this.profileForm.value.biography || this.user().biography,
+      bio: this.profileForm.value.biography || this.user().bio,
       password: this.profileForm.value.password || this.user().password,
     }
     this.userService.editUser(editedUser)
@@ -94,7 +94,7 @@ export class ProfileComponent implements OnInit{
     });
     this.profileForm.setValue({
       username: this.user().username,
-      biography: this.user().biography,
+      biography: this.user().bio,
       password: '',
       confirmPassword: ''
     })
