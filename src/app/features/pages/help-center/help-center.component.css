@@ -1,0 +1,244 @@
+html, *{
+    box-sizing: border-box;
+    margin: 0;
+    padding:0 10px;
+}
+
+body {
+    margin: 0;
+    padding: 0 10px;
+}
+
+.container {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between;
+    padding: 15px 20px;
+    background-color: #ffffff;
+    color: #fff;
+}
+
+h3 {
+    margin: 50px;
+    text-align: center;
+    font-size: 50px;
+}
+
+h2 {
+    margin: 50px;
+    text-align: center;
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 1px;
+    margin-top: 20px;
+    background-color: #c0bfbf;
+    z-index: 2;
+    position: absolute;
+    top: 70px;
+}
+
+
+
+.contact_block {
+    background-color: #1c348d;
+    height: 200px;
+    color: #ffffff;
+    width: 100%;
+     
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+.contact_block h3{
+    background-color: #d1d1d1;
+}
+
+.contact {
+    position: absolute;
+    width: 300px;
+    height: 100px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 40px;
+    left: 1500px;
+    box-shadow: 0px 14px 8px rgba(0, 0, 0, 0.2);
+    border: 0px;
+    transition: transform 0.2s;
+}
+
+
+.contact:hover {
+    transform: scale(1.05);
+}
+
+.squares-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espacio entre los cuadrados */
+    margin-top: 20px;
+}
+
+.square-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.square-container img{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    border-radius: 20px;
+    margin: 50px;
+    background-size: contain;
+    background-color: #92AAFF; 
+    transition: 0.2s;
+}
+
+.square:hover{
+    transform: scale(1.05);
+}
+
+.hello-text {
+    text-align: center;
+    margin-top: 10px;
+}
+
+p{
+    margin-top: 10;
+    font-weight: 700;
+}
+
+.find-more-container{
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 50px 0;
+    background-color: #222222;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top:50px
+}
+
+.find-more{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+}
+
+
+
+.find-more-container h2{
+    color: white;
+}
+
+.square-politics{
+    background-repeat: no-repeat;
+    background-size: 600px;
+    width: 550px;
+    height: 400px;
+    text-align: center;
+    align-content: end;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    
+}
+
+.square-politics img{
+    width: 490px;
+    height: 280px;
+}
+
+.politics_text{
+    color: white;
+    background-color: #171717;
+    height: 100px;
+    text-align: center;
+    align-content: center;
+    border: 1px #182D77;
+    border-bottom: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    
+}
+
+.politics_text h1{
+    font-size: medium;
+    margin-bottom: 10px;
+}
+
+.square-suggestions{
+    background-repeat: no-repeat;
+    background-size: 600px;
+    width: 550px;
+    height: 400px;
+    align-content: end;
+    text-align: center;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    
+}
+
+.square-suggestions img{
+    width: 490px;
+    height: 280px;
+}
+
+.suggestion_text{
+    
+    color: white;
+    background-color: #171717;
+    height: 100px;
+    text-align: center;
+    align-content: center;
+    border: 1px #182D77;
+    border-bottom: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    
+}
+
+.suggestion_text h1{
+    font-size: medium;
+    margin-bottom: 10px;
+}
+
+
+
+.contact_text{
+    color: white;
+    margin-bottom: 200px;
+}
+
+.contact_text h1{
+    position: absolute;
+    top: 1400px;
+    left: 1440px;
+}
+
+.contact_text h5{
+    position: absolute;
+    top: 1700px;
+    left: 1485px;
+}
