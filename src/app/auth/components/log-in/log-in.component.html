@@ -1,0 +1,20 @@
+<header class="top">
+    <h2 mat-dialog-title>Iniciar Sesión</h2>
+    <span class="close" [mat-dialog-close]="false" type="button">&times;</span>
+</header>
+<div class="modal-content">
+    <form [formGroup]="logInForm">
+        <mat-form-field>
+            <mat-label for="username">Nombre de Usuario:</mat-label>
+            <input matInput formControlName="username">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label for="password">Contraseña:</mat-label>
+            <input type="password" matInput formControlName="password">
+        </mat-form-field>
+        <div mat-dialog-actions class="bottom">
+            <button mat-raised-button [mat-dialog-close]="false" (click)="onLogin()" type="button" >Iniciar sesión</button>
+        </div>
+        <a mat-menu-item type="button" [mat-dialog-close]="false" (click)="openRegister()">¿Aún no tienes una cuenta?</a>
+    </form>
+</div>

@@ -2,8 +2,7 @@ import { ComponentType } from '@angular/cdk/portal';
 import { inject, Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
-// Todos los modal de la pagina deben utilizar este servicio
-// hecho para configurar cada modal de la página
+// !Los modal de toda la página deben utilizar este servicio
 @Injectable({
   providedIn: 'root'
 })
@@ -18,8 +17,6 @@ export class ModalService {
       data: config,
       width: '600px',
       minWidth: '300px',
-      
-      // height: '80%'
     })
   }
 }
