@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from '../../../../layout/components/header/header.component';
-import { FooterComponent } from '../../../../layout/components/footer/footer.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { CreatePropertiesService } from './services/create-properties.service';
 import { v4 as uuid4 } from "uuid";
 import Swal from 'sweetalert2';
-import { UserService } from '../../../../auth/services/user.service';
+import { HeaderComponent } from '../../../layout/components/header/header.component';
+import { FooterComponent } from '../../../layout/components/footer/footer.component';
+import { UserService } from '../../../auth/services/user.service';
 
 @Component({
   selector: 'app-create-properties',

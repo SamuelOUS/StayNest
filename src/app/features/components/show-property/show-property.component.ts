@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Property } from '../interfaces/property.interface';
 import { CommonModule } from '@angular/common';
+import { Property } from '../../interfaces/property.interface';
 
 
 @Component({
