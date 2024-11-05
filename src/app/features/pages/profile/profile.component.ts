@@ -26,7 +26,7 @@ export class ProfileComponent implements OnInit{
   
   constructor(){
     this.user = this.userService.getUser()
-    const photo = this.user().photo
+    const photo = this.user().profilePicture
     this.uploadedPhoto = photo ? photo : 'user.png'
   }
   
@@ -63,7 +63,7 @@ export class ProfileComponent implements OnInit{
         this.userService.editUser({ 
           username: this.user().username,
           password: this.user().password,
-          photo: this.uploadedPhoto
+          profilePicture: this.uploadedPhoto
         });
         Swal.close();
         inputFile.value = '';

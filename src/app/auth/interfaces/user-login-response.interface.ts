@@ -1,7 +1,8 @@
 export interface UserLogInResponse {
+    id: string;
     name: string;
     username: string;
-    photo: string;
+    profilePicture: string;
     email: string;
     isOwner: boolean;
     token: string;
