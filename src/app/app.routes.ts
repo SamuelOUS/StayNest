@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { HouseComponent } from './features/components/properties/house/house.component';
-import { CreatePropertiesComponent } from './features/components/properties/create-properties/create-properties.component';
-import { ShowPropertyComponent } from './features/components/properties/show-property/show-property.component';
 
 import { ProfileComponent } from './features/pages/profile/profile.component';
 import { HelpCenterComponent } from './features/pages/help-center/help-center.component';
+import { HouseComponent } from './features/components/house/house.component';
+import { CreatePropertiesComponent } from './features/components/create-properties/create-properties.component';
+import { ShowPropertyComponent } from './features/components/show-property/show-property.component';
 
 // Definición de las rutas
 export const routes: Routes = [

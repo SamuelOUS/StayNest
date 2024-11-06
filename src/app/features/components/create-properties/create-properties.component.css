@@ -1,13 +1,8 @@
 section {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 85%;
-  height: 90%;
-  padding: 10px 0;
-  margin: 0 auto;
-  gap: 60px;
-  margin-top: 40px;
+  justify-content: space-between;
+  margin: 10px;
+  padding: 0 10px;
   background-color: #ffffff;
   border: 1px solid rgb(228, 228, 228);
   border-radius: 20px;
@@ -15,9 +10,8 @@ section {
 
 h2 {
   color: black;
-  font-size: 27px;
+  font-size: 25px;
   font-weight: 400;
-  margin: 0;
 }
 
 h5 {
@@ -27,43 +21,94 @@ h5 {
   margin-top: 8px;
 }
 
-.images-box {
+.left-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding: 10px;
 }
 
-.images-box label {
-  width: 50dvh;
-  height: 45dvh;
-  border-radius: 8px;
-  cursor: pointer;
-  filter: drop-shadow(2px 2px rgb(214, 214, 214));
-  background-color: #f3f3f3;
-  color: #272727;
-}
-
-.images-box label:hover{
-  size: 1.01;
-  opacity: 0.7;
-  transition: opacity 0.3s ease-in-out;
-  transform: scale(1.01);
-}
-
-.images-box img {
-  width: 50dvh;
-  object-fit: cover; 
-  border-radius: 8px;
+.images-box{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 10px;
 }
 
 .images-box input {
   display: none;
 }
 
+article{
+  width: 250px;
+  height: 150px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+} 
+
+article:hover{
+  size: 1.01;
+  opacity: 0.9;
+  transition: opacity 0.3s ease-in-out;
+  transform: scale(1.01);
+  border-radius: 8px;
+}
+
+article img{
+  width: 100%;
+  height: 150px;
+  object-fit: cover; 
+  border-radius: 8px;
+}
+
+.trash-icon {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 20px;
+  color: #d00000 !important;
+  background-color: white;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+article:hover .trash-icon {
+  opacity: 1;
+}
+
+article:hover .trash-icon:hover {
+  opacity: 0.7;
+}
+
+#addPhoto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 170px;
+  height: 150px;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #f3f3f3;
+  filter: drop-shadow(3px 3px rgb(214, 214, 214));
+}
+
+#addPhoto:hover{
+  size: 1.01;
+  opacity: 0.7;
+  transition: opacity 0.3s ease-in-out;
+  transform: scale(1.01);
+}
+
+#addPhoto img{
+  height: 50%;
+  background-color: inherit;
+}
+
 form {
   background-color: #2140AE;
-  width: 45%;
+  width: 30%;
   min-width: 310px;
   display: flex;
   flex-direction: column;
@@ -84,6 +129,7 @@ form {
   border: 2px solid #f3f3f3;
   border-radius: 10px;
   text-align: center;
+  font: inherit;
 }
 
 textarea {
@@ -92,6 +138,7 @@ textarea {
   min-height: 50px;
   min-width: 300px;
   padding: 10px;
+  font: inherit;
 }
 
 .btn-aceptar {
@@ -135,7 +182,7 @@ textarea {
 
 
 @media (max-width: 1070px) {
-  .images-box label {
+  .left-container label {
     width: 45dvh;
     height: 40dvh;
   }
@@ -152,7 +199,7 @@ textarea {
     width: 80%;
   }
 
-  .images-box {
+  .left-container {
     display: flex;
     flex-direction: column;
   }

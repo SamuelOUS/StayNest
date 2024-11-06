@@ -29,10 +29,10 @@ export class UserService {
           sessionStorage.setItem('token', data.token);
           this.setUser({
             name: data.name,
-            photo: data.photo,
             username: data.username,
-            email: data.email,
+            profilePicture: data.profilePicture,
             isOwner: data.isOwner,
+            token: data.token,
           });
         }),
         map(() => {
@@ -56,10 +56,10 @@ export class UserService {
           sessionStorage.setItem('token', data.token);
           this.setUser({
             name: data.name,
-            photo: data.photo,
             username: data.username,
-            email: data.email,
+            profilePicture: data.profilePicture,
             isOwner: data.isOwner,
+            token: data.token,
           });
         }),
         map(() => {
@@ -75,11 +75,13 @@ export class UserService {
   }
 
   getUser(): WritableSignal<User> {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      const userSrt = localStorage.getItem('userLogged');
-      if (userSrt) {
-        const user = JSON.parse(userSrt);
-        this.currentUser.set(user);
+    if (!this.currentUser().username) {
+      if (typeof window !== 'undefined' && window.localStorage) {
+        const userSrt = localStorage.getItem('userLogged');
+        if (userSrt) {
+          const user = JSON.parse(userSrt);
+          this.currentUser.set(user);
+        }
       }
     }
     return this.currentUser;
