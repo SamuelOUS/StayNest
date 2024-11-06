@@ -1,13 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnDestroy, signal} from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
-import { CreatePropertiesService } from './services/create-properties.service';
 import { v4 as uuid4 } from "uuid";
 import Swal from 'sweetalert2';
 import { HeaderComponent } from '../../../layout/components/header/header.component';
 import { FooterComponent } from '../../../layout/components/footer/footer.component';
 import { UserService } from '../../../auth/services/user.service';
+import { SupabaseBucketService } from '../../../services/supabase.service';
+import { PropertyService } from '../../services/property.service';
+import { Property } from '../../interfaces/property.interface';
+import { Photo } from '../../interfaces/photo.interface';
 
 @Component({
   selector: 'app-create-properties',
@@ -16,31 +19,45 @@ import { UserService } from '../../../auth/services/user.service';
   templateUrl: './create-properties.component.html',
   styleUrls: ['./create-properties.component.css']
 })
-export class CreatePropertiesComponent {
+export class CreatePropertiesComponent implements OnDestroy {
 
+  uploadedUrls = signal<Photo[]>([])
   user;
-  uploadedUrl = '';
-  createPropertiesForm: FormGroup;
-  imageUrls: string[] = Array(1).fill('');
+  createPropertyForm!: FormGroup;
+  savedProperty = false
 
-  constructor(private fb: FormBuilder, private router: Router, private CreatePropertiesService: CreatePropertiesService, private userService: UserService) {
-    this.user = userService.getUser();
-    this.createPropertiesForm = this.fb.group({
-      title: ['', [Validators.required]],
-      description: ['', [Validators.required]],
-      address: ['', [Validators.required]],
-      price: ['', [Validators.required]],
+  private formBuilder = inject(FormBuilder)
+  private router = inject(Router)
+  private userService = inject(UserService)
+  private supabaseService = inject(SupabaseBucketService)
+  private propertyService = inject(PropertyService)
+
+  constructor(){
+    this.user = this.userService.getUser()
+    this.createPropertyForm = this.formBuilder.group({
+      title: ['', Validators.required],
+      address: ['', Validators.required],
+      bedrooms: [null, Validators.required],
+      capacity: [null, Validators.required],
+      bathrooms: [null, Validators.required],
+      description: ['', Validators.required],
+      price: [null, Validators.required]
     });
   }
 
-  getNextPropertyId(): number {
-    const currentId = localStorage.getItem('propertyId');
-    const nextId = currentId ? parseInt(currentId) + 1 : 1;
-    localStorage.setItem('propertyId', nextId.toString());
-    return nextId;
+  ngOnDestroy(): void {
+    if (!this.savedProperty){
+      for (let image of this.uploadedUrls()){
+        this.supabaseService.deletePhoto(image.url, 'staynest', this.user().username)
+      }
+    }
   }
 
   uploadImage(event : Event){
+    let input = event.target as HTMLInputElement;
+    if (input.files!.length <= 0) {
+      return;
+    }
     Swal.fire({
       title: 'Cargando...',
       text: 'Por favor espera',
@@ -49,58 +66,77 @@ export class CreatePropertiesComponent {
         Swal.showLoading(null);
       }
     });
-    let input = event.target as HTMLInputElement;
-    if (input.files!.length <= 0) {
-      return;
-    }
     const fileName = uuid4();
     let file: File = input.files![0];
-    this.CreatePropertiesService.uploadImage(file, fileName, this.user().username)
+    this.supabaseService.upload(file, fileName, this.user().username, 'staynest')
       .then(data => { 
-        this.uploadedUrl = data!; 
+        let newUrls:Photo[] = this.uploadedUrls()
+        newUrls.push({ url: data! })
+        this.uploadedUrls.set(newUrls); 
         Swal.close();
       }).catch(error => {
+        Swal.close();
         Swal.fire({
           icon: "error",
-          title: 'Error',
-          text: 'An error occurred',
+          text: 'Ocurrió un error',
         })
-        console.error(error);
       });
   }
 
 
   onSubmit() {
-    if (!this.createPropertiesForm.valid) {
-      Swal.fire('Error', 'Por favor, completa todos los campos', 'error');
+    if (!this.createPropertyForm.valid) {
+      Swal.fire({
+        icon: "error",
+        text: 'Formulario inválido, completa todos los campos',
+      });
+      return;
+    }
+    if (this.uploadedUrls.length < 4) {
+      Swal.fire({
+        icon: "error",
+        text: 'Agrega al menos 4 fotos',
+      });
       return;
     }
 
-    const propertyData = {
-      id: this.getNextPropertyId(), 
-      title: this.createPropertiesForm.value.title,
-      description: this.createPropertiesForm.value.description,
-      address: this.createPropertiesForm.value.address,
-      price: this.createPropertiesForm.value.price,
-      images: this.uploadedUrl
+    const newProperty:Property = {
+      title: this.createPropertyForm.value.title,
+      description: this.createPropertyForm.value.description,
+      address: this.createPropertyForm.value.address,
+      pricePerNight: this.createPropertyForm.value.price,
+      capacity: this.createPropertyForm.value.capacity,
+      bedrooms: this.createPropertyForm.value.bedrooms,
+      bathrooms: this.createPropertyForm.value.bathrooms,
+      photos: this.uploadedUrls()
     };
-
-    
-    const properties = JSON.parse(localStorage.getItem('properties') || '[]');
-    properties.push(propertyData);
-    localStorage.setItem('properties', JSON.stringify(properties));
-
-    Swal.fire({
-      icon: "success",
-      text: 'La propiedad ha sido creada con éxito',
-    });
-
-    this.createPropertiesForm.reset();
-    this.imageUrls = Array(1).fill('');
+    try {
+      this.propertyService.createProperty(newProperty)
+      this.savedProperty = true
+      Swal.fire({
+        icon: "success",
+        text: 'Propiedad guardada',
+        timer: 2000
+      })
+      this.router.navigate(['/home']);
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        text: 'Ocurrió un error al guardar la propiedad',
+      })
+    }
   }
+
   onCancel() {
-    
-    this.router.navigate(['/home']); 
+    this.router.navigate(['/home']);
+  }
+
+  deleteImage(imageUrl:string){
+    let urls = this.uploadedUrls()
+    const index = urls.findIndex(image => image.url === imageUrl);
+    urls.splice(index, 1);
+    this.uploadedUrls.set(urls);
+    this.supabaseService.deletePhoto(imageUrl, 'staynest', this.user().username)
   }
 }
 

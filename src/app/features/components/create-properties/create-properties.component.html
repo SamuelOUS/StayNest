@@ -1,25 +1,81 @@
+<!-- ToDo: Falta mejorar la distribución y los estilos de la vista -->
 <section>
-    <div class="images-box">        
-        <h2>Sube la foto de la propiedad</h2>
-        <label title="Upload Image" for="file">
-            <img [src]="uploadedUrl" class="imagePreview">
-        </label>
-        <input type="file" id="file" (change)="uploadImage($event)">
+  <div class="left-container">
+    <h2>Sube al menos 4 fotos de la propiedad</h2>
+    <div class="images-box">
+      @for (image of uploadedUrls(); track image) {
+        <article>
+          <img src="{{ image.url }}" />
+          <span class="trash-icon" (click)="deleteImage(image.url)">🗑️</span>
+        </article>
+      }
+      <label id="addPhoto" title="Upload Image" for="file">
+        <img src="add.png"/>
+      </label>
+      <input type="file" id="file" (change)="uploadImage($event)" />
     </div>
-    <form [formGroup]="createPropertiesForm">
-        <h5>Título</h5>
-        <input type="text" class="input-text" placeholder="Título de la propiedad" required formControlName="title">
+  </div>
+  <form [formGroup]="createPropertyForm">
+    <h5>Título</h5>
+    <input
+      type="text"
+      class="input-text"
+      placeholder="Título de la propiedad"
+      required
+      formControlName="title"
+    />
 
-        <h5>Dirección</h5>
-        <input type="text" class="input-text" placeholder="Dirección" required formControlName="address">
+    <h5>Dirección</h5>
+    <input
+      type="text"
+      class="input-text"
+      placeholder="Dirección"
+      required
+      formControlName="address"
+    />
 
-        <h5>Descripción</h5>
-        <textarea class="input-text" placeholder="Descripción" required formControlName="description"></textarea>
+    <input
+      type="number"
+      class="input-text"
+      placeholder="Alcobas"
+      required
+      formControlName="bedrooms"
+    />
 
-        <h5>Precio por noche</h5>
-        <input type="number" class="input-text" placeholder="Precio por noche" required formControlName="price">
+    <input
+      type="number"
+      class="input-text"
+      placeholder="Capacidad max."
+      required
+      formControlName="capacity"
+    />
 
-        <button class="btn-aceptar" (click)="onSubmit()">Aceptar</button>
-        <button class="btn-cancelar" (click)="onCancel()">Cancelar</button>
-    </form>
+    <input
+        type="number"
+        class="input-text"
+        placeholder="Baños"
+        required
+        formControlName="bathrooms"
+    />
+
+    <h5>Descripción</h5>
+    <textarea
+        class="input-text"
+        placeholder="Descripción"
+        required
+        formControlName="description"
+    ></textarea>
+
+    <h5>Precio por noche</h5>
+    <input
+        type="number"
+        class="input-text"
+        placeholder="Precio por noche"
+        required
+        formControlName="price"
+    />
+
+    <button class="btn-aceptar" (click)="onSubmit()">Aceptar</button>
+    <button class="btn-cancelar" (click)="onCancel()">Cancelar</button>
+  </form>
 </section>

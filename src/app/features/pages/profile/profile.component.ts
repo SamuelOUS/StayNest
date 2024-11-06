@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { User } from '../../../auth/interfaces/user.interface';
 import Swal from 'sweetalert2';
 import { v4 as uuidv4 } from 'uuid';
-import { SupabaseService } from '../../../services/supabase.service';
+import { SupabaseBucketService } from '../../../services/supabase.service';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit{
 
   private readonly formBuilder = inject(FormBuilder)
   private readonly userService = inject(UserService)
-  private readonly supabaseService = inject(SupabaseService)
+  private readonly supabaseService = inject(SupabaseBucketService)
   profileForm!: FormGroup
   user;
   uploadedPhoto: string | undefined 
@@ -57,7 +57,7 @@ export class ProfileComponent implements OnInit{
     const file: File = inputFile.files[0];
     const fileName = uuidv4();
     this.supabaseService
-      .upload(file, fileName, this.user().username)
+      .upload(file, fileName, this.user().username, 'profiles')
       .then(data =>{
         this.uploadedPhoto = data!;
         this.userService.editUser({ 

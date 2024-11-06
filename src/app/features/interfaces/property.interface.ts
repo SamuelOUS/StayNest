@@ -1,8 +1,13 @@
+import { Photo } from "./photo.interface";
+
 export interface Property {
-    id: number;
+    id?: number;
     title: string;
-    description: string;
     address: string;
-    price: number;
-    images: string[];
+    pricePerNight: number;
+    photos: Photo[]
+    description?: string;
+    capacity?:number;
+    bedrooms?: number;
+    bathrooms?: number;
   }

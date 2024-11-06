@@ -1,7 +1,10 @@
 <section class="house-gallery">
   <ul class="house-list">
-    <div *ngFor="let property of properties()" class="house-item" (click)="goToHouseDetail(property.id)">
-      <img [src]="property.images" alt="" width="100">
+    <div *ngFor="let property of properties()" class="house-item" (click)="goToHouseDetail(property.id!)">
+      <img [src]="property.photos[0].url" alt="" width="100">
+      <h6>{{property.title}}</h6>
+      <p>{{property.address}}</p>
+      <p>Precio: $ {{property.pricePerNight}}</p>
     </div>
   </ul>
 </section>
