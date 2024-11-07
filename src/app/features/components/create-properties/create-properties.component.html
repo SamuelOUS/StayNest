@@ -3,7 +3,7 @@
   <div class="left-container">
     <h2>Sube al menos 4 fotos de la propiedad</h2>
     <div class="images-box">
-      @for (image of uploadedUrls(); track image) {
+      @for (image of uploadedUrls; track image) {
         <article>
           <img src="{{ image.url }}" />
           <span class="trash-icon" (click)="deleteImage(image.url)">🗑️</span>
