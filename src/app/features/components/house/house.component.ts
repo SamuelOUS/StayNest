@@ -23,8 +23,8 @@ export class HouseComponent {
     this.propertyService.getProperties().subscribe(this.properties.set)
   }
 
-  goToHouseDetail(houseId: number) {
-    this.router.navigate(['/show-property', houseId]); 
+  goToHouseDetail(propertyId: number) {
+    this.router.navigate(['/show-property', propertyId]); 
   }
   
 }

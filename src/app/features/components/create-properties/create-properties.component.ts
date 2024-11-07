@@ -15,7 +15,7 @@ import { Photo } from '../../interfaces/photo.interface';
 @Component({
   selector: 'app-create-properties',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, ReactiveFormsModule, RouterModule, CommonModule],
+  imports: [ReactiveFormsModule, RouterModule, CommonModule],
   templateUrl: './create-properties.component.html',
   styleUrls: ['./create-properties.component.css']
 })

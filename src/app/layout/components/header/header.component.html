@@ -15,10 +15,10 @@
           <mat-menu #menu="matMenu">
             @if (user().username) {
               <a mat-menu-item [routerLink]="['/profile']">Mi Perfil</a>
-              <a mat-menu-item [routerLink]="['/my_bookings']">Mis Reservas</a>
+              <a mat-menu-item [routerLink]="['/my-bookings']">Mis Reservas</a>
               @if(user().isOwner){
-                <a mat-menu-item [routerLink]="['/my_properties']">Mis Propiedades</a>
-                <a mat-menu-item [routerLink]="['/create-properties']">Añadir Propiedad</a>
+                <a mat-menu-item [routerLink]="['/my-properties']">Mis Propiedades</a>
+                <a mat-menu-item [routerLink]="['/create-property']">Añadir Propiedad</a>
               } 
               <a mat-menu-item (click)="logout()">Cerrar Sesión</a>
             }@else {
@@ -26,7 +26,7 @@
               <a mat-menu-item (click)="openLogIn()">Iniciar Sesión</a>
             }
             <hr>
-            <a mat-menu-item [routerLink]="['/help_center']">Centro de Ayuda</a>
+            <a mat-menu-item [routerLink]="['/help-center']">Centro de Ayuda</a>
           </mat-menu>
           @if(user().username){
             <img class="user-icon" [src]="user().profilePicture || 'user.png'">
