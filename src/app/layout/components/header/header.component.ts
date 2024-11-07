@@ -12,7 +12,7 @@ import { ModalService } from '../../../services/modal.service';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RegisterComponent, MatMenuModule, MatButtonModule, RouterLink],
+  imports: [MatMenuModule, MatButtonModule, RouterLink],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
@@ -36,7 +36,6 @@ export class HeaderComponent {
       icon: 'success',
     })
   }
-
   
   //Funciones para abrir los modales
   openRegister = (): void => {
@@ -46,5 +45,4 @@ export class HeaderComponent {
   public openLogIn = ():void => {
     this.modalService.openModal<LogInComponent, null>(LogInComponent);
   }
-
 }

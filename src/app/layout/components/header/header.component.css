@@ -18,59 +18,6 @@
     margin-right: 10px;
 }
 
-.search-bar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
-    border-radius: 30px;
-    overflow: hidden;
-    box-shadow: 0px 5px 2px rgba(0, 0, 0, 0.3);
-    flex: 1;
-    max-width: 1000px;
-
-}
-
-.search-bar input {
-    border: none;
-    padding: 10px;
-    font-size: 14px;
-    outline: none;
-    width: 100%;
-    margin: 10px;
-    height: 20px;
-}
-
-.search-bar input[type="date"] {
-    font-size: 10px;
-    margin-left: 10px;
-}
-
-.search-bar input:not(:last-child) {
-    border-right: 1px solid #a7a7a7;
-}
-
-.search-bar input:nth-last-child(2) {
-    border-right: 1px solid #ffffff;
-}
-
-.search-button {
-    background-image: url("/search.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-    background-color: #ffffff;
-    margin-right: 20px;
-    margin-top: 5px;
-    
-}
-
 .right-menu {
     display: flex;
     flex-direction: row;

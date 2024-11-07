@@ -1,0 +1,7 @@
+<section>
+    <input type="text" placeholder="Dónde" [(ngModel)]="searchTerm" (input)="onSearch()" class="input-where">
+    <input type="date" placeholder="Llegada" class="input-date">
+    <input type="date" placeholder="Salida" class="input-date">
+    <input type="number" placeholder="¿Cuántas personas?" [(ngModel)]="searchCapacity" (input)="onSearch()" class="input-people">
+    <button class="search-button"></button>
+</section>

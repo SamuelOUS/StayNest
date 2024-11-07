@@ -6,8 +6,8 @@ export interface Property {
     address: string;
     pricePerNight: number;
     photos: Photo[]
+    capacity:number;
     description?: string;
-    capacity?:number;
     bedrooms?: number;
     bathrooms?: number;
   }

@@ -21,7 +21,7 @@ import { Photo } from '../../interfaces/photo.interface';
 })
 export class CreatePropertiesComponent implements OnDestroy {
 
-  uploadedUrls = signal<Photo[]>([])
+  uploadedUrls:Photo[] = []
   user;
   createPropertyForm!: FormGroup;
   savedProperty = false
@@ -47,7 +47,7 @@ export class CreatePropertiesComponent implements OnDestroy {
 
   ngOnDestroy(): void {
     if (!this.savedProperty){
-      for (let image of this.uploadedUrls()){
+      for (let image of this.uploadedUrls){
         this.supabaseService.deletePhoto(image.url, 'staynest', this.user().username)
       }
     }
@@ -70,9 +70,7 @@ export class CreatePropertiesComponent implements OnDestroy {
     let file: File = input.files![0];
     this.supabaseService.upload(file, fileName, this.user().username, 'staynest')
       .then(data => { 
-        let newUrls:Photo[] = this.uploadedUrls()
-        newUrls.push({ url: data! })
-        this.uploadedUrls.set(newUrls); 
+        this.uploadedUrls.push({ url: data! })
         Swal.close();
       }).catch(error => {
         Swal.close();
@@ -108,7 +106,7 @@ export class CreatePropertiesComponent implements OnDestroy {
       capacity: this.createPropertyForm.value.capacity,
       bedrooms: this.createPropertyForm.value.bedrooms,
       bathrooms: this.createPropertyForm.value.bathrooms,
-      photos: this.uploadedUrls()
+      photos: this.uploadedUrls
     };
     try {
       this.propertyService.createProperty(newProperty)
@@ -118,7 +116,6 @@ export class CreatePropertiesComponent implements OnDestroy {
         text: 'Propiedad guardada',
         timer: 2000
       })
-      this.router.navigate(['/home']);
     } catch (error) {
       Swal.fire({
         icon: "error",
@@ -132,10 +129,8 @@ export class CreatePropertiesComponent implements OnDestroy {
   }
 
   deleteImage(imageUrl:string){
-    let urls = this.uploadedUrls()
-    const index = urls.findIndex(image => image.url === imageUrl);
-    urls.splice(index, 1);
-    this.uploadedUrls.set(urls);
+    const index = this.uploadedUrls.findIndex(image => image.url === imageUrl);
+    this.uploadedUrls.splice(index, 1);
     this.supabaseService.deletePhoto(imageUrl, 'staynest', this.user().username)
   }
 }
