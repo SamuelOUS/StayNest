@@ -24,7 +24,6 @@ export class HouseComponent {
   ngOnInit() {
     this.propertyService.getProperties().subscribe(this.properties.set)
     this.allProperties = this.properties()
-    console.log(this.allProperties)
   }
 
   goToHouseDetail(propertyId: number) {

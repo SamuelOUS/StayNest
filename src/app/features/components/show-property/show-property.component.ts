@@ -18,12 +18,15 @@ export class ShowPropertyComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+
+    //ToDo: Conectar el componente con el propertyService y
+    //ToDo: conectar la vista con los atributos correctos y mejorarla
+
     const propertyId = this.route.snapshot.paramMap.get('id');
     if (propertyId) {
       if (typeof window !== 'undefined' && window.localStorage){
         const properties: Property[] = JSON.parse(localStorage.getItem('properties') || '[]');
         this.property = properties.find(prop => prop.id === +propertyId);
-        console.log(this.property)
       }
     }
   }
