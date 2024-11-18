@@ -16,6 +16,8 @@ import { RouterLink } from '@angular/router';
   styleUrl: './profile.component.css'
 })
 export class ProfileComponent implements OnInit{
+  passwordType: string = 'password';
+  confirmPasswordType: string = 'password';
 
   private readonly formBuilder = inject(FormBuilder)
   private readonly userService = inject(UserService)
@@ -29,7 +31,13 @@ export class ProfileComponent implements OnInit{
     const photo = this.user().profilePicture
     this.uploadedPhoto = photo ? photo : 'user.png'
   }
-  
+
+  togglePasswordVisibility() {
+    this.passwordType = this.passwordType === 'password' ? 'text' : 'password';
+  }
+  toggleConfirmPasswordVisibility() {
+    this.confirmPasswordType = this.confirmPasswordType === 'password' ? 'text' : 'password';
+  }
   ngOnInit(): void {
     this.profileForm = this.formBuilder.nonNullable.group({
       username: [this.user().username, [Validators.required, Validators.minLength(3)]],
