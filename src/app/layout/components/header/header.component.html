@@ -21,9 +21,7 @@
             <hr>
             <a mat-menu-item [routerLink]="['/help-center']">Centro de Ayuda</a>
           </mat-menu>
-          @if(user().username){
-            <img class="user-icon" [src]="user().profilePicture || 'user.png'">
-          }
+          <img class="user-icon" [src]="user().profilePicture || 'user.png'">
       </div>
   </div>
 </header>

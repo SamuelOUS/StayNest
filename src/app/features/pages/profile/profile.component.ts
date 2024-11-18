@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../../../auth/services/user.service';
 import { CommonModule } from '@angular/common'; 
@@ -15,29 +15,34 @@ import { RouterLink } from '@angular/router';
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
-export class ProfileComponent implements OnInit{
-
+export class ProfileComponent implements OnInit, OnDestroy{
   private readonly formBuilder = inject(FormBuilder)
   private readonly userService = inject(UserService)
   private readonly supabaseService = inject(SupabaseBucketService)
   profileForm!: FormGroup
   user;
-  uploadedPhoto: string | undefined 
+  uploadedPhoto = ''
+  passwordType: string = 'password';
+  confirmPasswordType: string = 'password';
+  userWasUpdated = false
   
   constructor(){
     this.user = this.userService.getUser()
-    const photo = this.user().profilePicture
-    this.uploadedPhoto = photo ? photo : 'user.png'
   }
-  
+
   ngOnInit(): void {
     this.profileForm = this.formBuilder.nonNullable.group({
-      username: [this.user().username, [Validators.required, Validators.minLength(3)]],
+      name: [this.user().name, [Validators.required, Validators.minLength(3)]],
       biography: [this.user().bio, [Validators.maxLength(500)]],
       password: ['', [Validators.minLength(8)]],
       confirmPassword: ['']
     }, { validators: this.checkPasswords });
-
+  }
+  
+  ngOnDestroy(): void {
+      if (!this.userWasUpdated && this.uploadedPhoto){
+        this.supabaseService.deletePhoto(this.uploadedPhoto, 'profile', this.user().username)
+      }
   }
 
   // Gestión para la foto de perfil
@@ -60,11 +65,6 @@ export class ProfileComponent implements OnInit{
       .upload(file, fileName, this.user().username, 'profiles')
       .then(data =>{
         this.uploadedPhoto = data!;
-        this.userService.editUser({ 
-          username: this.user().username,
-          password: this.user().password,
-          profilePicture: this.uploadedPhoto
-        });
         Swal.close();
         inputFile.value = '';
     }).catch(()=>{
@@ -83,25 +83,37 @@ export class ProfileComponent implements OnInit{
       return
     }
     const editedUser: User = {
-      username: this.profileForm.value.username || this.user().username,
+      username: this.user().username,
+      name: this.profileForm.value.name || this.user().username,
       bio: this.profileForm.value.biography || this.user().bio,
       password: this.profileForm.value.password || this.user().password,
+      profilePicture: this.uploadedPhoto
     }
-    this.userService.editUser(editedUser)
-    Swal.fire({
-      text:'Cambios realizados',
-      icon:'success'
-    });
-    this.profileForm.setValue({
-      username: this.user().username,
-      biography: this.user().bio,
-      password: '',
-      confirmPassword: ''
-    })
+    try {
+      this.userService.editUser(editedUser).subscribe()
+      this.userWasUpdated = true;
+      Swal.fire({
+        text:'Cambios realizados',
+        icon:'success'
+      });
+      this.profileForm.reset()
+    } catch (error) {
+      Swal.fire({
+        text:'Cambios realizados',
+        icon:'success'
+      });
+    }
   }
   private checkPasswords(control: AbstractControl): { [key: string]: boolean } | null {
     const password = control.get('password')?.value;
     const confirmPassword = control.get('confirmPassword')?.value;
     return password === confirmPassword ? null : { notSame: true };
+  }
+
+  togglePasswordVisibility() {
+    this.passwordType = this.passwordType === 'password' ? 'text' : 'password';
+  }
+  toggleConfirmPasswordVisibility() {
+    this.confirmPasswordType = this.confirmPasswordType === 'password' ? 'text' : 'password';
   }
 }

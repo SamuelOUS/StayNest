@@ -3,16 +3,16 @@
     <div class="form-group">
       <label>Foto de Perfil:</label>
       <label class="photo" for="photo">
-        <img title="Change" [src]="uploadedPhoto">
+        <img title="Change" [src]="uploadedPhoto || user().profilePicture || 'user.png'">
       </label>
       <input style="display: none;" type="file" id="photo" (change)="onFileUpload($event)">
     </div>
-  
-    <div class="form-group" >
-      <label for="username">Username:</label>
-      <input type="text" id="username" formControlName="username" placeholder="Username">
-      <p *ngIf="profileForm.get('username')?.invalid && profileForm.get('username')?.touched" class="error">
-        El nombre de usuario es obligatorio y debe tener al menos 3 caracteres.
+    
+    <div class="form-group">
+      <label for="name">Nombre:</label>
+      <input type="text" id="name" formControlName="name" placeholder="Nombre">
+      <p *ngIf="profileForm.get('name')?.invalid && profileForm.get('name')?.touched" class="error">
+        El nombre debe tener al menos 3 caracteres.
       </p>
     </div>
   
@@ -26,7 +26,12 @@
   
     <div class="form-group">
       <label for="password">Contraseña Nueva:</label>
-      <input placeholder="Contraseña Nueva" type="password" id="password" formControlName="password">
+      <div class="password-container">
+        <input [type]="passwordType" placeholder="Contraseña" id="password" formControlName="password">
+        <button type="button" class="toggle-password" (click)="togglePasswordVisibility()">
+          👁️
+        </button>
+      </div>
       <p *ngIf="profileForm.get('password')?.invalid && profileForm.get('password')?.touched" class="error">
         La contraseña debe tener al menos 8 caracteres.
       </p>
@@ -34,11 +39,16 @@
   
     <div class="form-group">
       <label for="confirmPassword">Confirmar Contraseña:</label>
-      <input placeholder="Confirmar Contraseña" type="password" id="confirmPassword" formControlName="confirmPassword">
+      <div class="password-container">
+        <input [type]="confirmPasswordType" placeholder="Confirmar Contraseña" id="confirmPassword" formControlName="confirmPassword">
+        <button type="button" class="toggle-password" (click)="toggleConfirmPasswordVisibility()">
+          👁️
+        </button>
+      </div>
       <p *ngIf="profileForm.hasError('notSame')" class="error">
-        Passwords do not match.
+        Las contraseñas no coinciden
       </p>
-    </div>
+    </div>  
   </form>
   <div class="final-btns">
     <button type="submit" (click)="onSubmit()">Guardar cambios</button>

@@ -4,9 +4,12 @@ import {
   LogInResponse,
   SignUpResponse,
 } from '../interfaces/login-response.interface';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, Observable, tap, throwError } from 'rxjs';
-import { UserLogInResponse, UserSignUpResponse } from '../interfaces/user-login-response.interface';
+import {
+  UserLogInResponse,
+  UserSignUpResponse,
+} from '../interfaces/user-login-response.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -25,7 +28,7 @@ export class UserService {
     return this.http
       .post<UserLogInResponse>('http://localhost:3000/api/users/login', body)
       .pipe(
-        tap(data => {
+        tap((data) => {
           sessionStorage.setItem('token', data.token);
           this.setUser({
             name: data.name,
@@ -38,7 +41,7 @@ export class UserService {
         map(() => {
           return { success: true };
         }),
-        catchError(eer => throwError(() => eer.error.message))
+        catchError((eer) => throwError(() => eer.error.message))
       );
   }
 
@@ -52,7 +55,7 @@ export class UserService {
     return this.http
       .post<UserSignUpResponse>('http://localhost:3000/api/users', user)
       .pipe(
-        tap(data => {
+        tap((data) => {
           sessionStorage.setItem('token', data.token);
           this.setUser({
             name: data.name,
@@ -75,7 +78,7 @@ export class UserService {
   }
 
   getUser(): WritableSignal<User> {
-    if(this.currentUser().username) return this.currentUser;
+    if (this.currentUser().username) return this.currentUser;
 
     if (typeof window !== 'undefined' && window.localStorage) {
       const userSrt = localStorage.getItem('userLogged');
@@ -85,17 +88,23 @@ export class UserService {
   }
 
   editUser(updatedUser: User) {
-    //Update current user with just the new user information
-    const userSrt = localStorage.getItem(this.currentUser().username);
-    if (userSrt) {
-      const user = JSON.parse(userSrt);
-      localStorage.removeItem(user.username);
-      const newUser = { ...user, ...updatedUser };
-      localStorage.setItem(newUser.username, JSON.stringify(newUser));
-      this.currentUser.set(newUser);
-      this.setUser(newUser);
-      return;
+    const newUser = { ...this.currentUser(), ...updatedUser };
+    this.currentUser.set(newUser);
+    this.setUser(newUser);
+
+    const {token, ...updateUser} = newUser 
+
+    return this.http.patch(
+      `http://localhost:3000/api/users`, updateUser, this.getHeaders()
+    );
+  }
+
+  private getHeaders(){
+    const token = sessionStorage.getItem('token') || '';
+    return {
+      headers: new HttpHeaders({
+          Authorization: `Bearer ${token}`,
+      })
     }
-    throw new Error();
   }
 }
