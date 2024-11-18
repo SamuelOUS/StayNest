@@ -3,16 +3,16 @@
     <div class="form-group">
       <label>Profile Photo:</label>
       <label class="photo" for="photo">
-        <img title="Change" [src]="uploadedPhoto">
+        <img title="Change" [src]="uploadedPhoto || user().profilePicture || 'user.png'">
       </label>
       <input style="display: none;" type="file" id="photo" (change)="onFileUpload($event)">
     </div>
   
     <div class="form-group">
-      <label for="username">Username:</label>
-      <input type="text" id="username" formControlName="username" placeholder="Username">
-      <p *ngIf="profileForm.get('username')?.invalid && profileForm.get('username')?.touched" class="error">
-        Username is required and must be at least 3 characters long.
+      <label for="name">Name:</label>
+      <input type="text" id="name" formControlName="name" placeholder="Name">
+      <p *ngIf="profileForm.get('name')?.invalid && profileForm.get('name')?.touched" class="error">
+        Name is required and must be at least 3 characters long.
       </p>
     </div>
   
