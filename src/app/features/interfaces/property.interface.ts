@@ -7,7 +7,7 @@ export interface Property {
     title: string;
     address: string;
     pricePerNight: number;
-    photos: Partial<Photo[]>;
+    photos: Partial<Photo>[];
     capacity:number;
     description?: string;
     bedrooms?: number;

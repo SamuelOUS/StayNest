@@ -3,10 +3,10 @@ import { Routes } from '@angular/router';
 import { ProfileComponent } from './features/pages/profile/profile.component';
 import { HelpCenterComponent } from './features/pages/help-center/help-center.component';
 import { HouseComponent } from './features/components/house/house.component';
-import { CreatePropertiesComponent } from './features/components/create-properties/create-properties.component';
-import { ShowPropertyComponent } from './features/components/show-property/show-property.component';
+import { ShowPropertyComponent } from './features/pages/show-property/show-property.component';
 import { authGuard } from './auth/guards/auth.guard';
 import { ownerAuthGuard } from './auth/guards/ownerAuth.guard';
+import { CreatePropertiesComponent } from './features/pages/create-properties/create-properties.component';
 
 // Definición de las rutas
 export const routes: Routes = [

@@ -100,16 +100,16 @@ button {
   border-radius: 50px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* button:hover {
+button:hover {
   color: white;
-  background-color: #101d4d;
+  background-color: #132463;
   transform: scale(1.05);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-} */
+}
 
 
 a {
@@ -159,9 +159,10 @@ a:hover {
   transition: color 0.3s ease;
 }
 .toggle-password:hover{
-  opacity: 0.8;
-  transform: scale(1.01);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  color: white;
+  background-color: unset;
+  transform: scale(1.02);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Efecto cuando el input está en estado inválido */

@@ -14,15 +14,13 @@ import { PropertyService } from '../../services/property.service';
 })
 export class ShowPropertyComponent implements OnInit {
 
-  property: Property | undefined;
+  property!: Property;
 
-  constructor(private route: ActivatedRoute,private propertyService: PropertyService) { }
+  constructor(private route: ActivatedRoute,private propertyService: PropertyService) {}
 
   ngOnInit(): void {
-
     const propertyId = this.route.snapshot.paramMap.get('id');
-    this.propertyService.getProperty(propertyId!).subscribe(property => this.property = property);
-    console.log(this.property)
-    
+    this.propertyService.getProperty(propertyId!)
+      .subscribe(property => this.property = property);   
   }
 }
