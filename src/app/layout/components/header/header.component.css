@@ -29,18 +29,14 @@
     background-color: white;
 }
 
-.menu-btn {
-    display: flex;
-    width: 40px;
-    margin: 0 0;
-    padding: 0 auto;
-    justify-content: center;
-    align-items: center;
+.menu-btn{
+    background-color: #ffffffbe;
 }
+
 .menu-btn img{
-    margin-top: 6px;
-    width: 50%;
-    cursor: pointer;
+    width: 20px;
+    object-fit: cover;
+    margin: 5px auto 0 auto;
 }
 
 .user-icon{

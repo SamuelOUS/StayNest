@@ -24,6 +24,25 @@
         min-width: 370px;
     }
 
+    button {
+        background-color: #2140AE;
+        color: white;
+        padding: 12px 18px;
+        border: none;
+        border-radius: 50px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      
+      button:hover {
+        color: white;
+        background-color: #132463;
+        transform: scale(1.03);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      }
+
 
 
 /*----------- Modals style--------------- */
@@ -80,23 +99,12 @@
     .modal-content form {
         display: flex;
         flex-direction: column;
-        width: 90%;
+        justify-content: center;
+        width: 95%;
     }
 
     .modal-content button {
-        width: 90%;
         margin: 0 auto;
-        padding: 10px;
-        border: none;
-        background-color: #2140AE;
-        color: white;
-        cursor: pointer;
-        border-radius: 5px;
-        font-size: 16px;
-    }
-
-    .modal-content button:hover {
-        background-color: #182D77;
     }
 
     .modal-content a {
