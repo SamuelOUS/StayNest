@@ -1,0 +1,15 @@
+<div class="my-bookings">
+    <h2>Mis Reservas</h2>
+    <div *ngIf="bookings.length; else noBookings">
+      <div *ngFor="let booking of bookings" class="booking">
+        <h3>{{ booking.property.name }}</h3>
+        <p>Inicio: {{ booking.startDate | date }}</p>
+        <p>Fin: {{ booking.endDate | date }}</p>
+        <p>Precio Total: ${{ booking.totalPrice }}</p>
+      </div>
+    </div>
+    <ng-template #noBookings>
+      <p>No tienes reservas aún.</p>
+    </ng-template>
+  </div>
+  

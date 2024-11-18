@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-
+import { MyBookingsComponent } from './features/pages/my-bookings/my-bookings.component';
 import { ProfileComponent } from './features/pages/profile/profile.component';
 import { HelpCenterComponent } from './features/pages/help-center/help-center.component';
 import { HouseComponent } from './features/components/house/house.component';
@@ -13,7 +13,7 @@ export const routes: Routes = [
     { path:'home', component: HouseComponent },
     { path:'profile', component: ProfileComponent, canActivate: [authGuard] },
     // ToDo: Create bookings component and 'myProperties' component
-    // { path:'my-bookings', component: , canActivate: [authGuard] },
+    { path:'my-bookings', component: MyBookingsComponent , canActivate: [authGuard] },
     // { path:'my-properties', component: , canActivate: [ownerAuthGuard] },
     { path:'create-property', component: CreatePropertiesComponent, canActivate: [ownerAuthGuard] },
     { path: 'show-property/:id', component: ShowPropertyComponent },

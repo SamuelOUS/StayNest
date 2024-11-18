@@ -1,0 +1,93 @@
+/* Estilos globales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Contenedor principal de la vista */
+  .my-bookings {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  
+  /* Título de la sección */
+  .my-bookings h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Contenedor para las reservas */
+  .booking-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Cada reserva */
+  .booking {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .booking h3 {
+    font-size: 20px;
+    color: #2140AE;
+    margin-bottom: 10px;
+  }
+  
+  .booking p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 5px;
+  }
+  
+  /* Contenedor para el mensaje cuando no hay reservas */
+  .no-bookings {
+    text-align: center;
+    font-size: 18px;
+    color: #777;
+  }
+  
+  /* Estilos para el enlace (si es necesario para la navegación) */
+  .booking a {
+    color: #2140AE;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .booking a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Media query para pantallas pequeñas */
+  @media (max-width: 880px) {
+    .my-bookings {
+      margin: 20px;
+      padding: 15px;
+    }
+  
+    .booking {
+      padding: 15px;
+    }
+  
+    .booking h3 {
+      font-size: 18px;
+    }
+  
+    .booking p {
+      font-size: 14px;
+    }
+  }
+  
