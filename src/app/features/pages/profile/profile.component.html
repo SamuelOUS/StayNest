@@ -1,7 +1,7 @@
 <section>
   <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="profile-form">
     <div class="form-group">
-      <label>Profile Photo:</label>
+      <label>Foto de Perfil:</label>
       <label class="photo" for="photo">
         <img title="Change" [src]="uploadedPhoto">
       </label>
@@ -12,36 +12,36 @@
       <label for="username">Username:</label>
       <input type="text" id="username" formControlName="username" placeholder="Username">
       <p *ngIf="profileForm.get('username')?.invalid && profileForm.get('username')?.touched" class="error">
-        Username is required and must be at least 3 characters long.
+        El nombre de usuario es obligatorio y debe tener al menos 3 caracteres.
       </p>
     </div>
   
     <div class="form-group">
-      <label for="biography">Biography:</label>
-      <textarea placeholder="Biography" style="min-height: 50px;" id="biography" formControlName="biography"></textarea>
+      <label for="biography">Biografía:</label>
+      <textarea placeholder="Biografía" style="min-height: 50px;" id="biography" formControlName="biography"></textarea>
       <p *ngIf="profileForm.get('biography')?.invalid && profileForm.get('biography')?.touched" class="error">
-        Biography must not exceed 500 characters.
+        La biografía no debe exceder los 500 caracteres.
       </p>
     </div>
   
     <div class="form-group">
-      <label for="password">New Password:</label>
-      <input placeholder="Password" type="password" id="password" formControlName="password">
+      <label for="password">Contraseña Nueva:</label>
+      <input placeholder="Contraseña Nueva" type="password" id="password" formControlName="password">
       <p *ngIf="profileForm.get('password')?.invalid && profileForm.get('password')?.touched" class="error">
-        Password must be at least 8 characters long.
+        La contraseña debe tener al menos 8 caracteres.
       </p>
     </div>
   
     <div class="form-group">
-      <label for="confirmPassword">Confirm Password:</label>
-      <input placeholder="Confirm Password" type="password" id="confirmPassword" formControlName="confirmPassword">
+      <label for="confirmPassword">Confirmar Contraseña:</label>
+      <input placeholder="Confirmar Contraseña" type="password" id="confirmPassword" formControlName="confirmPassword">
       <p *ngIf="profileForm.hasError('notSame')" class="error">
         Passwords do not match.
       </p>
     </div>
   </form>
   <div class="final-btns">
-    <button type="submit" (click)="onSubmit()">Save Changes</button>
+    <button type="submit" (click)="onSubmit()">Guardar cambios</button>
     <a [routerLink]="['/home']">Volver</a>
   </div>
 </section>

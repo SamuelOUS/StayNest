@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Property } from '../../interfaces/property.interface';
+import { PropertyService } from '../../services/property.service';
 
 
 @Component({
@@ -15,19 +16,13 @@ export class ShowPropertyComponent implements OnInit {
 
   property: Property | undefined;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute,private propertyService: PropertyService) { }
 
   ngOnInit(): void {
 
-    //ToDo: Conectar el componente con el propertyService y
-    //ToDo: conectar la vista con los atributos correctos y mejorarla
-
     const propertyId = this.route.snapshot.paramMap.get('id');
-    if (propertyId) {
-      if (typeof window !== 'undefined' && window.localStorage){
-        const properties: Property[] = JSON.parse(localStorage.getItem('properties') || '[]');
-        this.property = properties.find(prop => prop.id === +propertyId);
-      }
-    }
+    this.propertyService.getProperty(propertyId!).subscribe(property => this.property = property);
+    console.log(this.property)
+    
   }
 }
