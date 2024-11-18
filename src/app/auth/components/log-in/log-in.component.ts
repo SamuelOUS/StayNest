@@ -8,7 +8,6 @@ import { RegisterComponent } from '../register/register.component';
 import { User } from '../../interfaces/user.interface';
 import { UserService } from '../../services/user.service';
 import Swal from 'sweetalert2'
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-log-in',
@@ -23,7 +22,6 @@ export class LogInComponent implements OnInit{
   private readonly formBuilder = inject(FormBuilder)
   private readonly modalService = inject(ModalService);
   private readonly userService = inject(UserService);
-  private readonly router = inject(Router);
 
   user: User = {
     username: '',
@@ -56,7 +54,6 @@ export class LogInComponent implements OnInit{
           text: 'Inicio exitoso',
           timer: 2000
         })
-        this.router.navigateByUrl('/home');
       },
       error: (message) =>{
         Swal.fire({

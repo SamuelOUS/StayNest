@@ -5,7 +5,6 @@ import { ModalService } from '../../../services/modal.service';
 import { User } from '../../interfaces/user.interface';
 import { UserService } from '../../services/user.service';
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -38,7 +37,6 @@ export class RegisterComponent implements OnInit {
   private readonly formBuilder = inject(FormBuilder);
   private readonly modalService = inject(ModalService);
   private readonly userService = inject(UserService);
-  private readonly router = inject(Router);
 
   user: User = {
     username: '',
@@ -147,7 +145,6 @@ export class RegisterComponent implements OnInit {
 
     this.userService.register({ name, username, email, password, isOwner }).subscribe({
       next:() => {
-        this.router.navigateByUrl('/home')
         Swal.fire({
           text: 'Registro exitoso',
           icon: 'success',
