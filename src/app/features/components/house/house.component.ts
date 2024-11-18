@@ -46,4 +46,8 @@ export class HouseComponent {
         )
       );
   }
+
+  capitalizeFirstLetter(text:string) {
+    return String(text).charAt(0).toUpperCase() + String(text).slice(1);
+  }
 }

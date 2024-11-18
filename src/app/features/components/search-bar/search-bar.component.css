@@ -50,3 +50,25 @@ section input:nth-last-child(2) {
     margin-top: 5px;
     
 }
+
+
+@media (max-width: 640px) {
+    section{
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0;
+    }
+    section input{
+        width: 40%;
+    }
+
+    .search-button{
+        display: none;
+    }
+}
+
+@media (max-width: 485px) {
+    section{
+        width: 50dvw;
+    }
+}
