@@ -3,7 +3,7 @@ import { Review } from "./review.interface";
 import { User } from "../../auth/interfaces/user.interface";
 
 export interface Property {
-    id?: number;
+    id?: string;
     title: string;
     address: string;
     pricePerNight: number;
