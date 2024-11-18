@@ -1,0 +1,27 @@
+<header>
+  <div class="container">
+      <img [routerLink]="['/home']" class="logo" src="logo.png">
+      <div class="right-menu">
+          <a mat-button [matMenuTriggerFor]="menu" class="menu-btn">
+            <img src="/menu.png" alt="">
+          </a>
+          <mat-menu #menu="matMenu">
+            @if (user().username) {
+              <a mat-menu-item [routerLink]="['/profile']">Mi Perfil</a>
+              <a mat-menu-item [routerLink]="['/my-bookings']">Mis Reservas</a>
+              @if(user().isOwner){
+                <a mat-menu-item [routerLink]="['/my-properties']">Mis Propiedades</a>
+                <a mat-menu-item [routerLink]="['/create-property']">Añadir Propiedad</a>
+              } 
+              <a mat-menu-item (click)="logout()">Cerrar Sesión</a>
+            }@else {
+              <a mat-menu-item (click)="openRegister()">Registrarse</a>
+              <a mat-menu-item (click)="openLogIn()">Iniciar Sesión</a>
+            }
+            <hr>
+            <a mat-menu-item [routerLink]="['/help-center']">Centro de Ayuda</a>
+          </mat-menu>
+          <img class="user-icon" [src]="user().profilePicture || 'user.png'">
+      </div>
+  </div>
+</header>

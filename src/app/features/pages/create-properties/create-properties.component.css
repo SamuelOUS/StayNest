@@ -1,0 +1,225 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+}
+
+
+section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  background-color: #fff;
+  max-width: 1200px;
+  margin: 50px auto;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+
+.left-container {
+  flex: 0.45; 
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-right: 2px solid #ccc;
+}
+
+.left-container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+.images-box {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: 950px;
+  overflow-y: scroll;
+  scrollbar-width: thin; 
+  scrollbar-color: #2140AE #f9f9f9;
+  padding-right: 10px;
+  align-items: center;
+}
+
+#file{
+  display: none;
+}
+
+.images-box::-webkit-scrollbar {
+  width: 8px;
+}
+
+.images-box::-webkit-scrollbar-thumb {
+  background-color: #2140AE;
+  border-radius: 4px;
+}
+
+.images-box::-webkit-scrollbar-track {
+  background-color: #f9f9f9;
+}
+
+.images-box article {
+  position: relative;
+  width: 250px;
+  height: 220px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, opacity 0.3s ease-in-out;
+}
+
+.images-box article:hover {
+  transform: scale(1.01);
+  opacity: 0.9;
+}
+
+.images-box article img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+
+.trash-icon {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 16px;
+  color: #d00000;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.trash-icon:hover {
+  background-color: #e74c3c;
+  color: white;
+}
+
+#addPhoto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 120px;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  background-color: #f3f3f3;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#addPhoto:hover {
+  background-color: #ddd;
+}
+
+#addPhoto img {
+  width: 40px;
+  height: 40px;
+}
+
+
+form {
+  flex: 0.5; 
+  background-color: #2140AE;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  color: white;
+  
+}
+
+form h5 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+input[formControlName="bedrooms"],
+input[formControlName="capacity"],
+input[formControlName="bathrooms"],
+input[formControlName="price"]{
+  width: 50%;
+  margin-left: 25%;
+}
+
+.input-text {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  text-align: center;
+  align-content: center;
+  margin-left: 15px;
+  align-items: center;
+  
+}
+
+textarea.input-text {
+  resize: none;
+  height: 80px;
+}
+
+
+button {
+  background-color: #2140AE;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 80%;
+  margin-left: 50px;
+
+}
+button:hover{
+  background-color: #071752;
+}
+
+.btn-aceptar {
+  background-color: #3a95ff;
+  color: white;
+}
+
+.btn-aceptar:hover {
+  background-color: #144379;
+}
+
+.btn-cancelar {
+  background-color: #ff3d3d;
+  color: white;
+}
+
+.btn-cancelar:hover {
+  background-color: #6e1010;
+}
+
+
+@media (max-width: 880px) {
+  section {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+  }
+
+  .left-container, form {
+      width: 90%;
+      flex: none;
+  }
+
+  .images-box {
+      height: 300px;
+  }
+}
