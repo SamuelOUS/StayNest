@@ -1,4 +1,3 @@
-/* General page styling */
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -6,181 +5,229 @@ body {
     background-color: #f2f2f2;
 }
 
-/* Main container for house details */
+section {
+    margin: 20px auto;
+    max-width: 1200px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+
+span{
+    color: #2140AE;
+    font-weight: bold;
+    font-size: 15px;
+}
+
 .house-detailing {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
-    padding: 20px;
-    background-color: #fff;
-    max-width: 1200px;
-    margin: 50px auto;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    margin-bottom: 30px;
 }
 
-/* Container for property images */
+
 .house-images {
-    width: 100%;
     display: flex;
-    justify-content: center;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 10px;
+    width: 100%;
     border-bottom: 2px solid #242424;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 }
-
-
-.house-images :hover{
-    size: 1.01;
-    opacity: 0.7;
-    transition: opacity 0.3s ease-in-out;
-    transform: scale(1.01);
-  }
 
 .house-images img {
-    width: 75%;
-    height: auto;
+    height: 200px;
+    width: auto;
     object-fit: cover;
     border-radius: 10px;
-    max-height: 450px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
 }
 
-/* Container for property content */
+.house-images img:hover {
+    transform: scale(1.05);
+    opacity: 0.8;
+}
+
+
 .house-content {
-    width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 20px;
+    width: 100%;
+    padding: 20px 0;
     margin-top: 20px;
-    background-color: #fff;
 }
 
-/* Header section with property title and address */
 .header-house {
     flex: 1;
-    text-align: left;
-    max-width: 60%;
-    margin-left: 150px;
-    
+    padding-right: 20px;
 }
 
 .header-house h2 {
     font-size: 28px;
-    font-weight: bold;
+    text-align: center;
     margin-bottom: 10px;
     color: #000;
+    font-weight: bold;
 }
 
 .header-house p {
-    font-size: 20px;
+    font-size: 16px;
     color: #666;
-    margin: 10px 0;
+    margin: 5px 0;
 }
 
-.description {
-    margin-top: 10px;
-    font-size: 20px;
-    color: #666;
-}
 
-/* Price section aligned to the bottom right */
 .price {
     flex: 1;
-    max-width: 35%;
+    background-color: #2140AE;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
-    background-color: #2140AE;
-    color: white;
-    border-radius: 10px;
-    margin-right: 150px;
+    text-align: center;
 }
 
+
 .price h3 {
-    margin: 0;
-    font-size: 24px;
+    font-size: 22px;
+    margin-bottom: 10px;
 }
 
 .price h3 .bold {
     font-weight: bold;
-    color: #000;
+    color: #ff3d3d;
+    font-size: 22px;
 }
 
 .price p {
     margin: 10px 0;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 button {
-    margin: 0 auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    background-color: #3a95ff;
+    background-color: #ff3d3d;
+    color: white;
+    padding: 10px 15px;
     border: none;
-    border-bottom: 2px solid #272727;
-    border-radius: 20px;
-    color: #ffffff;
-    width: 60%;
-    height: 40px;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: large;
-    font-weight: 600;
+    width: 80%;
+    margin-left: 42px;
+  
+  }
+  button:hover{
+    background-color: #071752;
+  }
+
+
+.reviews-detailing {
+    margin-top: 20px;
+    padding: 20px;
 }
 
-button:hover {
-    background-color: #f2f2f2;
+.reviews-detailing h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #000;
+    font-weight: bold;
 }
 
-/* Responsive styling */
+.review {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.review:last-child {
+    border-bottom: none;
+}
+
+.review p {
+    font-size: 16px;
+    margin: 5px 0;
+    color: #666;
+}
+
+.review span {
+    font-weight: bold;
+    color: #2140AE;
+}
+
+
+.user-datiling {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.user-datiling img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    object-fit: cover;
+}
+
+.user-datiling p {
+    font-size: 16px;
+    margin: 5px 0;
+    color: #333;
+}
+
+.user-datiling span {
+    font-weight: bold;
+    color: #2140AE;
+}
+
+.user-datiling h3{
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #000;
+    font-weight: bold;
+}
+
+
 @media (max-width: 768px) {
     .house-content {
         flex-direction: column;
-        justify-content: center;
         align-items: center;
-    }
-
-    .price {
-        align-items: center;
-        width: 90%;
-        min-width: 80%;
-        margin-top: 20px;
-        margin: 0 auto;
-    }
-
-    button {
-        padding: 10px 50px;
-        margin: 10px auto;
     }
 
     .header-house {
-        /* max-width: 100%; */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+
+    .price {
+        margin-top: 20px;
+        padding: 15px;
     }
 }
 
 @media (max-width: 576px) {
     .house-images img {
-        max-height: 250px;
+        height: 150px;
     }
 
     .price h3 {
         font-size: 18px;
     }
 
-    button {
-        padding: 5px 30px;
-        font-size: 14px;
+    .reviews-detailing, .user-datiling {
+        padding: 15px;
     }
 
-    p {
-        padding: 0 10px;
+    button {
+        padding: 8px 16px;
         font-size: 14px;
     }
 }

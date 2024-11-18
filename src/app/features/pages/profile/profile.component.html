@@ -1,57 +1,57 @@
 <section>
   <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="profile-form">
     <div class="form-group">
-      <label>Profile Photo:</label>
+      <label>Foto de Perfil:</label>
       <label class="photo" for="photo">
         <img title="Change" [src]="uploadedPhoto || user().profilePicture || 'user.png'">
       </label>
       <input style="display: none;" type="file" id="photo" (change)="onFileUpload($event)">
     </div>
-  
+    
     <div class="form-group">
-      <label for="name">Name:</label>
-      <input type="text" id="name" formControlName="name" placeholder="Name">
+      <label for="name">Nombre:</label>
+      <input type="text" id="name" formControlName="name" placeholder="Nombre">
       <p *ngIf="profileForm.get('name')?.invalid && profileForm.get('name')?.touched" class="error">
-        Name is required and must be at least 3 characters long.
+        El nombre debe tener al menos 3 caracteres.
       </p>
     </div>
   
     <div class="form-group">
-      <label for="biography">Biography:</label>
-      <textarea placeholder="Biography" style="min-height: 50px;" id="biography" formControlName="biography"></textarea>
+      <label for="biography">Biografía:</label>
+      <textarea placeholder="Biografía" style="min-height: 50px;" id="biography" formControlName="biography"></textarea>
       <p *ngIf="profileForm.get('biography')?.invalid && profileForm.get('biography')?.touched" class="error">
-        Biography must not exceed 500 characters.
+        La biografía no debe exceder los 500 caracteres.
       </p>
     </div>
   
     <div class="form-group">
-      <label for="password">New Password:</label>
+      <label for="password">Contraseña Nueva:</label>
       <div class="password-container">
-        <input [type]="passwordType" placeholder="Password" id="password" formControlName="password">
+        <input [type]="passwordType" placeholder="Contraseña" id="password" formControlName="password">
         <button type="button" class="toggle-password" (click)="togglePasswordVisibility()">
           👁️
         </button>
       </div>
       <p *ngIf="profileForm.get('password')?.invalid && profileForm.get('password')?.touched" class="error">
-        Password must be at least 8 characters long.
+        La contraseña debe tener al menos 8 caracteres.
       </p>
     </div>
   
     <div class="form-group">
-      <label for="confirmPassword">Confirm Password:</label>
+      <label for="confirmPassword">Confirmar Contraseña:</label>
       <div class="password-container">
-        <input [type]="confirmPasswordType" placeholder="Confirm Password" id="confirmPassword" formControlName="confirmPassword">
+        <input [type]="confirmPasswordType" placeholder="Confirmar Contraseña" id="confirmPassword" formControlName="confirmPassword">
         <button type="button" class="toggle-password" (click)="toggleConfirmPasswordVisibility()">
           👁️
         </button>
       </div>
       <p *ngIf="profileForm.hasError('notSame')" class="error">
-        Passwords do not match.
+        Las contraseñas no coinciden
       </p>
     </div>  
   </form>
   <div class="final-btns">
-    <button type="submit" (click)="onSubmit()">Save Changes</button>
+    <button type="submit" (click)="onSubmit()">Guardar cambios</button>
     <a [routerLink]="['/home']">Volver</a>
   </div>
 </section>

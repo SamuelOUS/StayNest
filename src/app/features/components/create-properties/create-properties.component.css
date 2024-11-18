@@ -1,215 +1,225 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+}
+
+
 section {
   display: flex;
   justify-content: space-between;
-  margin: 10px;
-  padding: 0 10px;
-  background-color: #ffffff;
-  border: 1px solid rgb(228, 228, 228);
-  border-radius: 20px;
+  align-items: flex-start;
+  padding: 20px;
+  background-color: #fff;
+  max-width: 1200px;
+  margin: 50px auto;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 
-h2 {
-  color: black;
-  font-size: 25px;
-  font-weight: 400;
-}
-
-h5 {
-  color: #ffffff;
-  font-size: 20px;
-  font-weight: 400;
-  margin-top: 8px;
-}
 
 .left-container {
+  flex: 0.45; 
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 20px;
+  border-right: 2px solid #ccc;
 }
 
-.images-box{
+.left-container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+.images-box {
   display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  gap: 10px;
+  flex-direction: column;
+  gap: 15px;
+  height: 950px;
+  overflow-y: scroll;
+  scrollbar-width: thin; 
+  scrollbar-color: #2140AE #f9f9f9;
+  padding-right: 10px;
+  align-items: center;
 }
 
-.images-box input {
+#file{
   display: none;
 }
 
-article{
+.images-box::-webkit-scrollbar {
+  width: 8px;
+}
+
+.images-box::-webkit-scrollbar-thumb {
+  background-color: #2140AE;
+  border-radius: 4px;
+}
+
+.images-box::-webkit-scrollbar-track {
+  background-color: #f9f9f9;
+}
+
+.images-box article {
+  position: relative;
   width: 250px;
-  height: 150px;
+  height: 220px;
+  border: 1px solid #ccc;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
-} 
+  overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, opacity 0.3s ease-in-out;
+}
 
-article:hover{
-  size: 1.01;
-  opacity: 0.9;
-  transition: opacity 0.3s ease-in-out;
+.images-box article:hover {
   transform: scale(1.01);
+  opacity: 0.9;
+}
+
+.images-box article img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: 8px;
 }
 
-article img{
-  width: 100%;
-  height: 150px;
-  object-fit: cover; 
-  border-radius: 8px;
-}
 
 .trash-icon {
   position: absolute;
   bottom: 10px;
   right: 10px;
-  font-size: 20px;
-  color: #d00000 !important;
-  background-color: white;
-  transition: 0.3s ease-in-out;
-  cursor: pointer;
+  font-size: 16px;
+  color: #d00000;
+  background-color: rgba(255, 255, 255, 0.9);
   padding: 5px;
   border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-article:hover .trash-icon {
-  opacity: 1;
-}
-
-article:hover .trash-icon:hover {
-  opacity: 0.7;
+.trash-icon:hover {
+  background-color: #e74c3c;
+  color: white;
 }
 
 #addPhoto {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 170px;
-  height: 150px;
+  width: 100%;
+  height: 120px;
+  border: 2px dashed #ccc;
   border-radius: 8px;
-  cursor: pointer;
   background-color: #f3f3f3;
-  filter: drop-shadow(3px 3px rgb(214, 214, 214));
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-#addPhoto:hover{
-  size: 1.01;
-  opacity: 0.7;
-  transition: opacity 0.3s ease-in-out;
-  transform: scale(1.01);
+#addPhoto:hover {
+  background-color: #ddd;
 }
 
-#addPhoto img{
-  height: 50%;
-  background-color: inherit;
+#addPhoto img {
+  width: 40px;
+  height: 40px;
 }
+
 
 form {
+  flex: 0.5; 
   background-color: #2140AE;
-  width: 30%;
-  min-width: 310px;
+  padding: 20px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding-inline: 20px ;
-  margin: 20px 0px;
-  border-bottom: 2px solid #242424;
-  border-radius: 10px;
+  gap: 15px;
+  color: white;
+  
 }
- 
+
+form h5 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+input[formControlName="bedrooms"],
+input[formControlName="capacity"],
+input[formControlName="bathrooms"],
+input[formControlName="price"]{
+  width: 50%;
+  margin-left: 25%;
+}
 
 .input-text {
   width: 90%;
-  height: 40px;
-  min-width: 300px;
-  max-height: 80px;
-  margin: 0 auto;
-  border: 2px solid #f3f3f3;
-  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
   text-align: center;
-  font: inherit;
+  align-content: center;
+  margin-left: 15px;
+  align-items: center;
+  
 }
 
-textarea {
-  width: 85%;
-  max-width: 85%;
-  min-height: 50px;
-  min-width: 300px;
-  padding: 10px;
-  font: inherit;
+textarea.input-text {
+  resize: none;
+  height: 80px;
+}
+
+
+button {
+  background-color: #2140AE;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 80%;
+  margin-left: 50px;
+
+}
+button:hover{
+  background-color: #071752;
 }
 
 .btn-aceptar {
-  margin: 0 auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
   background-color: #3a95ff;
-  border: none;
-  border-bottom: 2px solid #272727;
-  border-radius: 20px;
-  color: #ffffff;
-  width: 60%;
-  height: 40px;
-  cursor: pointer;
-  font-size: large;
-  font-weight: 600;
+  color: white;
 }
 
-.btn-aceptar:hover{
+.btn-aceptar:hover {
   background-color: #144379;
 }
 
 .btn-cancelar {
-  margin: 0 auto;
-  margin-bottom: 20px;
   background-color: #ff3d3d;
-  border-radius: 20px;
-  border: none;
-  border-bottom: 2px solid #272727;
-  color: #ffffff;
-  width: 60%;
-  height: 40px;
-  cursor: pointer;
-  font-size: large;
-  font-weight: 600;
+  color: white;
 }
 
-.btn-cancelar:hover{
+.btn-cancelar:hover {
   background-color: #6e1010;
-}
-
-
-@media (max-width: 1070px) {
-  .left-container label {
-    width: 45dvh;
-    height: 40dvh;
-  }
 }
 
 
 @media (max-width: 880px) {
   section {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-  form{
-    width: 80%;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
   }
 
-  .left-container {
-    display: flex;
-    flex-direction: column;
+  .left-container, form {
+      width: 90%;
+      flex: none;
   }
 
-  .image-label {
-    width: 100%; 
-    height: 15vh; 
-  }
-
-  h2, h5 {
-    font-size: 22px;
+  .images-box {
+      height: 300px;
   }
 }

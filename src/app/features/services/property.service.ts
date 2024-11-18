@@ -14,6 +14,10 @@ export class PropertyService {
     return this.http.get<Property[]>('http://localhost:3000/api/properties');
   }
 
+  getProperty(propertyId:string): Observable<Property> {
+    return this.http.get<Property>(`http://localhost:3000/api/properties/${propertyId}`);
+  }
+
   createProperty(property:Property){
     return this.http
       .post('http://localhost:3000/api/properties', property, this.getHeaders())
