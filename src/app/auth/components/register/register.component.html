@@ -7,7 +7,12 @@
   <form [formGroup]="registerForm">
     
     <mat-form-field style="margin-bottom: 0;">
-      <mat-label for="username">Nombre de Usuario:</mat-label>
+      <mat-label>Nombre:</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field style="margin-bottom: 0;">
+      <mat-label>Nombre de Usuario:</mat-label>
       <input matInput formControlName="username">
     </mat-form-field>
     
@@ -16,12 +21,12 @@
     </div>
     
     <mat-form-field>
-      <mat-label for="email">Correo Electrónico:</mat-label>
+      <mat-label>Correo Electrónico:</mat-label>
       <input matInput formControlName="email">
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label for="password">Contraseña:</mat-label>
+      <mat-label>Contraseña:</mat-label>
       <input type="password" matInput formControlName="password" (input)="checkPasswordStrength()">
     </mat-form-field>
     
@@ -31,9 +36,14 @@
     </div>
     
     <mat-form-field>
-      <mat-label for="rePassword">Confirmar Contraseña:</mat-label>
+      <mat-label>Confirmar Contraseña:</mat-label>
       <input type="password" matInput formControlName="rePassword">
     </mat-form-field>
+    
+    <div style="display:flex; justify-content: space-around; align-items: center;">
+      <mat-label>¿Quieres ofertar tus propiedades?</mat-label>
+      <mat-checkbox formControlName="isOwner"></mat-checkbox>
+    </div>
 
     <div mat-dialog-actions class="bottom">
       <button mat-raised-button type="button" [mat-dialog-close]="false" (click)="onRegister()">Registrarse</button>

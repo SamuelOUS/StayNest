@@ -1,13 +1,6 @@
 <header>
   <div class="container">
       <img [routerLink]="['/home']" class="logo" src="logo.png">
-      <div class="search-bar">
-          <input type="text" placeholder="Dónde" class="input-where">
-          <input type="date" placeholder="Llegada" class="input-date">
-          <input type="date" placeholder="Salida" class="input-date">
-          <input type="number" placeholder="¿Cuántas personas?" class="input-people">
-          <button class="search-button"></button>
-      </div>
       <div class="right-menu">
           <button mat-button [matMenuTriggerFor]="menu" class="menu-btn">
             <img src="/menu.png" alt="">
@@ -15,23 +8,20 @@
           <mat-menu #menu="matMenu">
             @if (user().username) {
               <a mat-menu-item [routerLink]="['/profile']">Mi Perfil</a>
-              <!-- @if(user().owner){
-                <a mat-menu-item [routerLink]="['/my_properties']">Mis Propiedades</a>
+              <a mat-menu-item [routerLink]="['/my-bookings']">Mis Reservas</a>
+              @if(user().isOwner){
+                <a mat-menu-item [routerLink]="['/my-properties']">Mis Propiedades</a>
+                <a mat-menu-item [routerLink]="['/create-property']">Añadir Propiedad</a>
               } 
-              <a mat-menu-item [routerLink]="['/my_bookings']">Mis Reservas</a> -->
-              <a mat-menu-item [routerLink]="['/create-properties']">Añadir Propiedad</a>
-              <!-- <a mat-menu-item [routerLink]="['/messages']">Mensajes</a> -->
               <a mat-menu-item (click)="logout()">Cerrar Sesión</a>
             }@else {
               <a mat-menu-item (click)="openRegister()">Registrarse</a>
               <a mat-menu-item (click)="openLogIn()">Iniciar Sesión</a>
             }
             <hr>
-            <a mat-menu-item [routerLink]="['/help_center']">Centro de Ayuda</a>
+            <a mat-menu-item [routerLink]="['/help-center']">Centro de Ayuda</a>
           </mat-menu>
-          @if(user().username){
-            <img class="user-icon" [src]="user().photo || 'user.png'" alt="User">
-          }
+          <img class="user-icon" [src]="user().profilePicture || 'user.png'">
       </div>
   </div>
 </header>

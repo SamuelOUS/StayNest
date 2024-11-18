@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
     html {
-        
         margin: 0;
         padding: 0;
         box-sizing: border-box;
@@ -9,21 +8,22 @@
         min-height: 100%;
         position: relative;
         flex-direction: column;
+        min-width: 370px;
     }
-
-    main{
-        min-height: 100vh;
-    }
-
     
-
     body {
         color: #333;
-        min-width: 375px;
+        min-width: 370px;
         min-height: 370px;
         margin: 0; 
         font-family: Roboto, "Helvetica Neue", sans-serif;
     }
+
+    main{
+        min-height: 100vh;
+        min-width: 370px;
+    }
+
 
 
 /*----------- Modals style--------------- */

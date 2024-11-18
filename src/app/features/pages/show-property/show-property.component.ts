@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Property } from '../interfaces/property.interface';
 import { CommonModule } from '@angular/common';
+import { Property } from '../../interfaces/property.interface';
+import { PropertyService } from '../../services/property.service';
 
 
 @Component({
@@ -13,18 +14,13 @@ import { CommonModule } from '@angular/common';
 })
 export class ShowPropertyComponent implements OnInit {
 
-  property: Property | undefined;
+  property!: Property;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute,private propertyService: PropertyService) {}
 
   ngOnInit(): void {
     const propertyId = this.route.snapshot.paramMap.get('id');
-    if (propertyId) {
-      if (typeof window !== 'undefined' && window.localStorage){
-        const properties: Property[] = JSON.parse(localStorage.getItem('properties') || '[]');
-        this.property = properties.find(prop => prop.id === +propertyId);
-        console.log(this.property)
-      }
-    }
+    this.propertyService.getProperty(propertyId!)
+      .subscribe(property => this.property = property);   
   }
 }

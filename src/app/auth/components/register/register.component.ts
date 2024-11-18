@@ -1,28 +1,28 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { MatInput } from '@angular/material/input';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatProgressBarModule } from '@angular/material/progress-bar'; // Importar MatProgressBarModule
-import { CommonModule } from '@angular/common'; // Importar CommonModule para el uso de *ngIf
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { LogInComponent } from '../log-in/log-in.component';
 import { ModalService } from '../../../services/modal.service';
 import { User } from '../../interfaces/user.interface';
 import { UserService } from '../../services/user.service';
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @Component({
   selector: 'app-register',
   standalone: true,
   imports: [
+    CommonModule,
     ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCheckboxModule,
     MatDialogModule,
-    MatFormField,
-    MatLabel,
-    MatInput,
-    MatProgressBarModule,
-    CommonModule
+    MatProgressBarModule
   ],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
@@ -36,18 +36,16 @@ export class RegisterComponent implements OnInit {
 
   private readonly formBuilder = inject(FormBuilder);
   private readonly modalService = inject(ModalService);
-  private userService = inject(UserService);
+  private readonly userService = inject(UserService);
 
   user: User = {
     username: '',
     password: '',
     email: '',
   }
+
   get usernameErrors(): string {
     const usernameControl = this.registerForm.get('username');
-    if (usernameControl?.hasError('required')) {
-      return 'El nombre de usuario es obligatorio';
-    }
     if (usernameControl?.hasError('minlength')) {
       return 'El nombre de usuario debe tener al menos 8 caracteres';
     }
@@ -66,6 +64,7 @@ export class RegisterComponent implements OnInit {
 
   private _buildForm(): void {
     this.registerForm = this.formBuilder.nonNullable.group({
+      name: ['', [Validators.required]],
       username: [
         '', 
         [
@@ -77,7 +76,8 @@ export class RegisterComponent implements OnInit {
       ],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(17)]],
-      rePassword: ['', [Validators.required]]
+      rePassword: ['', [Validators.required]],
+      isOwner: [false]
     });
   }
 
@@ -127,10 +127,12 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
+    const name = this.registerForm.value.name;
     const username = this.registerForm.value.username;
     const email = this.registerForm.value.email;
     const password = this.registerForm.value.password;
     const rePassword = this.registerForm.value.rePassword;
+    const isOwner = this.registerForm.value.isOwner;
 
     if (password !== rePassword) {
       Swal.fire({
@@ -141,19 +143,21 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    const response = this.userService.register({ username, password, email });
-    if (response.success) {
-      Swal.fire({
-        title: 'Registro exitoso!',
-        icon: 'success',
-      });
-    } else {
-      Swal.fire({
-        title: 'Error en el registro',
-        text: response.message,
-        icon: 'error',
-      });
-    }
+    this.userService.register({ name, username, email, password, isOwner }).subscribe({
+      next:() => {
+        Swal.fire({
+          text: 'Registro exitoso',
+          icon: 'success',
+        })
+      },
+      error: (error) => {
+        Swal.fire({
+          title: 'Error',
+          text: error,
+          icon: 'error',
+        })
+      }
+    })
   }
 
   openLogIn(): void {

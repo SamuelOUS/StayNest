@@ -1,0 +1,244 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+section {
+    margin: 20px auto;
+    max-width: 1200px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+
+span{
+    color: #2140AE;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.house-detailing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+
+.house-images {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    gap: 10px;
+    width: 100%;
+    border-bottom: 2px solid #242424;
+    padding-bottom: 10px;
+}
+
+.house-images img {
+    height: 200px;
+    width: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.house-images img:hover {
+    transform: scale(1.05);
+}
+
+
+.house-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px 0;
+    margin-top: 20px;
+}
+
+.header-house {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.header-house h2 {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #000;
+    font-weight: bold;
+}
+
+.header-house p {
+    font-size: 16px;
+    color: #666;
+    margin: 5px 0;
+}
+
+
+.price {
+    flex: 1;
+    background-color: #2140AE;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.price h3 {
+    font-size: 22px;
+}
+
+.price h3 .bold {
+    font-weight: 500;
+    color: inherit;
+    font-size: 22px;
+}
+
+.price p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+button {
+    background-color: #ff3d3d;
+    color: white;
+    padding: 10px 30%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;  
+}
+
+button:hover{
+    background-color: #071752;
+}
+
+
+.reviews-detailing h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #000;
+    font-weight: bold;
+}
+
+.review {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.review img{
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.review:last-child {
+    border-bottom: none;
+}
+
+.review p {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 5px 0;
+    color: #666;
+}
+
+.review p span {
+    font-weight: bold;
+    color: #2140AE;
+}
+
+
+.user-datiling {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.user-datiling img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    object-fit: cover;
+}
+
+.user-datiling p {
+    font-size: 16px;
+    margin: 5px 0;
+    color: #333;
+}
+
+.user-datiling span {
+    font-weight: bold;
+    color: #2140AE;
+}
+
+.user-datiling h3{
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #000;
+    font-weight: bold;
+}
+
+
+@media (max-width: 768px) {
+    .house-content {
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        gap: 0;
+    }
+
+    .price {
+        width: 70%;
+        margin-top: 20px;
+        padding: 15px;
+    }
+
+    .house-detailing{
+        margin: 0
+    }
+
+    .reviews-detailing{
+        margin: 5px 10px;
+        padding: 5px 10px;
+    }
+    .user-datiling {
+        margin: 5px 10px;
+        padding: 5px 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .house-images img {
+        height: 150px;
+    }
+
+    .price h3 {
+        font-size: 18px;
+    }
+
+    .reviews-detailing, .user-datiling {
+        padding: 15px;
+    }
+
+    button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}

@@ -1,120 +1,200 @@
-  section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .profile-form {
-    background-color:#2140AE;
-    width: 50%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 30px 0px;
-    border-radius: 10px;
-  }
-  
-  .form-group {
-    color: white;
-    width:80%;
-    margin-bottom: 15px;
-    text-align: center;
-  }
-
-  .form-group img{
-    background-color: white;
-    padding: 10px;
-    border-radius: 40px;
-    width: 100px;
-    object-fit: cover;
-  }
-
-  .form-group img:hover{
-    opacity: 0.5;
-    transition: opacity 0.3s;
-    cursor: pointer;
-  }
-
-  .form-group input {
-    width: 100%;
-  }
-
-  .photo{
-    text-align: center;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 8px;
-    text-align: left;
-    font-weight: 500;
-  }
-  
-  input[type="text"],
-  input[type="password"],
-  textarea {
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-    max-width: 600px;
-    max-height: 200px;
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  
-  textarea {
-    height: 100px;
-  }
-
-  .final-btns{
-    margin-top: 8px;
-    padding: 8px 20px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-    font-size: 13px;
-    font-weight: 200;
-  }
-
-  button {
-    background-color: #2140AE;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  button:hover{
-    background-color: #071752;
-  }
-
-  a {
-    background-color: white;
-    text-decoration: none;
-    color: black;
-    padding: 5.5px 25px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  a:hover{
-    color: white;
-    background-color: #2140AE;
-  }
-
-  
-  .error {
-    color: red;
-    font-size: 0.8em;
-    margin-top: 5px;
-  }
-
-
-  @media screen and (max-width: 800px) {
-    .profile-form {
-      width: 80%;
-    }
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
+
+.profile-form {
+  background-color: #2140AE;
+  width: 40%;
+  margin: 10px auto;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.profile-form:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.form-group {
+  color: white;
+  width: 70%;
+  margin-bottom: 15px;
+  text-align: center; /* Centrado de todos los textos */
+}
+
+.form-group img {
+  background-color: white;
+  padding: 8px;
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.form-group img:hover {
+  opacity: 0.8;
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 1rem;
+  text-align: center; /* Centrado de las etiquetas */
+  color: white;
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background-color: #F1F1F1;
+  transition: all 0.3s ease;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+  border-color: #071752;
+  box-shadow: 0 0 8px rgba(7, 23, 82, 0.5);
+  background-color: #fff;
+}
+
+textarea {
+  height: 100px;
+}
+
+.final-btns {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  font-size: 1rem;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+button {
+  background-color: #2140AE;
+  color: white;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  color: white;
+  background-color: #132463;
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+a {
+  background-color: white;
+  color: black;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+a:hover {
+  color: white;
+  background-color: #2140AE;
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.error {
+  color: #FF4D4D; /* Rojo brillante para los errores */
+  font-size: 0.875rem; /* Tamaño de fuente adecuado */
+  margin-top: 5px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  position: relative;
+}
+
+.password-container{
+  position: relative;
+}
+
+
+.toggle-password {
+  position: absolute;
+  top: -3px; 
+  right: -40px;
+  border: none;
+  background: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #2140AE;
+  transition: color 0.3s ease;
+}
+.toggle-password:hover{
+  color: white;
+  background-color: unset;
+  transform: scale(1.02);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Efecto cuando el input está en estado inválido */
+input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
+  border-color: #ff4d4d; /* Borde rojo para inputs invalidos */
+  background-color: #fef1f1; /* Fondo suave */
+  box-shadow: 0 0 5px rgba(255, 77, 77, 0.5);
+}
+
+@media (max-width: 1100px) {
+  .profile-form{
+    width: 70%;
+  }
+}
+
+
+@media screen and (max-width: 800px) {
+  .profile-form {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .form-group img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .final-btns {
+    flex-direction: column;
+    gap: 10px;
+    width: fit-content;
+  }
+}
+
+

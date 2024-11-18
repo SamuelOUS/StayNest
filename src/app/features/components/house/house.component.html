@@ -1,0 +1,11 @@
+<app-search-bar (search)="onSearch($event)"/>
+<section class="house-gallery">
+  <ul class="house-list">
+    <div *ngFor="let property of properties()" class="house-item" (click)="goToHouseDetail(property.id!)">
+      <img [src]="property.photos[0]!.url" alt="" width="100">
+      <h3>{{ capitalizeFirstLetter(property.title) }}</h3>
+      <h6>{{ capitalizeFirstLetter(property.address) }}</h6>
+      <p>Precio: $ {{ property.pricePerNight }}</p>
+    </div>
+  </ul>
+</section>
