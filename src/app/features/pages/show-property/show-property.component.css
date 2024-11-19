@@ -14,8 +14,7 @@ section {
     padding: 20px;
 }
 
-
-span{
+span {
     color: #2140AE;
     font-weight: bold;
     font-size: 15px;
@@ -27,7 +26,6 @@ span{
     align-items: center;
     margin-bottom: 30px;
 }
-
 
 .house-images {
     display: flex;
@@ -53,7 +51,6 @@ span{
 .house-images img:hover {
     transform: scale(1.05);
 }
-
 
 .house-content {
     display: flex;
@@ -84,7 +81,6 @@ span{
     margin: 5px 0;
 }
 
-
 .price {
     height: fit-content;
     background-color: #2140AE;
@@ -97,7 +93,6 @@ span{
     justify-content: center;
     text-align: center;
 }
-
 
 .price h3 {
     font-size: 22px;
@@ -114,20 +109,20 @@ span{
     font-size: 16px;
 }
 
-.reviews{
+.reviews {
     display: flex;
     flex-direction: column;
     margin: 5px 10px;
 }
 
-.reviews nav{
+.reviews nav {
     display: flex;
     flex-direction: column;
     margin-top: 30px;
     gap: 5px;
 }
 
-nav button{
+nav button {
     margin-top: 5px;
     width: fit-content;
 }
@@ -159,43 +154,42 @@ textarea {
     background-color: #F1F1F1;
     transition: all 0.3s ease;
     text-align: justify;
-  }
-  textarea:focus {
+}
+
+textarea:focus {
     border: 0;
     border-color: #071752;
     box-shadow: 0 0 8px rgba(7, 23, 82, 0.5);
     background-color: #fff;
-  }
-
+}
 
 .rating-input {
     cursor: pointer;
     overflow: hidden;
 }
 
-
 .fa {
-    font-size: 24px; /* Size of the stars */
-    color: lightgray; /* Default color for empty stars */
-    transition: color 0.3s ease; /* Smooth transition for color change */
+    font-size: 24px;
+    color: lightgray;
+    transition: color 0.3s ease;
 }
 
-.star-input{
+.star-input {
     display: none;
 }
 
 .fa-star {
     cursor: pointer;
-    color: gold; 
+    color: gold;
     transition: transform 0.3s ease-in-out;
 }
+
 .fa-star:hover {
     opacity: 0.5;
     transform: scale(1.01);
 }
 
-
-.review img{
+.review img {
     width: 40px;
     height: 40px;
     border-radius: 5px;
@@ -216,7 +210,6 @@ textarea {
     font-weight: bold;
     color: #2140AE;
 }
-
 
 .user-datiling {
     display: flex;
@@ -246,13 +239,12 @@ textarea {
     color: #2140AE;
 }
 
-.user-datiling h3{
+.user-datiling h3 {
     font-size: 20px;
     margin-bottom: 10px;
     color: #000;
     font-weight: bold;
 }
-
 
 @media (max-width: 768px) {
     .house-content {
@@ -268,11 +260,11 @@ textarea {
         padding: 15px;
     }
 
-    .house-detailing{
-        margin: 0
+    .house-detailing {
+        margin: 0;
     }
 
-    .reviews-detailing{
+    .reviews-detailing {
         margin: 5px 10px;
         padding: 5px 10px;
     }
@@ -300,3 +292,73 @@ textarea {
         font-size: 14px;
     }
 }
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 10px;
+    width: 700px;
+    max-width: 90%;
+    height: auto;  /* Ajusta la altura según el contenido */
+    text-align: center;
+    margin-left: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    position: relative; /* Para asegurar el correcto posicionamiento */
+}
+
+.modal h3 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: #111111;
+}
+
+.label-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los elementos dentro de .label-content */
+    gap: 20px; /* Espacio entre los elementos */
+    width: 100%; /* Asegura que ocupe todo el espacio disponible */
+}
+
+label {
+    font-size: 18px;
+    margin-bottom: 8px; /* Espacio entre el label y el input */
+}
+
+input[type="date"] {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 60%;  /* Establece un ancho fijo para el input */
+    text-align: center;  /* Centra el texto dentro del input */
+}
+.close {
+
+    position: absolute;
+    top: 15px;
+    right: 15px; /* Ubicado dentro de .modal-content en la esquina superior izquierda */
+    font-size: 24px;
+    color: #2140AE;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #071752;
+}
+
+
+
