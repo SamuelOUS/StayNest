@@ -1,0 +1,14 @@
+<div class="my-bookings">
+    <h2>Mis Reservas</h2>
+    @for (booking of bookings; track booking.id) {
+      <div class="booking">
+        <h3>{{ booking.property.title }}</h3>
+        <p>Inicio: {{ booking.startDate | date }}</p>
+        <p>Fin: {{ booking.endDate | date }}</p>
+        <p>Precio Total: ${{ booking.totalPrice }}</p>
+      </div>
+    }@empty {
+      <p>No tienes reservas aún.</p>
+    }
+</div>
+  

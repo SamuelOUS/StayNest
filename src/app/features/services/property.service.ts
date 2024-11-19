@@ -20,11 +20,34 @@ export class PropertyService {
     );
   }
 
+  getUserProperties(): Observable<Property[]>{
+    return this.http.get<Property[]>(
+      'http://localhost:3000/api/properties/user', this.getHeaders()
+    );
+  }
+
   createProperty(property: Property) {
     return this.http
       .post('http://localhost:3000/api/properties', property, this.getHeaders())
       .pipe(tap())
       .subscribe();
+  }
+
+  updateProperty(propertyId:string, property: Property) {
+    return this.http.patch(
+      `http://localhost:3000/api/properties/${propertyId}`, property, this.getHeaders()
+    ).subscribe(result => {
+      if (!result) throw new Error
+    })
+  }
+
+  deleteProperty(propertyId: string){
+    return this.http.delete(
+      `http://localhost:3000/api/properties/${propertyId}`,
+      this.getHeaders()
+    ).subscribe(result => {
+      if (!result) throw new Error
+    })
   }
 
   addReview(review: Review): Observable<Review> {

@@ -24,7 +24,7 @@ export class HouseComponent {
     this.allProperties = this.properties();
   }
 
-  goToHouseDetail(propertyId: number) {
+  goToHouseDetail(propertyId: string) {
     this.router.navigate(['/show-property', propertyId]);
   }
 

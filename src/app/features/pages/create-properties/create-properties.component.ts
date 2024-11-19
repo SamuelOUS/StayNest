@@ -4,8 +4,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { v4 as uuid4 } from "uuid";
 import Swal from 'sweetalert2';
-import { HeaderComponent } from '../../../layout/components/header/header.component';
-import { FooterComponent } from '../../../layout/components/footer/footer.component';
 import { UserService } from '../../../auth/services/user.service';
 import { SupabaseBucketService } from '../../../services/supabase.service';
 import { PropertyService } from '../../services/property.service';
