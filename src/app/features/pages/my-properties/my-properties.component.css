@@ -63,3 +63,28 @@
     font-size: medium;
     margin-bottom: 10px;
   }
+
+  .house-item footer{
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    color: #2140AE;
+    border-radius: 0 0 5px 5px !important;
+    height: 40px;
+    gap: 20px;
+    padding: 0 10px;
+    margin: 0;
+    justify-content: end;
+  }
+
+i{
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+i:hover {
+  color: #34345e;
+  cursor: pointer;
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}

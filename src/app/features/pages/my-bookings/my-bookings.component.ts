@@ -23,10 +23,7 @@ export class MyBookingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.bookingsService.getUserBookings().subscribe(
-      (data) => {
-        console.log("data: ",data)
-        this.bookings = data
-      }
+      data => this.bookings = data
     )
   }
 
