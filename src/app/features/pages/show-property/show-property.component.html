@@ -1,67 +1,94 @@
 <section class="house-detailing">
     <div class="house-images">
-        <nav *ngFor="let photo of property.photos">
-            <img [src]="photo.url" alt="img" />
-        </nav>
+      <nav *ngFor="let photo of property.photos">
+        <img [src]="photo.url" alt="img" />
+      </nav>
     </div>
     <div class="house-content">
-        <div class="header-house">
-            <h2>{{ property.title }}</h2>
-            <p><span>Dirección:</span> {{ property.address}}</p>
-            <p><span>Descripción:</span> {{ property.description }}</p>
-            <p><span>Habitaciones:</span> {{ property.bedrooms}}</p>
-            <p><span>Baños:</span> {{ property.bathrooms}}</p>
-            <p><span>Capacidad:</span> {{ property.capacity }}</p>
-        </div>
-        <div class="price">
-            <h3><span class="bold">${{ property.pricePerNight }} COP</span> por noche</h3>
-            <p>Solicítala con el arrendador</p>
-            <button style="background-color: white; color: black;">Solicitar</button>
-        </div>
+      <div class="header-house">
+        <h2>{{ property.title }}</h2>
+        <p><span>Dirección:</span> {{ property.address }}</p>
+        <p><span>Descripción:</span> {{ property.description }}</p>
+        <p><span>Habitaciones:</span> {{ property.bedrooms }}</p>
+        <p><span>Baños:</span> {{ property.bathrooms }}</p>
+        <p><span>Capacidad:</span> {{ property.capacity }}</p>
+      </div>
+      <div class="price">
+        <h3>
+          <span class="bold">${{ property.pricePerNight }} COP</span> por noche
+        </h3>
+        <p>Solicítala con el arrendador</p>
+        <button style="background-color: white; color: black;" (click)="openModal()">
+          Solicitar
+        </button>
+      </div>
     </div>
-</section>
-
-
-<section class="reviews-detailing">
+  </section>
+  
+  <section class="reviews-detailing">
     <div class="reviews">
-        <h3>Comentarios</h3>
-        <div *ngFor="let review of property.reviews" class="review">
-            <img [src]="review.user!.profilePicture || 'user.png'" alt="">
-            <p>{{ review.user!.name}} 
-                <app-star [rating]="review.rating"></app-star>
-            </p>
-            <p><span>Comentario:</span> {{ review.comment }}</p>
-            <p style="font-size: small;">{{ review.createdAt | date:'longDate' }}</p>
+      <h3>Comentarios</h3>
+      <div *ngFor="let review of property.reviews" class="review">
+        <img [src]="review.user!.profilePicture || 'user.png'" alt="" />
+        <p>
+          {{ review.user!.name }}
+          <app-star [rating]="review.rating"></app-star>
+        </p>
+        <p><span>Comentario:</span> {{ review.comment }}</p>
+        <p style="font-size: small;">{{ review.createdAt | date: 'longDate' }}</p>
+      </div>
+      <nav>
+        <h3>Añadir reseña</h3>
+        <div class="rating-input">
+          <label *ngFor="let star of [1, 2, 3, 4, 5]">
+            <i
+              class="fa"
+              [ngClass]="{
+                'fa-star': star <= newRating,
+                'fa-star-o': star > newRating
+              }"
+            ></i>
+            <input
+              type="radio"
+              name="rating"
+              [value]="star"
+              [(ngModel)]="newRating"
+              class="star-input"
+            />
+          </label>
         </div>
-        <nav>
-            <h3>Añadir reseña</h3>
-            <div class="rating-input">
-                @for (star of [1, 2, 3, 4, 5]; track $index) {
-                <label>
-                    <i class="fa" [ngClass]="{'fa-star': star <= newRating, 'fa-star-o': star > newRating}"></i>
-                    <input
-                    type="radio" 
-                    name="rating" 
-                        [value]="star" 
-                        [(ngModel)]="newRating" 
-                        class="star-input"
-                    />
-                </label>
-                }
-            </div>
-            <textarea 
-                [(ngModel)]="newReviewComment" 
-                placeholder="Escribe tu comentario aquí" 
-            ></textarea>
-            <button (click)="addReview()" class="add-review-button">Añadir comentario</button>
-        </nav>
+        <textarea
+          [(ngModel)]="newReviewComment"
+          placeholder="Escribe tu comentario aquí"
+        ></textarea>
+        <button (click)="addReview()" class="add-review-button">
+          Añadir comentario
+        </button>
+      </nav>
     </div>
-</section>
-
-<section class="user-datiling">
+  </section>
+  
+  <section class="user-datiling">
     <h3>Información del propietario</h3>
-    <img [src]="property.user!.profilePicture || 'user.png'" alt="owner"  />
+    <img [src]="property.user!.profilePicture || 'user.png'" alt="owner" />
     <p><span>Nombre:</span> {{ property.user!.name }}</p>
-    <p><span>Email:</span> {{property.user!.email }}</p>
-</section>
+    <p><span>Email:</span> {{ property.user!.email }}</p>
+  </section>
+  
+  <!-- Modal -->
+  <div class="modal" *ngIf="isModalOpen">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h3>Selecciona las fechas para reservar</h3>
+      <div class="label-content">
+        <label for="startDate">Fecha de inicio:</label>
+        <input type="date" id="startDate" [(ngModel)]="selectedStartDate" />
+        
+        <label for="endDate">Fecha de fin:</label>
+        <input type="date" id="endDate" [(ngModel)]="selectedEndDate" />
+        
+        <button (click)="submitReservation()">Reservar</button>
+      </div>
 
+    </div>
+  </div>
