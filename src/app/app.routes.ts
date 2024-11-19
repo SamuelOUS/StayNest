@@ -8,14 +8,15 @@ import { authGuard } from './auth/guards/auth.guard';
 import { ownerAuthGuard } from './auth/guards/ownerAuth.guard';
 import { CreatePropertiesComponent } from './features/pages/create-properties/create-properties.component';
 import { MyPropertiesComponent } from './features/pages/my-properties/my-properties.component';
+import { EditPropertyComponent } from './features/pages/edit-property/edit-property.component';
 
 // Definición de las rutas
 export const routes: Routes = [
     { path:'home', component: HouseComponent },
     { path:'profile', component: ProfileComponent, canActivate: [authGuard] },
-    // ToDo: Create bookings component and 'myProperties' component
     { path:'my-bookings', component: MyBookingsComponent , canActivate: [authGuard] },
     { path:'my-properties', component: MyPropertiesComponent, canActivate: [ownerAuthGuard] },
+    { path:'edit-property/:id', component: EditPropertyComponent, canActivate: [ownerAuthGuard] },
     { path:'create-property', component: CreatePropertiesComponent, canActivate: [ownerAuthGuard] },
     { path: 'show-property/:id', component: ShowPropertyComponent },
     { path:'help-center', component:HelpCenterComponent },

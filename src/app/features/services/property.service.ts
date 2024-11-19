@@ -33,6 +33,23 @@ export class PropertyService {
       .subscribe();
   }
 
+  updateProperty(propertyId:string, property: Property) {
+    return this.http.patch(
+      `http://localhost:3000/api/properties/${propertyId}`, property, this.getHeaders()
+    ).subscribe(result => {
+      if (!result) throw new Error
+    })
+  }
+
+  deleteProperty(propertyId: string){
+    return this.http.delete(
+      `http://localhost:3000/api/properties/${propertyId}`,
+      this.getHeaders()
+    ).subscribe(result => {
+      if (!result) throw new Error
+    })
+  }
+
   addReview(review: Review): Observable<Review> {
     return this.http.post<Review>(
       'http://localhost:3000/api/properties/review',

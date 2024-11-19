@@ -1,0 +1,77 @@
+    <section>
+        <div class="left-container">
+        <h2>Sube al menos 4 fotos de la propiedad</h2>
+        <div class="images-box">
+            @for (image of this.allPhotos; track $index) {
+            <article>
+                <img [src]="image.url" />
+            </article>
+            }
+            <label id="addPhoto" title="Upload Image" for="file">
+            <img src="add.png"/>
+            </label>
+            <input type="file" id="file" (change)="uploadImage($event)" />
+        </div>
+        </div>
+        <form [formGroup]="editPropertyForm">
+        <h5>Título</h5>
+        <input
+            type="text"
+            class="input-text"
+            placeholder="Título de la propiedad"
+            formControlName="title"
+        />
+    
+        <h5>Dirección</h5>
+        <input
+            type="text"
+            class="input-text"
+            placeholder="Dirección"
+            formControlName="address"
+        />
+    
+        <h5>Habitaciones</h5>
+        <input
+            type="number"
+            class="input-text"
+            placeholder="Alcobas"
+            formControlName="bedrooms"
+        />
+    
+        <h5>Capacidad</h5>
+        <input
+            type="number"
+            class="input-text"
+            placeholder="Capacidad max."
+            formControlName="capacity"
+        />
+    
+        <h5>Baños</h5>
+        <input
+            type="number"
+            class="input-text"
+            placeholder="Baños"
+            formControlName="bathrooms"
+        />
+    
+        <h5>Descripción</h5>
+        <textarea
+            class="input-text"
+            placeholder="Descripción"
+            formControlName="description"
+        ></textarea>
+    
+        <h5>Precio por noche</h5>
+        <input
+            type="number"
+            class="input-text"
+            placeholder="Precio por noche"
+            formControlName="price"
+        />
+        <footer>
+            <button class="btn-aceptar" (click)="onSubmit()">Actualizar</button>
+            <button class="btn-cancelar" (click)="onCancel()">Cancelar</button>
+        </footer>
+        </form>
+    </section>
+    
