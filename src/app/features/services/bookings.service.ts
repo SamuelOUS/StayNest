@@ -1,21 +1,29 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Booking } from '../interfaces/booking.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BookingsService {
-  private apiUrl = 'http://localhost:3000/bookings'; // Cambia esto por la URL de tu API
 
   constructor(private http: HttpClient) {}
 
   /**
-   * Obtiene las reservas de un usuario específico.
-   * @param userId ID del usuario.
+   * Obtiene las reservas de un usuario específico por el token guardado en el sessionStorage.
    * @returns Observable con las reservas.
    */
-  getUserBookings(userId: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/user/${userId}`);
+  getUserBookings(): Observable<Booking[]> {
+    return this.http.get<Booking[]>('http://localhost:3000/api/bookings', this.getHeaders())
+  }
+
+  private getHeaders(){
+    const token = sessionStorage.getItem('token') || '';
+    return {
+      headers: new HttpHeaders({
+          Authorization: `Bearer ${token}`,
+      })
+    }
   }
 }

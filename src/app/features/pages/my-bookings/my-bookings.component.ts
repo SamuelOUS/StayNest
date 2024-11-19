@@ -3,28 +3,28 @@ import { BookingsService } from '../../services/bookings.service';
 import { CommonModule } from '@angular/common'; 
 import { RouterLink } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http'; 
+import { Booking } from '../../interfaces/booking.interface';
+import { UserService } from '../../../auth/services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-my-bookings',
   standalone: true, 
-  imports: [CommonModule, RouterLink, HttpClientModule], 
+  imports: [CommonModule], 
   templateUrl: './my-bookings.component.html',
   styleUrls: ['./my-bookings.component.css']
 })
 export class MyBookingsComponent implements OnInit {
-  bookings: any[] = [];
-  userId = 'USER_ID'; 
+  bookings: Booking[] = [];
 
   private readonly bookingsService = inject(BookingsService);
 
   ngOnInit(): void {
-    this.loadBookings();
-  }
-
-  loadBookings(): void {
-    this.bookingsService.getUserBookings(this.userId).subscribe(
-      (data) => (this.bookings = data),
-      (error) => console.error('Error al obtener las reservas:', error)
-    );
+    this.bookingsService.getUserBookings().subscribe(
+      (data) => {
+        console.log("data: ",data)
+        this.bookings = data
+      }
+    )
   }
 }
