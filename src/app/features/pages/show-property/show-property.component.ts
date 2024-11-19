@@ -53,7 +53,6 @@ export class ShowPropertyComponent implements OnInit {
           }
         );
       } catch (error) {
-        console.error('Error adding review:', error);
         Swal.fire({
           icon:'error',
           text: 'No se pudo agregar el comentario'
