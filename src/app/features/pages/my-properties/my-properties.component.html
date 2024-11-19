@@ -1,0 +1,17 @@
+<section class="house-gallery">
+    <h3>Mis propiedades</h3>
+    <ul class="house-list">
+    @for (property of properties; track property.id) {
+        <div class="house-item" (click)="goToHouseDetail(property.id!)">
+            <img [src]="property.photos[0]!.url" alt="" width="100">
+            <h3>{{ capitalizeFirstLetter(property.title) }}</h3>
+            <h6>{{ capitalizeFirstLetter(property.address) }}</h6>
+            <p>Precio: $ {{ property.pricePerNight }}</p>
+        </div>
+    }@empty {
+        <p>No has agredado ninguna propiedad.</p>
+    }
+    </ul>
+    <button [routerLink]="['/create-property']">Agregar propiedad</button>
+</section>
+  
