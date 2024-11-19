@@ -1,14 +1,25 @@
 <div class="my-bookings">
-    <h2>Mis Reservas</h2>
-    @for (booking of bookings; track booking.id) {
-      <div class="booking">
+  <h2>Mis Reservas</h2>
+  @for (booking of bookings; track booking.id) {
+    <div class="booking">
+
+      <div class="left-section">
         <h3>{{ booking.property.title }}</h3>
-        <p>Inicio: {{ booking.startDate | date }}</p>
-        <p>Fin: {{ booking.endDate | date }}</p>
-        <p>Precio Total: ${{ booking.totalPrice }}</p>
+        <img [src]="booking.property!.photos![0].url" alt="Imagen de la propiedad" />
+        <p class="price">Precio Total: ${{ booking.totalPrice }}</p>
       </div>
-    }@empty {
-      <p>No tienes reservas aún.</p>
-    }
+
+      <div class="right-section">
+        <p><span>Dirección:</span> {{ booking.property.address }}</p>
+        <p><span>Inicio:</span> {{ booking.startDate | date }}</p>
+        <p><span>Fin:</span> {{ booking.endDate | date }}</p>
+        <div class="actions">
+          <button (click)="goToPropertyDetail(booking.property.id!)">Ver detalles</button>
+        </div>
+      </div>
+    </div>
+  }
+  @empty {
+    <p>No tienes reservas aún.</p>
+  }
 </div>
-  
