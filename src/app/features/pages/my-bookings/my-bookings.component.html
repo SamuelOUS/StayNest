@@ -4,17 +4,17 @@
     <div class="booking">
 
       <div class="left-section">
-        <h3>{{ booking.property.title }}</h3>
+        <h3>{{ booking.property!.title }}</h3>
         <img [src]="booking.property!.photos![0].url" alt="Imagen de la propiedad" />
         <p class="price">Precio Total: ${{ booking.totalPrice }}</p>
       </div>
 
       <div class="right-section">
-        <p><span>Dirección:</span> {{ booking.property.address }}</p>
+        <p><span>Dirección:</span> {{ booking.property!.address }}</p>
         <p><span>Inicio:</span> {{ booking.startDate | date }}</p>
         <p><span>Fin:</span> {{ booking.endDate | date }}</p>
         <div class="actions">
-          <button (click)="goToPropertyDetail(booking.property.id!)">Ver detalles</button>
+          <button (click)="goToPropertyDetail(booking.property!.id!)">Ver detalles</button>
         </div>
       </div>
     </div>
