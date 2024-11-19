@@ -20,6 +20,7 @@ section {
 
 
 .left-container {
+  overflow-x:hidden ;
   flex: 0.45; 
   display: flex;
   flex-direction: column;
@@ -35,11 +36,12 @@ section {
 }
 
 .images-box {
+  overflow-x: hidden;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 15px;
-  height: 950px;
-  overflow-y: scroll;
+  height: 100%;
   scrollbar-width: thin; 
   scrollbar-color: #2140AE #f9f9f9;
   padding-right: 10px;
@@ -171,30 +173,12 @@ textarea.input-text {
   resize: none;
   height: 80px;
 }
-
-
-button {
-  background-color: #2140AE;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  width: 80%;
-  margin-left: 50px;
-
-}
-button:hover{
-  background-color: #071752;
-}
-
 .btn-aceptar {
-  background-color: #3a95ff;
-  color: white;
+  background-color: white;
+  color: black;
 }
-
 .btn-aceptar:hover {
-  background-color: #144379;
+  background-color: rgb(131, 149, 253);
 }
 
 .btn-cancelar {
@@ -206,6 +190,13 @@ button:hover{
   background-color: #6e1010;
 }
 
+footer{
+  background-color: inherit;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+}
 
 @media (max-width: 880px) {
   section {

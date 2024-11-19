@@ -20,6 +20,12 @@ export class PropertyService {
     );
   }
 
+  getUserProperties(): Observable<Property[]>{
+    return this.http.get<Property[]>(
+      'http://localhost:3000/api/properties/user', this.getHeaders()
+    );
+  }
+
   createProperty(property: Property) {
     return this.http
       .post('http://localhost:3000/api/properties', property, this.getHeaders())
