@@ -18,6 +18,13 @@ export class BookingsService {
     return this.http.get<Booking[]>('http://localhost:3000/api/bookings', this.getHeaders())
   }
 
+  createBooking(booking:Booking){
+    console.log(booking)
+    return this.http
+      .post<Booking>('http://localhost:3000/api/bookings', booking, this.getHeaders())
+
+  }
+
   private getHeaders(){
     const token = sessionStorage.getItem('token') || '';
     return {
