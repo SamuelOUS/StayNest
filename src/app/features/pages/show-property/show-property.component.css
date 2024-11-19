@@ -31,6 +31,7 @@ span{
 
 .house-images {
     display: flex;
+    justify-content: space-evenly;
     overflow-x: auto;
     overflow-y: hidden;
     scroll-behavior: smooth;
@@ -57,6 +58,7 @@ span{
 .house-content {
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
     width: 100%;
     padding: 20px 0;
     margin-top: 20px;
@@ -77,16 +79,17 @@ span{
 
 .header-house p {
     font-size: 16px;
+    text-align: start;
     color: #666;
     margin: 5px 0;
 }
 
 
 .price {
-    flex: 1;
+    height: fit-content;
     background-color: #2140AE;
     color: white;
-    padding: 20px;
+    padding: 20px 40px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -111,31 +114,86 @@ span{
     font-size: 16px;
 }
 
-button {
-    background-color: #ff3d3d;
-    color: white;
-    padding: 10px 30%;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;  
+.reviews{
+    display: flex;
+    flex-direction: column;
+    margin: 5px 10px;
 }
 
-button:hover{
-    background-color: #071752;
+.reviews nav{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    gap: 5px;
 }
 
+nav button{
+    margin-top: 5px;
+    width: fit-content;
+}
 
 .reviews-detailing h3 {
-    font-size: 20px;
+    font-size: larger;
     margin-bottom: 10px;
     color: #000;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .review {
     padding: 10px 0;
     border-bottom: 1px solid #ddd;
 }
+
+textarea {
+    font-family: inherit;
+    width: 70%;
+    height: 100px;
+    max-width: 98%;
+    max-height: 300px;
+    min-width: 30%;
+    min-height: 50px;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background-color: #F1F1F1;
+    transition: all 0.3s ease;
+    text-align: justify;
+  }
+  textarea:focus {
+    border: 0;
+    border-color: #071752;
+    box-shadow: 0 0 8px rgba(7, 23, 82, 0.5);
+    background-color: #fff;
+  }
+
+
+.rating-input {
+    cursor: pointer;
+    overflow: hidden;
+}
+
+
+.fa {
+    font-size: 24px; /* Size of the stars */
+    color: lightgray; /* Default color for empty stars */
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+.star-input{
+    display: none;
+}
+
+.fa-star {
+    cursor: pointer;
+    color: gold; 
+    transition: transform 0.3s ease-in-out;
+}
+.fa-star:hover {
+    opacity: 0.5;
+    transform: scale(1.01);
+}
+
 
 .review img{
     width: 40px;

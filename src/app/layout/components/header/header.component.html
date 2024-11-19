@@ -2,9 +2,9 @@
   <div class="container">
       <img [routerLink]="['/home']" class="logo" src="logo.png">
       <div class="right-menu">
-          <button mat-button [matMenuTriggerFor]="menu" class="menu-btn">
+          <a mat-button [matMenuTriggerFor]="menu" class="menu-btn">
             <img src="/menu.png" alt="">
-          </button>
+          </a>
           <mat-menu #menu="matMenu">
             @if (user().username) {
               <a mat-menu-item [routerLink]="['/profile']">Mi Perfil</a>
