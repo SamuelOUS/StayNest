@@ -32,6 +32,7 @@ export class ShowPropertyComponent implements OnInit {
 
   ngOnInit(): void {
     this.propertyId = this.route.snapshot.paramMap.get('id')!;
+    console.log("id: ",this.propertyId)
     this.propertyService.getProperty(this.propertyId)
       .subscribe(property => this.property = property);   
   }
