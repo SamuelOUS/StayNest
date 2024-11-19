@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Booking } from '../../interfaces/booking.interface';
 import { UserService } from '../../../auth/services/user.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-bookings',
@@ -18,6 +19,7 @@ export class MyBookingsComponent implements OnInit {
   bookings: Booking[] = [];
 
   private readonly bookingsService = inject(BookingsService);
+  private readonly router = inject(Router);
 
   ngOnInit(): void {
     this.bookingsService.getUserBookings().subscribe(
@@ -26,5 +28,9 @@ export class MyBookingsComponent implements OnInit {
         this.bookings = data
       }
     )
+  }
+
+  goToPropertyDetail(propertyId: string) {
+    this.router.navigate(['/show-property', propertyId]);
   }
 }
