@@ -5,7 +5,12 @@ import { ModalService } from '../../../services/modal.service';
 import { User } from '../../interfaces/user.interface';
 import { UserService } from '../../services/user.service';
 import Swal from 'sweetalert2';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -22,13 +27,12 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatInputModule,
     MatCheckboxModule,
     MatDialogModule,
-    MatProgressBarModule
+    MatProgressBarModule,
   ],
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-
   registerForm!: FormGroup;
   passwordStrength: string = '';
   passwordStrengthValue: number = 0;
@@ -42,7 +46,7 @@ export class RegisterComponent implements OnInit {
     username: '',
     password: '',
     email: '',
-  }
+  };
 
   get usernameErrors(): string {
     const usernameControl = this.registerForm.get('username');
@@ -56,7 +60,7 @@ export class RegisterComponent implements OnInit {
       return 'El nombre de usuario debe comenzar con una letra y solo puede contener letras y números';
     }
     return '';
-  };
+  }
 
   ngOnInit(): void {
     this._buildForm();
@@ -64,20 +68,35 @@ export class RegisterComponent implements OnInit {
 
   private _buildForm(): void {
     this.registerForm = this.formBuilder.nonNullable.group({
-      name: ['', [Validators.required]],
-      username: [
-        '', 
+      name: [
+        '',
         [
-          Validators.required, 
-          Validators.minLength(8), 
-          Validators.maxLength(17),
-          Validators.pattern(/^[a-zA-Z][a-zA-Z0-9]{7,14}$/) 
-        ]
+          Validators.required,
+          Validators.pattern(
+            /^[a-zA-ZÁÉÍÓÚáéíóúÜüñÑ0-9]+(?: [a-zA-ZÁÉÍÓÚáéíóúÜüñÑ0-9]+)*$/
+          ),
+        ],
+      ],
+      username: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(16),
+          Validators.pattern(/^[a-zA-Z][a-zA-Z0-9]{7,16}$/),
+        ],
       ],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(17)]],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(25),
+        ],
+      ],
       rePassword: ['', [Validators.required]],
-      isOwner: [false]
+      isOwner: [false],
     });
   }
 
@@ -121,7 +140,10 @@ export class RegisterComponent implements OnInit {
     if (!this.registerForm.valid || this.passwordStrength !== 'Alta') {
       Swal.fire({
         title: 'Mal registro :(',
-        text: this.passwordStrength !== 'Alta' ? 'La contraseña no es segura' : 'Diligencia los campos correctamente',
+        text:
+          this.passwordStrength !== 'Alta'
+            ? 'Contraseña insegura'
+            : 'Diligencia los campos correctamente',
         icon: 'error',
       });
       return;
@@ -143,21 +165,23 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    this.userService.register({ name, username, email, password, isOwner }).subscribe({
-      next:() => {
-        Swal.fire({
-          text: 'Registro exitoso',
-          icon: 'success',
-        })
-      },
-      error: (error) => {
-        Swal.fire({
-          title: 'Error',
-          text: error,
-          icon: 'error',
-        })
-      }
-    })
+    this.userService
+      .register({ name, username, email, password, isOwner })
+      .subscribe({
+        next: () => {
+          Swal.fire({
+            text: 'Registro exitoso',
+            icon: 'success',
+          });
+        },
+        error: (error) => {
+          Swal.fire({
+            title: 'Error',
+            text: error,
+            icon: 'error',
+          });
+        },
+      });
   }
 
   openLogIn(): void {
