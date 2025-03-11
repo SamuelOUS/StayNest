@@ -72,7 +72,7 @@ export class UserService {
       );
   }
 
-  private setUser(user: User): void {
+  setUser(user: User): void {
     localStorage.setItem('userLogged', JSON.stringify(user));
     this.currentUser.set(user);
   }

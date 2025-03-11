@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, signal} from '@angular/core';
+import { Component, inject, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
@@ -84,7 +84,7 @@ export class CreatePropertiesComponent implements OnDestroy {
     if (!this.createPropertyForm.valid) {
       Swal.fire({
         icon: "error",
-        text: 'Formulario inválido, completa todos los campos',
+        text: 'Formulario inválido, completa todos los campos correctamente',
       });
       return;
     }
