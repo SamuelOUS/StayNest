@@ -2,7 +2,7 @@
     <h3>Mis propiedades</h3>
     <ul class="house-list">
     @for (property of properties; track property.id) {
-        <div class="house-item" (click)="goToHouseDetail(property.id!)">
+        <a class="house-item" (click)="goToHouseDetail(property.id!)">
             <img [src]="property.photos[0]!.url" alt="" width="100">
             <h3>{{ capitalizeFirstLetter(property.title) }}</h3>
             <h6>{{ capitalizeFirstLetter(property.address) }}</h6>
@@ -13,7 +13,7 @@
                 <a (click)="deleteProperty(property.id!)"><i title="Delete" class="fas fa-trash-alt"></i></a>
             </footer>
             }
-        </div>
+        </a>
     }@empty {
         <p>No has agredado ninguna propiedad.</p>
     }

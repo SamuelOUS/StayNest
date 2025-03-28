@@ -15,7 +15,7 @@ import {
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   currentUser = signal<User>({ name: '', username: '', isOwner: false });
 
@@ -100,7 +100,7 @@ export class UserService {
   }
 
   private getHeaders(){
-    const token = sessionStorage.getItem('token') || '';
+    const token = sessionStorage.getItem('token') ?? '';
     return {
       headers: new HttpHeaders({
           Authorization: `Bearer ${token}`,

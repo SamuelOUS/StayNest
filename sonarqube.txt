@@ -1,0 +1,2 @@
+Run:
+sonar \  -Dsonar.host.url=https://sonarcloud.io \  -Dsonar.token=8d3abec250e90a66a330dd8e2c2750dcd91ac262 \  -Dsonar.organization=staynest-front

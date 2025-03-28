@@ -4,12 +4,12 @@
     <div class="images-box">
       @for (image of uploadedUrls; track image) {
         <article>
-          <img src="{{ image.url }}" />
-          <span class="trash-icon" (click)="deleteImage(image.url)">🗑️</span>
+          <img src="{{ image.url }}" alt="House"/>
+          <a class="trash-icon" (click)="deleteImage(image.url)">🗑️</a>
         </article>
       }
       <label id="addPhoto" title="Upload Image" for="file">
-        <img src="add.png"/>
+        <img alt="Add" src="add.png"/>
       </label>
       <input type="file" id="file" (change)="uploadImage($event)" />
     </div>

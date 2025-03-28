@@ -30,11 +30,11 @@ export class ShowPropertyComponent implements OnInit {
   selectedEndDate!: string; // Almacena la fecha de fin
 
   constructor(
-    private route: ActivatedRoute,
-    private propertyService: PropertyService,
-    private userService: UserService,
-    private bookingsService: BookingsService,
-    private modalService: ModalService
+    private readonly route: ActivatedRoute,
+    private readonly propertyService: PropertyService,
+    private readonly userService: UserService,
+    private readonly bookingsService: BookingsService,
+    private readonly modalService: ModalService
   ) {}
 
   ngOnInit(): void {
@@ -77,30 +77,25 @@ export class ShowPropertyComponent implements OnInit {
     const differenceInDays = differenceInMilliseconds / (1000 * 60 * 60 * 24);
     const totalPrice = differenceInDays * this.property.pricePerNight;
 
-    this.bookingsService
-      .createBooking({
-        propertyId: this.propertyId,
-        startDate: start,
-        endDate: end,
-        totalPrice,
-      })
-      .pipe(
-        catchError((err) =>
-          throwError(() => {
-            Swal.fire({
-              icon: 'error',
-              text: 'No se pudo realizar la reserva',
-            });
-            return;
-          })
-        )
-      )
-      .subscribe((data) => {
+    this.bookingsService.createBooking({
+      propertyId: this.propertyId,
+      startDate: start,
+      endDate: end, 
+      totalPrice
+    }).pipe(
+      catchError(err => throwError(() => {
         Swal.fire({
-          icon: 'success',
-          text: `Reserva realizada del ${this.selectedStartDate} al ${this.selectedEndDate}. Total a pagar: ${totalPrice}`,
-        });
-      });
+          icon: 'error',
+          text: 'No se pudo realizar la reserva'
+        })
+      }))).subscribe(
+        data =>{
+          Swal.fire({
+            icon: 'success',
+            text: `Reserva realizada del ${this.selectedStartDate} al ${this.selectedEndDate}. Total a pagar: ${totalPrice}`
+          });
+        }
+      )
     this.closeModal();
   }
 

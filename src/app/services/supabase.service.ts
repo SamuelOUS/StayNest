@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
 export class SupabaseBucketService {
   private supabase: SupabaseClient | undefined;
 
-  constructor(private ngZone: NgZone) {
+  constructor(private readonly ngZone: NgZone) {
     this.ngZone.runOutsideAngular(() => {
       this.supabase = createClient(
         environment.supabase.url,

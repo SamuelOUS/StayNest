@@ -8,7 +8,7 @@ import { Booking } from '../interfaces/booking.interface';
 })
 export class BookingsService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   /**
    * Obtiene las reservas de un usuario específico por el token guardado en el sessionStorage.
@@ -26,7 +26,7 @@ export class BookingsService {
   }
 
   private getHeaders(){
-    const token = sessionStorage.getItem('token') || '';
+    const token = sessionStorage.getItem('token') ?? '';
     return {
       headers: new HttpHeaders({
           Authorization: `Bearer ${token}`,

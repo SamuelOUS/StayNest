@@ -1,8 +1,10 @@
 <section class="house-detailing">
     <div class="house-images">
-      <nav *ngFor="let photo of property.photos">
-        <img [src]="photo.url" alt="img" />
-      </nav>
+      @for (photo of property.photos; track $index) {
+        <span>
+          <img [src]="photo.url" alt="propiedad" />
+        </span>
+      }
     </div>
     <div class="house-content">
       <div class="header-house">
@@ -78,7 +80,7 @@
   <!-- Modal -->
   <div class="modal" *ngIf="isModalOpen">
     <div class="modal-content">
-      <span class="close" (click)="closeModal()">&times;</span>
+      <a class="close" (click)="closeModal()">&times;</a>
       <h3>Selecciona las fechas para reservar</h3>
       <div class="label-content">
         <label for="startDate">Fecha de inicio:</label>

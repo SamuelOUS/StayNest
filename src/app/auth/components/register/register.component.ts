@@ -97,21 +97,18 @@
       });
     }
 
-    getPasswordStrength(password: string): string {
-      let strength = 0;
-      if (password.length >= 8) strength += 1;
-      if (/[A-Z]/.test(password)) strength += 1;
-      if (/[0-9]/.test(password)) strength += 1;
-      if (/[\W_]/.test(password)) strength += 1;
-
-      if (strength < 2) {
-        return 'Baja';
-      } else if (strength === 2) {
-        return 'Media';
-      } else {
-        return 'Alta';
-      }
+  getPasswordStrength(password: string): string {
+    let strength = 0;
+    if (password.length >= 8) strength += 1;
+    if (/[A-Z]/.test(password)) strength += 1;
+    if (/\d/.test(password)) strength += 1;
+    if (/[\W_]/.test(password)) strength += 1;
+    if (strength < 2) return 'Baja';
+    if (strength === 2) {
+      return 'Media';
     }
+    return 'Alta';
+  }
 
     checkPasswordStrength(): void {
       const password = this.registerForm.get('password')?.value || '';
