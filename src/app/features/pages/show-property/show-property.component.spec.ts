@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ShowPropertyComponent } from './show-property.component';
 import { ActivatedRoute } from '@angular/router';
-import { of, throwError } from 'rxjs';
+import { of } from 'rxjs';
 import { PropertyService } from '../../services/property.service';
 import { UserService } from '../../../auth/services/user.service';
 import { BookingsService } from '../../services/bookings.service';

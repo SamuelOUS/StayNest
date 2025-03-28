@@ -4,11 +4,11 @@
         <div class="images-box">
             @for (image of this.allPhotos; track $index) {
             <article>
-                <img [src]="image.url" />
+                <img [src]="image.url" alt="Propiedad"/>
             </article>
             }
             <label id="addPhoto" title="Upload Image" for="file">
-            <img src="add.png"/>
+            <img src="add.png" alt="Add"/>
             </label>
             <input type="file" id="file" (change)="uploadImage($event)" />
         </div>

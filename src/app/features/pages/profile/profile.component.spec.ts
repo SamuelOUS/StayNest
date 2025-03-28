@@ -12,7 +12,7 @@ import { ActivatedRoute, provideRouter, RouterLink } from '@angular/router';
 import { UserService } from '../../../auth/services/user.service';
 import { SupabaseBucketService } from '../../../services/supabase.service';
 import Swal from 'sweetalert2';
-import { of, throwError } from 'rxjs';
+import { of } from 'rxjs';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { signal } from '@angular/core';
@@ -100,10 +100,7 @@ describe('ProfileComponent', () => {
   });
 
   describe('onFileUpload', () => {
-    let swalFireSpy: jasmine.Spy;
-
     beforeEach(() => {
-      swalFireSpy = spyOn(Swal, 'fire').and.callThrough();
       spyOn(Swal, 'close').and.callThrough();
     });
 
