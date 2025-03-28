@@ -11,7 +11,7 @@ import { StarComponent } from "../../components/star/star.component";
 import { BookingsService } from '../../services/bookings.service';
 import { LogInComponent } from '../../../auth/components/log-in/log-in.component';
 import { ModalService } from '../../../services/modal.service';
-import { catchError, tap, throwError } from 'rxjs';
+import { catchError, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-show-property',
@@ -30,11 +30,11 @@ export class ShowPropertyComponent implements OnInit {
   selectedEndDate!: string; // Almacena la fecha de fin
 
   constructor(
-    private route: ActivatedRoute,
-    private propertyService: PropertyService,
-    private userService: UserService,
-    private bookingsService: BookingsService,
-    private modalService: ModalService
+    private readonly route: ActivatedRoute,
+    private readonly propertyService: PropertyService,
+    private readonly userService: UserService,
+    private readonly bookingsService: BookingsService,
+    private readonly modalService: ModalService
   ) {}
 
   ngOnInit(): void {
@@ -90,7 +90,6 @@ export class ShowPropertyComponent implements OnInit {
           icon: 'error',
           text: 'No se pudo realizar la reserva'
         })
-        return
       }))).subscribe(
         data =>{
           Swal.fire({

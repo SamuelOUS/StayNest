@@ -1,9 +1,9 @@
 <section>
   <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="profile-form">
     <div class="form-group">
-      <label>Foto de Perfil:</label>
+      <h6>Foto de Perfil:</h6>
       <label class="photo" for="photo">
-        <img title="Change" [src]="uploadedPhoto || user().profilePicture || 'user.png'">
+        <img title="Change" [src]="uploadedPhoto || user().profilePicture || 'user.png'" alt="Perfil">
       </label>
       <input style="display: none;" type="file" id="photo" (change)="onFileUpload($event)">
     </div>

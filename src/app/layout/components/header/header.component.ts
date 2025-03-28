@@ -1,13 +1,12 @@
-import { Component, inject, OnInit, WritableSignal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { RegisterComponent } from '../../../auth/components/register/register.component';
 import { LogInComponent } from '../../../auth/components/log-in/log-in.component';
 import { UserService } from '../../../auth/services/user.service';
-import { Router } from '@angular/router';
-import { RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ModalService } from '../../../services/modal.service';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',

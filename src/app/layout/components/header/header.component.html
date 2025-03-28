@@ -1,6 +1,6 @@
 <header>
   <div class="container">
-      <img [routerLink]="['/home']" class="logo" src="logo.png">
+      <img [routerLink]="['/home']" class="logo" src="logo.png" alt="logo">
       <div class="right-menu">
           <a mat-button [matMenuTriggerFor]="menu" class="menu-btn">
             <img src="/menu.png" alt="">
@@ -21,7 +21,7 @@
             <hr>
             <a mat-menu-item [routerLink]="['/help-center']">Centro de Ayuda</a>
           </mat-menu>
-          <img class="user-icon" [src]="user().profilePicture || 'user.png'">
+          <img class="user-icon" [src]="user().profilePicture || 'user.png'"  alt="perfil">
       </div>
   </div>
 </header>

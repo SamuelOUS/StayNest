@@ -26,12 +26,12 @@ export class EditPropertyComponent implements OnDestroy {
   user;
 
   constructor(
-    private route: ActivatedRoute,
-    private propertyService: PropertyService,
-    private supabaseService: SupabaseBucketService,
-    private userService: UserService,
-    private router: Router,
-    private formBuilder: FormBuilder
+    private readonly route: ActivatedRoute,
+    private readonly propertyService: PropertyService,
+    private readonly supabaseService: SupabaseBucketService,
+    private readonly userService: UserService,
+    private readonly router: Router,
+    private readonly formBuilder: FormBuilder
   ) {
     this.user = this.userService.getUser();
     this.editPropertyForm = this.formBuilder.group({
@@ -130,8 +130,8 @@ export class EditPropertyComponent implements OnDestroy {
     let file: File = input.files![0];
     this.supabaseService.upload(file, fileName, this.user().username, 'staynest')
       .then(data => { 
-        this.uploadedUrls.push({ url: data! })
-        this.allPhotos.push({ url: data! })
+        this.uploadedUrls.push({ url: data })
+        this.allPhotos.push({ url: data })
         Swal.close();
       }).catch(error => {
         Swal.close();

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Property } from '../interfaces/property.interface';
-import { catchError, Observable, tap, throwError } from 'rxjs';
+import { Observable, tap} from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Review } from '../interfaces/review.interface';
 
@@ -8,7 +8,7 @@ import { Review } from '../interfaces/review.interface';
   providedIn: 'root',
 })
 export class PropertyService {
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   getProperties(): Observable<Property[]> {
     return this.http.get<Property[]>('http://localhost:3000/api/properties');
@@ -59,7 +59,7 @@ export class PropertyService {
   }
 
   private getHeaders() {
-    const token = sessionStorage.getItem('token') || '';
+    const token = sessionStorage.getItem('token') ?? '';
     return {
       headers: new HttpHeaders({
         Authorization: `Bearer ${token}`,

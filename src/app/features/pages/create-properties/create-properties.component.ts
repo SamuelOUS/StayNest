@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, signal} from '@angular/core';
+import { Component, inject, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
@@ -24,22 +24,22 @@ export class CreatePropertiesComponent implements OnDestroy {
   createPropertyForm!: FormGroup;
   savedProperty = false
 
-  private formBuilder = inject(FormBuilder)
-  private router = inject(Router)
-  private userService = inject(UserService)
-  private supabaseService = inject(SupabaseBucketService)
-  private propertyService = inject(PropertyService)
+  private readonly formBuilder = inject(FormBuilder)
+  private readonly router = inject(Router)
+  private readonly userService = inject(UserService)
+  private readonly supabaseService = inject(SupabaseBucketService)
+  private readonly propertyService = inject(PropertyService)
 
   constructor(){
     this.user = this.userService.getUser()
     this.createPropertyForm = this.formBuilder.group({
-      title: ['', Validators.required],
-      address: ['', Validators.required],
-      bedrooms: [null, Validators.required],
-      capacity: [null, Validators.required],
-      bathrooms: [null, Validators.required],
-      description: ['', Validators.required],
-      price: [null, Validators.required]
+      title: [ '', [Validators.minLength(3), Validators.maxLength(50)]],
+      address: ['', [Validators.minLength(3), Validators.maxLength(50)]],
+      bedrooms: [null, [Validators.min(1), Validators.max(100)]],
+      capacity: [null, [Validators.min(1), Validators.max(1000)]],
+      bathrooms: [null, [Validators.min(0), Validators.max(100)]],
+      description: ['', [Validators.minLength(10)]],
+      price: [null, [Validators.min(1), Validators.max(999999999999)]]
     });
   }
 
@@ -68,7 +68,7 @@ export class CreatePropertiesComponent implements OnDestroy {
     let file: File = input.files![0];
     this.supabaseService.upload(file, fileName, this.user().username, 'staynest')
       .then(data => { 
-        this.uploadedUrls.push({ url: data! })
+        this.uploadedUrls.push({ url: data })
         Swal.close();
       }).catch(error => {
         Swal.close();
@@ -88,7 +88,7 @@ export class CreatePropertiesComponent implements OnDestroy {
       });
       return;
     }
-    if (this.uploadedUrls.length < 4) {
+    if (this.uploadedUrls.length < 4 || this.uploadedUrls.length > 6) {
       Swal.fire({
         icon: "error",
         text: 'Agrega al menos 4 fotos',
