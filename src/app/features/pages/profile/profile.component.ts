@@ -44,7 +44,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
           [Validators.required, Validators.minLength(3)],
         ],
         biography: [this.user().bio, [Validators.maxLength(500)]],
-        password: ['', [Validators.minLength(8)]],
+        password: [
+          '',
+          [
+            Validators.pattern(
+              /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[\]:;<>,.?/~-]).{8,30}$/
+            ),
+          ],
+        ],
         confirmPassword: [''],
       },
       { validators: this.checkPasswords }
