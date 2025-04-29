@@ -9,6 +9,9 @@ import Swal from 'sweetalert2';
 import { of } from 'rxjs';
 
 describe('RegisterComponent', () => {
+
+  // * Arrange (Preparar)
+
   let component: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
   let userService: jasmine.SpyObj<UserService>;
@@ -62,6 +65,8 @@ describe('RegisterComponent', () => {
     });
   });
 
+  // * Act (Actuar)
+
   describe('onRegister', () => {
     beforeEach(() => {
       component.registerForm.setValue({
@@ -77,10 +82,15 @@ describe('RegisterComponent', () => {
     });
 
     it('should show error if form is invalid', () => {
+      // * Arrange (Preparar)
       spyOn(Swal, 'fire');
+      // * Act (Actuar)
       // Invalida el formulario borrando el nombre
       component.registerForm.get('username')?.setValue('user');
       component.onRegister();
+
+      // * Assert (Afirmar)
+
       expect(Swal.fire).toHaveBeenCalledWith(jasmine.objectContaining({
         icon: 'error'
       }));
@@ -97,11 +107,20 @@ describe('RegisterComponent', () => {
       }));
     });
 
+    // * Fluent Assertions
+
     it('should show error if password strength is not High', () => {
+
+      // ? Espíe el método Swal.fire
       spyOn(Swal, 'fire');
+
+      // ? Del formulario de registro obtenga el campo de la contraseña y asígnele un valor de 'abc'
       component.registerForm.get('password')?.setValue('abc');
       component.passwordStrength = 'Baja';
+      // ? Llame al método de Registrar
       component.onRegister();
+
+      // ? Se espera que Swal.fire se haya llamado con el mensaje de error conteniendo titulo, texto e ícono
       expect(Swal.fire).toHaveBeenCalledWith(jasmine.objectContaining({
         title: 'Mal registro :(',
         text: 'Contraseña insegura',
@@ -110,6 +129,7 @@ describe('RegisterComponent', () => {
     });
 
     it('should show error if passwords do not match', () => {
+      // * Test Dobles 'Spy'
       spyOn(Swal, 'fire');
       component.registerForm.get('rePassword')?.setValue('Different1@');
       component.onRegister();
@@ -127,10 +147,13 @@ describe('RegisterComponent', () => {
       expect(component.registerForm.valid).toBeFalse();
     });
 
+    // * Lenguaje de Gherkin
+    
     it('should show error if email is invalid', () => {
       spyOn(Swal, 'fire');
       component.registerForm.get('email')?.setValue('apla@gmail');
       fixture.detectChanges()
+      // * Fluent Assertions
       expect(component.registerForm.valid).toBeFalse();
     });
 

@@ -81,17 +81,17 @@ export class CreatePropertiesComponent implements OnDestroy {
 
 
   onSubmit() {
-    if (!this.createPropertyForm.valid) {
-      Swal.fire({
-        icon: "error",
-        text: 'Formulario inválido, completa todos los campos correctamente',
-      });
-      return;
-    }
     if (this.uploadedUrls.length < 4 || this.uploadedUrls.length > 6) {
       Swal.fire({
         icon: "error",
         text: 'Agrega al menos 4 fotos',
+      });
+      return;
+    }
+    if (!this.createPropertyForm.valid) {
+      Swal.fire({
+        icon: "error",
+        text: 'Formulario inválido, completa todos los campos correctamente',
       });
       return;
     }

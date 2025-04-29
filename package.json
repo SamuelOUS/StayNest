@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:StayNest": "node dist/stay-nest/server/server.mjs"
+    "serve:ssr:StayNest": "node dist/stay-nest/server/server.mjs",
+    "cypress:open": "cypress open"
   },
   "private": true,
   "dependencies": {
@@ -40,6 +41,7 @@
     "@types/node": "^18.18.0",
     "@types/uuid": "^10.0.0",
     "@types/uuid4": "^2.0.3",
+    "cypress": "^14.3.2",
     "jasmine-core": "~5.2.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
