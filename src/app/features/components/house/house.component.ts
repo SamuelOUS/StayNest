@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Property } from '../../interfaces/property.interface';
 import { PropertyService } from '../../services/property.service';
 import { SearchBarComponent } from '../search-bar/search-bar.component';
@@ -8,7 +8,7 @@ import { SearchBarComponent } from '../search-bar/search-bar.component';
 @Component({
   selector: 'app-house',
   standalone: true,
-  imports: [CommonModule, SearchBarComponent],
+  imports: [CommonModule, SearchBarComponent, NgOptimizedImage],
   templateUrl: './house.component.html',
   styleUrls: ['./house.component.css'],
 })

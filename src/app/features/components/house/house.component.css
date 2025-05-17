@@ -1,4 +1,4 @@
-app-search-bar{
+app-search-bar {
   margin: 0 auto;
 }
 
@@ -26,7 +26,9 @@ app-search-bar{
   border-radius: 8px;
   width: 300px;
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   transition: transform 0.2s;
 }
 .house-item:hover {
@@ -41,7 +43,7 @@ app-search-bar{
 
 .house-item h3 {
   font-size: large;
-  color: #2140AE;
+  color: #2140ae;
   margin: 0;
   padding: 0;
 }
