@@ -77,25 +77,29 @@ export class ShowPropertyComponent implements OnInit {
     const differenceInDays = differenceInMilliseconds / (1000 * 60 * 60 * 24);
     const totalPrice = differenceInDays * this.property.pricePerNight;
 
-    this.bookingsService.createBooking({
-      propertyId: this.propertyId,
-      startDate: start,
-      endDate: end, 
-      totalPrice
-    }).pipe(
-      catchError(err => throwError(() => {
-        Swal.fire({
-          icon: 'error',
-          text: 'No se pudo realizar la reserva'
-        })
-      }))).subscribe(
-        data =>{
-          Swal.fire({
-            icon: 'success',
-            text: `Reserva realizada del ${this.selectedStartDate} al ${this.selectedEndDate}. Total a pagar: ${totalPrice}`
-          });
-        }
+    this.bookingsService
+      .createBooking({
+        propertyId: this.propertyId,
+        startDate: start,
+        endDate: end,
+        totalPrice,
+      })
+      .pipe(
+        catchError((err) =>
+          throwError(() => {
+            Swal.fire({
+              icon: 'error',
+              text: 'No se pudo realizar la reserva',
+            });
+          })
+        )
       )
+      .subscribe((data) => {
+        Swal.fire({
+          icon: 'success',
+          text: `Reserva realizada del ${this.selectedStartDate} al ${this.selectedEndDate}. Total a pagar: ${totalPrice}`,
+        });
+      });
     this.closeModal();
   }
 
