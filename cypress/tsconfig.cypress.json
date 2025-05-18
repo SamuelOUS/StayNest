@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": [
+      "cypress",
+      "@badeball/cypress-cucumber-preprocessor"
+    ],
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "target": "ES2021",
+    "module": "CommonJS"
+  },
+  "include": [
+    "cypress/**/*.ts"
+  ]
+}

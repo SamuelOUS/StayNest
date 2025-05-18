@@ -15,10 +15,3 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
-
-describe('Página principal', () => {
-    it('debería cargar la página y mostrar el título', () => {
-      cy.visit('/');
-      cy.contains('StayNest'); // O cualquier título visible
-    });
-});
