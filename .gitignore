@@ -56,3 +56,4 @@ environment.development.ts
 
 # serenity project
 serenity/node_modules
+serenity/reports/*
