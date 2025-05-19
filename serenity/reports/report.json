@@ -1,0 +1,92 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "inicio-de-sesión;usuario-inicia-sesión-correctamente",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Usuario inicia sesión correctamente",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 121311400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "que el usuario abre la aplicación",
+            "match": {
+              "location": "features\\steps_definitions\\login.steps.ts:36"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1722871600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "abre el menú y selecciona iniciar sesión",
+            "match": {
+              "location": "features\\steps_definitions\\login.steps.ts:40"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 739814800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 6,
+            "name": "introduce su nombre de usuario y contraseña correctamente",
+            "match": {
+              "location": "features\\steps_definitions\\login.steps.ts:58"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 547366000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 7,
+            "name": "debería ver un mensaje de inicio exitoso",
+            "match": {
+              "location": "features\\steps_definitions\\login.steps.ts:72"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 229174100
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 173173999
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "inicio-de-sesión",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Inicio de sesión",
+    "tags": [],
+    "uri": "features\\login.feature"
+  }
+]
