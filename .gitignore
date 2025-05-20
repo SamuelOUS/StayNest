@@ -52,3 +52,7 @@ environment.development
 environment.development.ts
 .environment.development
 .environment.development.ts
+
+
+/serenity/node_modules
+/serenity/reports
