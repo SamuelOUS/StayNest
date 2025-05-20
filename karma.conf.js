@@ -15,7 +15,7 @@ module.exports = function (config) {
         subdir: '.',
         reporters: [
           { type: 'html' },
-          { type: 'lcovonly' }, // <-- este es necesario para Sonar
+          { type: 'lcovonly' },
           { type: 'text-summary' }
         ]
       },
