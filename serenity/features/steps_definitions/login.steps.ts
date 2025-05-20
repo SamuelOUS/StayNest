@@ -38,16 +38,10 @@ When('abre el menú y selecciona iniciar sesión', async function () {
     Ensure.that(MenuButton, isVisible()),
     Click.on(MenuButton),
     Ensure.that(
-      PageElement.located(
-        By.xpath('//a[@mat-menu-item and normalize-space()="Iniciar Sesión"]')
-      ),
+      PageElement.located(By.cssContainingText('a', 'Iniciar Sesión')),
       isVisible()
     ),
-    Click.on(
-      PageElement.located(
-        By.xpath('//a[@mat-menu-item and normalize-space()="Iniciar Sesión"]')
-      )
-    )
+    Click.on(PageElement.located(By.cssContainingText('a', 'Iniciar Sesión')))
   );
 });
 
